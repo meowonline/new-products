@@ -64,6 +64,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
 table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.88rem; }
 th { background: var(--bg-section); padding: 9px 10px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
+th.num { text-align: right; }
 td { padding: 9px 10px; border-bottom: 1px solid var(--border); }
 tr:hover { background: var(--accent-light); }
 .num { text-align: right; font-variant-numeric: tabular-nums; }
@@ -138,8 +139,8 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   <nav id="tocNav">
     <a href="#overview">战略方向与能力平台</a>
     <a href="#part1">Part 1: AI × 音乐社交</a>
-    <a href="#p1-matrix" class="indent">产品矩阵与社交场景</a>
-    <a href="#p1-taste" class="indent">品味卖点 & 机会窗口</a>
+    <a href="#p1-matrix" class="indent">赛道数据坐标</a>
+    <a href="#p1-taste" class="indent">品味产品化逻辑</a>
     <a href="#p1-algo" class="indent">算法与运营</a>
     <a href="#part2">Part 2: 新 AI 产品机会</a>
     <a href="#p2-signal" class="indent">市场信号</a>
@@ -182,64 +183,42 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   <h2>AI × 音乐社交</h2>
   <p class="section-subtitle">AI 如何让「音乐品味」成为可感知、可传播、可变现的社交资产</p>
 
-  <h3 id="p1-matrix">1.1 产品矩阵与社交场景</h3>
+  <h3 id="p1-matrix">1.1 赛道数据坐标</h3>
+  <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;">团队已在做这个方向，以下仅标注关键竞品数据供对标参考。</p>
   <table style="table-layout:fixed; width:100%;">
-    <thead><tr><th style="width:10%;">层级</th><th style="width:14%;">产品</th><th style="width:20%;">核心能力</th><th style="width:24%;">规模</th><th style="width:32%;">与品味社交的关系</th></tr></thead>
+    <thead><tr><th style="width:20%;">产品</th><th style="width:25%;">定位</th><th style="width:30%;" class="num">规模（Q2 2026）</th><th style="width:25%;">参考价值</th></tr></thead>
     <tbody>
-      <tr><td><span class="tag tag-music">AI 生成</span></td><td>Suno</td><td>文本→完整歌曲</td><td class="num">MAU 4.5M / Q2 $16.2M</td><td>品味的「创造」— 从消费变创作</td></tr>
-      <tr><td><span class="tag tag-music">AI 生成</span></td><td>Sondo (AI MV)</td><td>文本→音乐+视频</td><td class="num">Rev/MAU $7.31 / +107%</td><td>产出物天然可分享</td></tr>
-      <tr><td><span class="tag tag-music">AI 生成</span></td><td>Yuna (Fableso)</td><td>AI MV 生成器</td><td class="num">92K DL / $472K / +3,833%</td><td>iOS 音乐类增速最快</td></tr>
-      <tr><td><span class="tag tag-social">品味社交</span></td><td>Shelf</td><td>品味标签匹配</td><td class="num">102K DL / +21,733%*</td><td>品味社交需求验证</td></tr>
-      <tr><td><span class="tag tag-social">品味社交</span></td><td>Letterboxd</td><td>影视品味图谱+社交</td><td class="num">MAU 12.7M</td><td>最成熟范式</td></tr>
-      <tr><td><span class="tag tag-ai">AI 分析</span></td><td>Earprint / MiMoScore</td><td>播放列表→人格原型</td><td class="num">开源</td><td>品味→画像可自动化</td></tr>
-      <tr><td><span class="tag tag-music">Discord Bot</span></td><td>Zonevra / GenTok</td><td>心情→歌单 / AI 创作</td><td class="num">社区活跃</td><td>社群内创作即社交货币</td></tr>
+      <tr><td>Suno</td><td>AI 作曲</td><td class="num">MAU 4.5M / $16.2M</td><td>品味创造的天花板</td></tr>
+      <tr><td>Sondo</td><td>AI MV</td><td class="num">Rev/MAU $7.31 / +107%</td><td>产出物=传播物验证</td></tr>
+      <tr><td>Shelf</td><td>品味社交</td><td class="num">102K DL / +21,733%*</td><td>需求验证（规模尚小）</td></tr>
+      <tr><td>Letterboxd</td><td>影视品味图谱</td><td class="num">MAU 12.7M</td><td>品味社交的成熟范式</td></tr>
+      <tr><td>Donna AI Song</td><td>AI 歌曲生成</td><td class="num">MAU 4.37M</td><td>共创社交需求</td></tr>
     </tbody>
   </table>
-  <p class="note">* Shelf +21,733% 为 Q2 vs Q1 环比增速，基于 Q1 绝对值极低（约 470 次下载），Q2 达 102K。说明方向验证有效，但绝对规模仍小，仅作趋势参考。</p>
-  <p class="source">Sensor Tower API Q2 2026, GitHub, top.gg</p>
+  <p class="note">* Shelf 增速基于 Q1 极低基数，仅作趋势参考。</p>
+  <p class="source">Sensor Tower API Q2 2026</p>
 
-  <h4>社交场景四象限</h4>
-  <div class="quadrant">
-    <div class="quadrant-item"><h5>① 品味匹配（已验证）</h5><p>Shelf/Tastebuds 验证品味相似度→匹配权重。现有实现停留标签层面，缺可感知化。</p></div>
-    <div class="quadrant-item"><h5>② AI 品味画像（技术就绪）</h5><p>Earprint/MiMoScore：播放列表→人格原型。技术开源，尚未产品化。</p></div>
-    <div class="quadrant-item"><h5>③ 共创社交（高增长）</h5><p>「为你生成一首歌」互动性远强于展示听歌记录。Donna AI Song MAU 437 万验证需求。</p></div>
-    <div class="quadrant-item"><h5>④ 品味可视化传播（待验证）</h5><p>Spotify Wrapped 是唯一规模化品味传播事件（年度一次）。「随时可分享的品味快照」= 产品空白。</p></div>
-  </div>
-
-  <h3 id="p1-taste">1.2 品味作为卖点 & 机会窗口</h3>
+  <h3 id="p1-taste">1.2 品味的产品化逻辑</h3>
   <div class="counter">
     <strong>洞察 ①：品味 ≠ 数据呈现。</strong> 「你听了 2000 首歌，最爱 Indie Pop」没有传播力。品味的传播力来自<strong>审美判断的可感知性</strong>——帮用户表达的是「为什么选这个」，是选择背后的态度。
   </div>
   <div class="counter">
-    <strong>洞察 ②：品味 ≠ 小众。</strong> 品味社交受众不限于发烧友。Spotify Wrapped 全民刷屏证明每个人都有表达品味的欲望，缺的是「低门槛 + 高辨识度」的工具。MBTI 传播力来自「一个标签代表我」，跟深度无关。
+    <strong>洞察 ②：品味 ≠ 小众。</strong> Spotify Wrapped 全民刷屏证明每个人都有表达品味的欲望，缺的是「低门槛 + 高辨识度」的工具。MBTI 传播力来自「一个标签代表我」，跟深度无关。
   </div>
 
-  <h4>技术路径验证（开源）</h4>
+  <h4>AI 品味画像的技术底座（已开源验证）</h4>
   <table style="table-layout:fixed; width:100%;">
-    <thead><tr><th style="width:22%;">项目</th><th style="width:28%;">方法</th><th style="width:22%;">产出</th><th style="width:28%;">传播潜力</th></tr></thead>
+    <thead><tr><th style="width:22%;">项目</th><th style="width:30%;">方法</th><th style="width:22%;">产出</th><th style="width:26%;">传播潜力</th></tr></thead>
     <tbody>
-      <tr><td>Earprint</td><td>YouTube → Gemini → 12 原型</td><td>Music Zodiac 卡片</td><td>★★★★ 星座类比天然传播</td></tr>
-      <tr><td>MiMoScore</td><td>歌曲→原型 + Genre DNA</td><td>人格卡 + 雷达图</td><td>★★★★ 视觉强，适合截图</td></tr>
-      <tr><td>Playlist Psychologist</td><td>Spotify → 3 层分析</td><td>心理画像</td><td>★★★ 类 MBTI 动机</td></tr>
+      <tr><td>Earprint</td><td>YouTube → Gemini → 12 原型</td><td>Music Zodiac 卡片</td><td>★★★★ 星座类比</td></tr>
+      <tr><td>MiMoScore</td><td>歌曲→原型 + Genre DNA</td><td>人格卡 + 雷达图</td><td>★★★★ 视觉强</td></tr>
+      <tr><td>Playlist Psychologist</td><td>Spotify → 3 层分析</td><td>心理画像</td><td>★★★ 类 MBTI</td></tr>
     </tbody>
   </table>
 
-  <div class="insight-box">
-    <strong>机会空白：</strong>Shelf 验证品味社交需求存在，开源项目验证 AI 品味分析技术就绪，两者尚未合并——<strong>「AI 品味可感知化 + 以此为社交货币做匹配/广场」仍是产品空白。</strong>
-  </div>
-  <table style="table-layout:fixed; width:100%;">
-    <thead><tr><th style="width:22%;">维度</th><th style="width:36%;">当前状态</th><th style="width:42%;">空白机会</th></tr></thead>
-    <tbody>
-      <tr><td>品味→人格建模</td><td>开源方案多个</td><td>无 C 端产品将此作为核心卖点</td></tr>
-      <tr><td>品味社交匹配</td><td>Shelf/Tastebuds 已做</td><td>匹配停留数据层，缺品味感知层</td></tr>
-      <tr><td>品味传播物</td><td>Wrapped（年度一次）</td><td>随时可分享的品味快照</td></tr>
-      <tr><td>AI 音乐共创</td><td>Suno/Donna（工具向）</td><td>共创嵌入社交（为对方生成歌曲）</td></tr>
-    </tbody>
-  </table>
-
-  <h4>产品化方向</h4>
+  <h4>产品化关键属性</h4>
   <div class="callout">
-    将听歌数据转化为「品味人格」（类 MBTI，基于真实行为数据），关键属性：
+    将听歌数据转化为「品味人格」（类 MBTI，基于真实行为数据）：
     <ul class="bl">
       <li><strong>一张卡片</strong>代表我（非报告）</li>
       <li><strong>可对比</strong>——与他人差异产生讨论</li>
@@ -338,7 +317,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <div class="product-detail" id="d-video">
       <div class="detail-grid">
         <div class="detail-card"><h6>数据</h6>
-          <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:22%;">产品</th><th style="width:18%;">Q2 下载</th><th style="width:18%;">Q2 收入</th><th style="width:18%;">MAU</th><th style="width:24%;">增速</th></tr></thead>
+          <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:22%;">产品</th><th style="width:18%;" class="num">Q2 下载</th><th style="width:18%;" class="num">Q2 收入</th><th style="width:18%;" class="num">MAU</th><th style="width:24%;" class="num">增速</th></tr></thead>
           <tbody>
             <tr><td>Sondo</td><td class="num">—</td><td class="num">$928K</td><td class="num">127K</td><td class="num">+107% QoQ</td></tr>
             <tr><td>Suno</td><td class="num">6.06M</td><td class="num">$16.2M</td><td class="num">4.5M</td><td class="num">—</td></tr>
@@ -364,7 +343,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     </ul></div>
     <button class="expand-btn" onclick="toggle('d-vertical')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-vertical">
-      <table><thead><tr><th>产品</th><th>场景</th><th>Q2 DL</th><th>增速</th><th>MAU</th><th>D1</th><th>AI 能力</th></tr></thead>
+      <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:13%;">产品</th><th style="width:14%;">场景</th><th style="width:14%;" class="num">Q2 DL</th><th style="width:15%;" class="num">增速</th><th style="width:14%;" class="num">MAU</th><th style="width:10%;" class="num">D1</th><th style="width:20%;">AI 能力</th></tr></thead>
       <tbody>
         <tr><td>Traini</td><td>宠物训练</td><td class="num">4.53M</td><td class="num">+12,921%</td><td class="num">1.78M</td><td class="num">6%</td><td>视频分析狗行为→方案</td></tr>
         <tr><td>Astro99</td><td>占星</td><td class="num">2.19M</td><td class="num">+25,213%</td><td class="num">852K</td><td class="num">24%</td><td>AI 个性化星盘</td></tr>
@@ -389,7 +368,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     </ul></div>
     <button class="expand-btn" onclick="toggle('d-health')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-health">
-      <table><thead><tr><th>产品/方向</th><th>模式</th><th>规模</th><th>增长信号</th><th>AI 核心</th></tr></thead>
+      <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:14%;">产品/方向</th><th style="width:18%;">模式</th><th style="width:24%;">规模</th><th style="width:24%;">增长信号</th><th style="width:20%;">AI 核心</th></tr></thead>
       <tbody>
         <tr><td><strong>Cal AI</strong></td><td>拍照记卡路里</td><td>15M DL, ~$50M ARR</td><td>18 个月 0→$50M; 被 MFP 收购</td><td>视觉识别→即时营养分析</td></tr>
         <tr><td><strong>Finch</strong></td><td>心理自护（养宠物）</td><td>$30-40M ARR, bootstrapped</td><td>Gen Z 心理健康入口</td><td>AI 个性化每日任务/情绪追踪</td></tr>
@@ -405,7 +384,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
           <li><strong>美容 AI 变现路径清晰：</strong>皮肤诊断→产品推荐→电商佣金/品牌合作</li>
         </ul></div>
         <div class="detail-card path-card"><h6>路径</h6><ul>
-          <li>★★★ <strong>美容/皮肤：</strong>拍照→诊断→推荐 链路短，变现可走电商（佣金 15-30%）或虚拟商品（高级分析报告）— <em>技术成熟、链路最短、变现清晰，2-3 周可出 MVP</em></li>
+          <li>★★★ <strong>美容/皮肤：</strong>拍照→诊断→推荐 链路短，变现可走电商（佣金 15-30%）或虚拟商品（高级分析报告）— <em>技术成熟、链路最短、变现清晰</em></li>
           <li>★★★ <strong>营养/饮食：</strong>Cal AI 模式已被收购验证，仍有垂直空间（如中餐识别、特殊饮食如 GLP-1 配套）— <em>$50M ARR 退出验证天花板，中餐识别是差异化空白</em></li>
           <li>★★ <strong>心理健康：</strong>Finch 模式证明游戏化+AI 可以做出 $30M+ bootstrapped 业务，关键是降低「我在做心理治疗」的感知 — <em>天花板高但产品设计门槛高，需要长期投入</em></li>
           <li>★ <strong>健身：</strong>市场已有 Strava 等巨头，更适合垂直切入（如产后恢复、老年健身、特定运动）— <em>竞争激烈，需找极细分缝隙</em></li>
@@ -436,7 +415,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     </ul></div>
     <button class="expand-btn" onclick="toggle('d-social')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-social">
-      <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:14%;">产品</th><th style="width:20%;">模式</th><th style="width:12%;">Q2 DL</th><th style="width:12%;">增速</th><th style="width:14%;">D1/D7</th><th style="width:28%;">信号</th></tr></thead>
+      <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:14%;">产品</th><th style="width:20%;">模式</th><th style="width:12%;" class="num">Q2 DL</th><th style="width:12%;" class="num">增速</th><th style="width:14%;" class="num">D1/D7</th><th style="width:28%;">信号</th></tr></thead>
       <tbody>
         <tr><td>shapes.inc</td><td>AI 角色+群聊</td><td class="num">91K</td><td class="num">+3,136%</td><td class="num">—</td><td>Lightspeed $8M; 3M 角色</td></tr>
         <tr><td>Focustown</td><td>社交学习+AI</td><td class="num">1.39M</td><td class="num">+20,564%</td><td class="num">36%/—</td><td>多人学习+AI 分析</td></tr>
@@ -464,7 +443,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     </div>
     <button class="expand-btn" onclick="toggle('d-expression')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-expression">
-      <table><thead><tr><th>产品</th><th>主题</th><th>Q2 DL</th><th>增速</th><th>收入</th><th>传播机制</th></tr></thead>
+      <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:16%;">产品</th><th style="width:16%;">主题</th><th style="width:14%;" class="num">Q2 DL</th><th style="width:16%;" class="num">增速</th><th style="width:16%;" class="num">收入</th><th style="width:22%;">传播机制</th></tr></thead>
       <tbody>
         <tr><td>BabyGenie</td><td>预测宝宝</td><td class="num">14.7M*</td><td class="num">—</td><td class="num">印度 Top 8</td><td>情侣→病毒传播</td></tr>
         <tr><td>MyPanini™</td><td>自拍变球星卡</td><td class="num">4.58M</td><td class="num">+12,041%</td><td class="num">$0</td><td>赛事节点+朋友</td></tr>
@@ -474,7 +453,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
       <p class="note">* BabyGenie 14.7M 为 2026/05/15-07/03 全球，AppBrain India Top Grossing</p>
       <div class="detail-grid">
         <div class="detail-card"><h6>亮点</h6><ul><li>Her 75 RPD $0.66（$356K / 541K DL）</li><li>MyPanini 赛事节点爆发（世界杯/欧洲杯）</li><li>每分享一次触达 50-200 人，5-10% 转化</li></ul></div>
-        <div class="detail-card path-card"><h6>路径</h6><ul><li>★★★ 极轻量（Web/小程序），2 周一个主题上线 — <em>BabyGenie 证明轻量形态 + 强分享主题 = 爆发，核心是选题速度</em></li><li>★★ 「AI 音乐人格卡」= 音乐场景垂直应用 — <em>可与品味社交复用，已有技术底座（Earprint/MiMoScore）</em></li><li>★ 核心指标：分享率 + K-factor — <em>单主题失败风险高，但试错成本极低</em></li></ul></div>
+        <div class="detail-card path-card"><h6>路径</h6><ul><li>★★★ 极轻量 Web App，高频测试主题 — <em>BabyGenie 证明轻量形态 + 强分享主题 = 爆发，核心是选题速度</em></li><li>★★ 「AI 音乐人格卡」= 音乐场景垂直应用 — <em>可与品味社交复用，已有技术底座（Earprint/MiMoScore）</em></li><li>★ 核心指标：分享率 + K-factor — <em>单主题失败风险高，但试错成本极低</em></li></ul></div>
       </div>
     </div>
   </div>
@@ -490,7 +469,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     </ul></div>
     <button class="expand-btn" onclick="toggle('d-companion')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-companion">
-      <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:20%;">产品</th><th style="width:24%;">差异化</th><th style="width:16%;">Rev/MAU</th><th style="width:16%;">RPD</th><th style="width:24%;">信号</th></tr></thead>
+      <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:20%;">产品</th><th style="width:24%;">差异化</th><th style="width:16%;" class="num">Rev/MAU</th><th style="width:16%;" class="num">RPD</th><th style="width:24%;">信号</th></tr></thead>
       <tbody>
         <tr><td>Tipsy Chat</td><td>沉浸式叙事</td><td class="num">$8.60</td><td class="num">$9.67</td><td>ChatGPT 8.7x</td></tr>
         <tr><td>zeta</td><td>动漫 IP 角色</td><td class="num">$2.90</td><td class="num">$5.28</td><td>日本; IP 5x 付费率</td></tr>
@@ -510,7 +489,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
 <div class="section" style="background: var(--bg-section);" id="datasource">
   <h3>数据来源</h3>
   <table>
-    <thead><tr><th>类型</th><th>来源</th><th>口径说明</th></tr></thead>
+    <thead><tr><th style="width:22%;">类型</th><th style="width:22%;">来源</th><th style="width:56%;">口径说明</th></tr></thead>
     <tbody>
       <tr><td>下载/收入/MAU/留存</td><td>Sensor Tower API</td><td>Q2 2026 (04/01-06/30), 全球, iOS+Android</td></tr>
       <tr><td>增速百分比</td><td>Sensor Tower</td><td>Q2 vs Q1 环比 (transformed_delta)。新品 Q1=0 时增速反映爆发力而非可持续增长率</td></tr>
