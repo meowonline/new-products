@@ -115,11 +115,14 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
 .product-detail { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border); animation: fadeIn 0.25s; }
 .product-detail.open { display: block; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 10px 0; }
-@media (max-width: 600px) { .detail-grid { grid-template-columns: 1fr; } .quadrant { grid-template-columns: 1fr; } }
-.detail-grid .detail-col h6 { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
-.detail-grid .detail-col ul { margin-left: 14px; }
-.detail-grid .detail-col li { margin: 3px 0; font-size: 0.88rem; }
+.detail-grid { display: flex; flex-direction: column; gap: 14px; margin: 10px 0; }
+.detail-card { background: var(--bg-section); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+.detail-card h6 { font-size: 0.8rem; color: var(--accent); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.3px; font-weight: 600; }
+.detail-card ul { margin-left: 14px; }
+.detail-card li { margin: 4px 0; font-size: 0.88rem; }
+.detail-card.path-card { background: #f0fdf4; border-color: #bbf7d0; }
+.detail-card.path-card h6 { color: #047857; }
+@media (max-width: 600px) { .quadrant { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -312,11 +315,10 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <button class="expand-btn" onclick="toggle('d-video')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-video">
       <div class="detail-grid">
-        <div class="detail-col"><h6>数据</h6><ul><li>Sondo: Rev/MAU $7.31, +107% QoQ</li><li>Suno: 6.06M DL, $16.2M, MAU 4.5M</li><li>Yuna: 92K DL, $472K, +3,833%</li><li>Kling AI: 408K DL, $127K</li></ul></div>
-        <div class="detail-col"><h6>亮点</h6><ul><li><strong>融合 > 分离：</strong>音乐+视频合并后 Rev/MAU 达单功能的 3.5 倍</li><li><strong>产出=获客：</strong>每条发布获算法分发，零边际获客</li><li><strong>变现：</strong>按导出计费 + 商业授权</li></ul></div>
+        <div class="detail-card"><h6>数据</h6><ul><li>Sondo: Rev/MAU $7.31, +107% QoQ</li><li>Suno: 6.06M DL, $16.2M, MAU 4.5M</li><li>Yuna: 92K DL, $472K, +3,833%</li><li>Kling AI: 408K DL, $127K</li></ul></div>
+        <div class="detail-card"><h6>亮点</h6><ul><li><strong>融合 > 分离：</strong>音乐+视频合并后 Rev/MAU 达单功能的 3.5 倍</li><li><strong>产出=获客：</strong>每条发布获算法分发，零边际获客</li><li><strong>变现：</strong>按导出计费 + 商业授权</li></ul></div>
+        <div class="detail-card path-card"><h6>路径</h6><ul><li>核心「一句话变短视频」，接入 Suno/Udio + Kling/Runway API</li><li>重点投入编排层（意图理解、多模态协调）</li><li>分发优先 TikTok 生态</li></ul></div>
       </div>
-      <p style="margin-top:10px;"><strong>路径：</strong></p>
-      <ul class="bl"><li>核心「一句话变短视频」，接入 Suno/Udio + Kling/Runway API</li><li>重点投入编排层（意图理解、多模态协调）</li><li>分发优先 TikTok 生态</li></ul>
       <p class="source">Sensor Tower: Suno (6480136315), Sondo (com.ai.music.video.generator)</p>
     </div>
   </div>
@@ -326,7 +328,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <h5>AI 垂直场景（宠物 / 占星 / 美妆）</h5>
     <div class="metrics"><span><span class="tag tag-growth">Traini 4.53M, +12,921%</span></span><span><span class="tag tag-growth">Astro99 2.19M, +25,213%</span></span><span>Fravix 778K, +19,895%</span><span>Her 75: $356K</span></div>
     <div class="summary"><ul class="bl">
-      <li>共同模式：「专家服务原本昂贵」的垂直场景，AI 压缩为「拍照→即时结果」</li>
+      <li>共同模式：「专家服务原本昂贵」的垂直场景，AI 压缩为「拍照/输入→即时结果」</li>
       <li>转化漏斗极短（看到→下载→体验→付费 < 3 分钟），社交传播驱动零成本获客</li>
       <li>单次付费模式下留存非核心指标（Traini D1 仅 6%），关键是 RPD 和分享率</li>
     </ul></div>
@@ -340,8 +342,8 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
         <tr><td>Her 75</td><td>年龄预测</td><td class="num">541K</td><td class="num">+25,145%</td><td class="num">233K</td><td class="num">29%</td><td>AI 老化模拟</td></tr>
       </tbody></table>
       <div class="detail-grid">
-        <div class="detail-col"><h6>亮点</h6><ul><li>Traini 将 $50-100/h 训练师压缩为免费+增值</li><li>结果自带分享动机：「看 AI 分析我家狗」「我的星盘」</li><li>Astro99 D1 24%：占星场景留存最高，可持续使用（每日运势）</li></ul></div>
-        <div class="detail-col"><h6>路径</h6><ul><li>选一个场景快速验证</li><li>产品极简（单页 App），2-3 周出 MVP</li><li>多场景并行测试降低单点风险</li></ul></div>
+        <div class="detail-card"><h6>亮点</h6><ul><li>Traini 将 $50-100/h 训练师压缩为免费+增值</li><li>结果自带分享动机：「看 AI 分析我家狗」「我的星盘」</li><li>Astro99 D1 24%：占星场景留存最高，可持续使用（每日运势）</li></ul></div>
+        <div class="detail-card path-card"><h6>路径</h6><ul><li>选一个场景快速验证</li><li>产品极简（单页 App），2-3 周出 MVP</li><li>多场景并行测试降低单点风险</li></ul></div>
       </div>
     </div>
   </div>
@@ -351,7 +353,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <h5>AI 健康与个性化（营养 / 心理 / 美容 / 健身）</h5>
     <div class="metrics"><span><span class="tag tag-health">Cal AI: 15M DL, $50M ARR (18个月)</span></span><span><span class="tag tag-health">Finch: $30-40M ARR</span></span><span>AI 健身市场 $4.5B IAP</span></div>
     <div class="summary"><ul class="bl">
-      <li>Cal AI（AI 拍照记卡路里）18 个月从 0 到 $50M ARR、15M 下载，2026/03 被 MyFitnessPal 收购——验证了「拍照→即时结果」在健康场景的变现力</li>
+      <li>Cal AI（AI 拍照记卡路里）18 个月从 0 到 $50M ARR、15M 下载，2026/03 被 MyFitnessPal 收购——验证了「拍照/输入→即时结果」在健康场景的变现力</li>
       <li>Finch（AI 自我关怀宠物）bootstrapped 到 $30-40M ARR，用「养电子宠物」包装心理健康习惯</li>
       <li>Health & Fitness 品类 2025 年 IAP 收入 $4.5B（+13% YoY），AI 营养追踪是增长最快子类</li>
     </ul></div>
@@ -366,13 +368,13 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
         <tr><td><strong>AI 皮肤分析</strong></td><td>拍照→皮肤诊断+方案</td><td>市场 $2.09B (2026)</td><td>CAGR 16.2%</td><td>图像→皮肤问题识别→个性化方案</td></tr>
       </tbody></table>
       <div class="detail-grid">
-        <div class="detail-col"><h6>亮点</h6><ul>
+        <div class="detail-card"><h6>亮点</h6><ul>
           <li><strong>Cal AI 增长公式：</strong>拍照即用（零学习成本）+ 网红营销 + paywall 实验（123 次 A/B）→ 月收入 3x in 10 个月</li>
           <li><strong>Finch 的游戏化心理健康：</strong>把 CBT 技术包装成养电子宠物，Gen Z 无抵触地建立心理健康习惯</li>
           <li><strong>Strava AI 教练：</strong>收购 Runna 后整合 AI coaching，DAU 增速是 MAU 的 2.7 倍（用户更高频打开）</li>
           <li><strong>美容 AI 变现路径清晰：</strong>皮肤诊断→产品推荐→电商佣金/品牌合作</li>
         </ul></div>
-        <div class="detail-col"><h6>路径</h6><ul>
+        <div class="detail-card path-card"><h6>路径</h6><ul>
           <li><strong>营养/饮食：</strong>Cal AI 模式已被收购验证，仍有垂直空间（如中餐识别、特殊饮食如 GLP-1 配套）</li>
           <li><strong>心理健康：</strong>Finch 模式证明游戏化+AI 可以做出 $30M+ bootstrapped 业务，关键是降低「我在做心理治疗」的感知</li>
           <li><strong>美容/皮肤：</strong>拍照→诊断→推荐 链路短，变现可走电商（佣金 15-30%）或虚拟商品（高级分析报告）</li>
@@ -404,7 +406,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     </ul></div>
     <button class="expand-btn" onclick="toggle('d-social')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-social">
-      <table><thead><tr><th>产品</th><th>模式</th><th>Q2 DL</th><th>增速</th><th>D1/D7</th><th>信号</th></tr></thead>
+      <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:14%;">产品</th><th style="width:20%;">模式</th><th style="width:12%;">Q2 DL</th><th style="width:12%;">增速</th><th style="width:14%;">D1/D7</th><th style="width:28%;">信号</th></tr></thead>
       <tbody>
         <tr><td>shapes.inc</td><td>AI 角色+群聊</td><td class="num">91K</td><td class="num">+3,136%</td><td class="num">—</td><td>Lightspeed $8M; 3M 角色</td></tr>
         <tr><td>Focustown</td><td>社交学习+AI</td><td class="num">1.39M</td><td class="num">+20,564%</td><td class="num">36%/—</td><td>多人学习+AI 分析</td></tr>
@@ -412,8 +414,8 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
         <tr><td>setlog</td><td>朋友相机</td><td class="num">5.26M</td><td class="num">+6,707%</td><td class="num">67%/51%</td><td>MAU 1.48M</td></tr>
       </tbody></table>
       <div class="detail-grid">
-        <div class="detail-col"><h6>亮点</h6><ul><li>shapes.inc 定位「next-gen chat app」，AI 角色以共同朋友身份存在</li><li>playus 仪式感（每天固定时间、1 分钟完成）打败传统社交留存</li><li>网络效应一旦启动增长极陡</li></ul></div>
-        <div class="detail-col"><h6>路径</h6><ul><li>① Gravity 中嵌入 AI 角色做互动引导（低风险验证）</li><li>② 独立产品：AI 每日轻互动（playus 仪式感 + AI 内容生成）</li><li>AI 角色可作为语音房破冰工具</li></ul></div>
+        <div class="detail-card"><h6>亮点</h6><ul><li>shapes.inc 定位「next-gen chat app」，AI 角色以共同朋友身份存在</li><li>playus 仪式感（每天固定时间、1 分钟完成）打败传统社交留存</li><li>网络效应一旦启动增长极陡</li></ul></div>
+        <div class="detail-card path-card"><h6>路径</h6><ul><li>① Gravity 中嵌入 AI 角色做互动引导（低风险验证）</li><li>② 独立产品：AI 每日轻互动（playus 仪式感 + AI 内容生成）</li><li>AI 角色可作为语音房破冰工具</li></ul></div>
       </div>
       <p class="source">Sensor Tower ios_social_top50; TechCrunch 2026/04/29</p>
     </div>
@@ -441,8 +443,8 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
       </tbody></table>
       <p class="note">* BabyGenie 14.7M 为 2026/05/15-07/03 全球，AppBrain India Top Grossing</p>
       <div class="detail-grid">
-        <div class="detail-col"><h6>亮点</h6><ul><li>Her 75 RPD $0.66（$356K / 541K DL）</li><li>MyPanini 赛事节点爆发（世界杯/欧洲杯）</li><li>每分享一次触达 50-200 人，5-10% 转化</li></ul></div>
-        <div class="detail-col"><h6>路径</h6><ul><li>极轻量（Web/小程序），2 周一个主题上线</li><li>核心指标：分享率 + K-factor</li><li>「AI 音乐人格卡」= 音乐场景垂直应用，可与品味社交复用</li></ul></div>
+        <div class="detail-card"><h6>亮点</h6><ul><li>Her 75 RPD $0.66（$356K / 541K DL）</li><li>MyPanini 赛事节点爆发（世界杯/欧洲杯）</li><li>每分享一次触达 50-200 人，5-10% 转化</li></ul></div>
+        <div class="detail-card path-card"><h6>路径</h6><ul><li>极轻量（Web/小程序），2 周一个主题上线</li><li>核心指标：分享率 + K-factor</li><li>「AI 音乐人格卡」= 音乐场景垂直应用，可与品味社交复用</li></ul></div>
       </div>
     </div>
   </div>
@@ -465,8 +467,9 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
         <tr><td>MookRun</td><td>影视 AI+社区</td><td class="num">—</td><td class="num">$1.29</td><td>+24,870%</td></tr>
       </tbody></table>
       <div class="detail-grid">
-        <div class="detail-col"><h6>亮点</h6><ul><li>Tipsy Chat：加入叙事后用户从「提问」切到「体验」，付费意愿跃升</li><li>IP 杠杆：zeta 用动漫 IP 在日本做到 5x 付费率</li><li>进化方向：从文字到共同体验（一起看、一起玩、一起创作）</li></ul></div>
-        <div class="detail-col"><h6>路径</h6><ul><li>synclub 升级到「共同体验」</li><li>AI 角色 + 互动故事（叙事引擎）</li><li>AI 角色 + 实时语音（复用 Gravity）</li><li>日本优先（运营 + VTuber + 动漫 IP + ARPU）</li></ul></div>
+        <div class="detail-card"><h6>亮点</h6><ul><li>Tipsy Chat：加入叙事后用户从「提问」切到「体验」，付费意愿跃升</li><li>IP 杠杆：zeta 用动漫 IP 在日本做到 5x 付费率</li><li>进化方向：从文字到共同体验（一起看、一起玩、一起创作）</li></ul></div>
+        <div class="detail-card path-card"><h6>路径 A：现有产品验证</h6><ul><li>synclub 增加「共同体验」模块（互动故事/共同创作）</li><li>Gravity 语音房接入 AI 角色做实时互动引导</li><li>日本优先（运营 + VTuber + 动漫 IP + ARPU）</li></ul></div>
+        <div class="detail-card path-card"><h6>路径 B：独立产品</h6><ul><li>AI 角色 + 互动叙事引擎（沉浸式故事体验）</li><li>AI 角色 + 实时语音（陪伴类新品类）</li><li>IP 授权合作（动漫/游戏角色），降低冷启动门槛</li></ul></div>
       </div>
       <p class="source">Sensor Tower: MookRun (6740849417); Tipsy Chat, zeta 经 API 验证</p>
     </div>

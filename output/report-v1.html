@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 新产品机会调研报告</title>
+<meta http-equiv="x-version" content="v5">
+<style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #4361ee;
+  --accent-light: #e8ecff;
+  --text: #2d2d2d;
+  --text-secondary: #6b7280;
+  --border: #e5e7eb;
+  --bg-section: #f8fafc;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --sidebar-w: 220px;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); line-height: 1.8; background: #f0f2f5; font-size: 17px; }
+
+/* ===== SIDEBAR TOC ===== */
+.sidebar { width: var(--sidebar-w); position: fixed; top: 0; left: 0; height: 100vh; background: #ffffff; border-right: 1px solid var(--border); padding: 20px 12px; overflow-y: auto; z-index: 1000; box-shadow: 2px 0 8px rgba(0,0,0,0.04); }
+.sidebar .logo { font-size: 0.78rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; padding: 8px 12px; margin-bottom: 12px; border-bottom: 1px solid var(--border); }
+.sidebar nav a { display: block; font-size: 0.82rem; color: var(--text-secondary); text-decoration: none; padding: 7px 12px; border-radius: 6px; margin: 1px 0; transition: all 0.15s; line-height: 1.4; }
+.sidebar nav a:hover { background: var(--accent-light); color: var(--accent); }
+.sidebar nav a.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
+.sidebar nav a.indent { padding-left: 22px; font-size: 0.78rem; }
+
+/* Mobile toggle */
+.sidebar-toggle { display: none; position: fixed; top: 12px; left: 12px; z-index: 2000; width: 42px; height: 42px; background: white; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 1.3rem; line-height: 42px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+
+/* Main */
+.main-content { margin-left: var(--sidebar-w); padding: 36px 48px; max-width: calc(100vw - var(--sidebar-w) - 48px); width: 100%; }
+
+@media (max-width: 860px) {
+  .sidebar { transform: translateX(-100%); transition: transform 0.25s ease; }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-toggle { display: block; }
+  .main-content { margin-left: 0; padding: 20px 16px; padding-top: 60px; }
+}
+
+/* ===== CONTENT STYLES ===== */
+.report-header { background: var(--primary); color: white; padding: 44px 36px; border-radius: 14px; margin-bottom: 36px; }
+.report-header h1 { font-size: 1.9rem; font-weight: 700; margin-bottom: 8px; }
+.report-header .subtitle { font-size: 1rem; opacity: 0.85; margin-bottom: 16px; }
+.report-header .meta { font-size: 0.8rem; opacity: 0.6; }
+
+.overview-box { background: white; border-radius: 12px; padding: 28px; margin-bottom: 28px; border-left: 4px solid var(--accent); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.overview-box h2 { font-size: 1.3rem; margin-bottom: 14px; color: var(--primary); }
+.section { background: white; border-radius: 12px; padding: 32px; margin-bottom: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.section h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; color: var(--primary); }
+.section h3 { font-size: 1.1rem; font-weight: 600; margin: 24px 0 10px; color: var(--primary); }
+.section h4 { font-size: 0.95rem; font-weight: 600; margin: 18px 0 8px; color: var(--text-secondary); }
+.section-subtitle { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 20px; }
+.part-label { display: inline-block; background: var(--accent); color: white; font-size: 0.7rem; font-weight: 600; padding: 3px 9px; border-radius: 4px; margin-bottom: 10px; letter-spacing: 0.5px; }
+
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.88rem; }
+th { background: var(--bg-section); padding: 9px 10px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
+td { padding: 9px 10px; border-bottom: 1px solid var(--border); }
+tr:hover { background: var(--accent-light); }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.tag { display: inline-block; font-size: 0.7rem; padding: 2px 6px; border-radius: 3px; font-weight: 500; }
+.tag-ai { background: #ede9fe; color: #7c3aed; }
+.tag-social { background: #dbeafe; color: #2563eb; }
+.tag-music { background: #fef3c7; color: #d97706; }
+.tag-growth { background: #d1fae5; color: #059669; }
+.tag-revenue { background: #fee2e2; color: #dc2626; }
+.tag-health { background: #ecfdf5; color: #047857; }
+
+.insight-box { background: var(--bg-section); border-radius: 8px; padding: 16px 18px; margin: 16px 0; border: 1px solid var(--border); }
+.insight-box strong { color: var(--primary); }
+.callout { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 14px 18px; margin: 16px 0; }
+.counter { background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 12px 16px; margin: 14px 0; }
+.counter strong { color: #991b1b; }
+.divider { border: none; border-top: 2px solid var(--border); margin: 32px 0; }
+.source { font-size: 0.72rem; color: var(--text-secondary); margin-top: 4px; }
+.note { font-size: 0.8rem; color: var(--text-secondary); font-style: italic; margin: 4px 0; }
+
+/* Chart */
+.bar-chart { width: 100%; }
+.bar-row { display: flex; align-items: center; margin: 7px 0; }
+.bar-label { width: 170px; font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
+.bar-track { flex: 1; height: 26px; background: #f1f5f9; border-radius: 4px; overflow: hidden; margin: 0 10px; }
+.bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: 0.75rem; color: white; font-weight: 500; }
+.bar-value { font-size: 0.85rem; width: 70px; text-align: right; font-variant-numeric: tabular-nums; flex-shrink: 0; }
+
+/* Quadrant */
+.quadrant { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+.quadrant-item { background: var(--bg-section); border-radius: 8px; padding: 14px; border: 1px solid var(--border); }
+.quadrant-item h5 { font-size: 0.88rem; margin-bottom: 5px; color: var(--accent); }
+.quadrant-item p { font-size: 0.85rem; color: var(--text-secondary); }
+
+/* Product Cards */
+.product-card { border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin: 14px 0; transition: box-shadow 0.2s; }
+.product-card:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.06); }
+.product-card h5 { font-size: 1rem; margin-bottom: 4px; }
+.product-card .metrics { display: flex; gap: 12px; font-size: 0.82rem; color: var(--text-secondary); margin-top: 6px; flex-wrap: wrap; }
+.product-card .summary { margin-top: 10px; }
+
+/* Bullets */
+ul.bl { margin: 6px 0 6px 18px; }
+ul.bl li { margin: 4px 0; line-height: 1.7; }
+
+/* Expand/collapse */
+.expand-btn { display: inline-flex; align-items: center; gap: 3px; font-size: 0.78rem; color: var(--accent); cursor: pointer; margin-top: 8px; font-weight: 500; border: 1px solid var(--accent); background: white; padding: 4px 10px; border-radius: 5px; transition: background 0.15s; }
+.expand-btn:hover { background: var(--accent-light); }
+.expand-btn .arrow { transition: transform 0.2s; display: inline-block; }
+.expand-btn.open .arrow { transform: rotate(90deg); }
+.product-detail { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border); animation: fadeIn 0.25s; }
+.product-detail.open { display: block; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.detail-grid { display: flex; flex-direction: column; gap: 14px; margin: 10px 0; }
+.detail-card { background: var(--bg-section); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+.detail-card h6 { font-size: 0.8rem; color: var(--accent); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.3px; font-weight: 600; }
+.detail-card ul { margin-left: 14px; }
+.detail-card li { margin: 4px 0; font-size: 0.88rem; }
+.detail-card.path-card { background: #f0fdf4; border-color: #bbf7d0; }
+.detail-card.path-card h6 { color: #047857; }
+@media (max-width: 600px) { .quadrant { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">☰</button>
+
+<!-- ===== SIDEBAR ===== -->
+<aside class="sidebar" id="sidebar">
+  <div class="logo">报告目录</div>
+  <nav id="tocNav">
+    <a href="#overview">战略方向与能力平台</a>
+    <a href="#part1">Part 1: AI × 音乐社交</a>
+    <a href="#p1-matrix" class="indent">产品矩阵</a>
+    <a href="#p1-plays" class="indent">社交场景玩法</a>
+    <a href="#p1-taste" class="indent">品味作为卖点</a>
+    <a href="#p1-window" class="indent">机会窗口</a>
+    <a href="#p1-algo" class="indent">算法与运营</a>
+    <a href="#part2">Part 2: 新 AI 产品机会</a>
+    <a href="#p2-signal" class="indent">市场信号</a>
+    <a href="#p2-enhanced" class="indent">AI 增强型</a>
+    <a href="#p2-innovative" class="indent">AI 创新型</a>
+    <a href="#datasource">数据来源</a>
+  </nav>
+</aside>
+
+<!-- ===== MAIN ===== -->
+<main class="main-content">
+
+<div class="report-header">
+  <h1>AI 新产品机会调研报告</h1>
+  <div class="subtitle">C 端 AI 应用机会扫描 · 音乐社交深度分析 · 能力平台路径</div>
+  <div class="meta">数据截止: 2026 Q2 | 来源: Sensor Tower API, TechCrunch, AppBrain | 2026-07-07</div>
+</div>
+
+<!-- ==================== OVERVIEW ==================== -->
+<div class="overview-box" id="overview">
+  <h2>战略方向与能力平台</h2>
+  <p><strong>核心判断：</strong>C 端 AI 产品变现效率极度分化——情感绑定类 $8.60/MAU vs 通用工具类 $0.99/MAU，差距 8.7 倍。ToC AI 业务的杠杆在高情感密度场景：社交关系、自我表达、陪伴、娱乐消费。</p>
+  <p><strong>通用能力层：</strong></p>
+  <ul class="bl">
+    <li><strong>AI 个性化内容生成</strong>（文本/图像/音频/视频）— 品味画像、AI MV、AI 对话，底层共用生成+个性化引擎</li>
+    <li><strong>产出物=传播物</strong>的产品设计 — 品味卡片、生成作品、互动结果，每次使用天然产出可分享内容</li>
+    <li><strong>虚拟商品付费体系</strong> — 单次解锁、功能包、增值道具，一套计费系统跨产品复用（参考 Bending Spoons 的跨产品运营能力，但商业模式以虚拟商品为主）</li>
+  </ul>
+  <p><strong>人群聚合与付费转化：</strong></p>
+  <ul class="bl">
+    <li><strong>找准聚合点：</strong>高付费意愿人群围绕「身份认同」聚合——品味标签、角色归属、创作成就。产品需要让用户建立可积累的虚拟身份资产</li>
+    <li><strong>虚拟商品付费逻辑：</strong>用户为「表达自我」和「强化身份」付费——品味卡片升级、专属画像解锁、创作工具增值、社交特权。关键是让虚拟商品与用户身份绑定，形成沉没成本</li>
+    <li><strong>付费触发设计：</strong>免费体验建立身份认同 → 付费解锁更精细的表达/更高阶的社交权益 → 持续更新维持新鲜感和付费动力</li>
+  </ul>
+</div>
+
+<!-- ==================== PART 1 ==================== -->
+<div class="section" id="part1">
+  <span class="part-label">PART 1</span>
+  <h2>AI × 音乐社交</h2>
+  <p class="section-subtitle">AI 如何让「音乐品味」成为可感知、可传播、可变现的社交资产</p>
+
+  <h3 id="p1-matrix">1.1 产品矩阵</h3>
+  <table>
+    <thead><tr><th>层级</th><th>产品</th><th>核心能力</th><th>规模</th><th>与品味社交的关系</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag tag-music">AI 生成</span></td><td>Suno</td><td>文本→完整歌曲</td><td class="num">MAU 4.5M / Q2 $16.2M</td><td>品味的「创造」— 从消费变创作</td></tr>
+      <tr><td><span class="tag tag-music">AI 生成</span></td><td>Sondo (AI MV)</td><td>文本→音乐+视频</td><td class="num">Rev/MAU $7.31 / +107%</td><td>产出物天然可分享</td></tr>
+      <tr><td><span class="tag tag-music">AI 生成</span></td><td>Yuna (Fableso)</td><td>AI MV 生成器</td><td class="num">92K DL / $472K / +3,833%</td><td>iOS 音乐类增速最快</td></tr>
+      <tr><td><span class="tag tag-social">品味社交</span></td><td>Shelf</td><td>品味标签匹配</td><td class="num">102K DL / +21,733%*</td><td>品味社交需求验证</td></tr>
+      <tr><td><span class="tag tag-social">品味社交</span></td><td>Letterboxd</td><td>影视品味图谱+社交</td><td class="num">MAU 12.7M</td><td>最成熟范式</td></tr>
+      <tr><td><span class="tag tag-ai">AI 分析</span></td><td>Earprint / MiMoScore</td><td>播放列表→人格原型</td><td class="num">开源</td><td>品味→画像可自动化</td></tr>
+      <tr><td><span class="tag tag-music">Discord Bot</span></td><td>Zonevra / GenTok</td><td>心情→歌单 / AI 创作</td><td class="num">社区活跃</td><td>社群内创作即社交货币</td></tr>
+    </tbody>
+  </table>
+  <p class="note">* Shelf +21,733% 为 Q2 vs Q1 环比增速，基于 Q1 绝对值极低（约 470 次下载），Q2 达 102K。说明方向验证有效，但绝对规模仍小，仅作趋势参考。</p>
+  <p class="source">Sensor Tower API Q2 2026, GitHub, top.gg</p>
+
+  <h3 id="p1-plays">1.2 社交场景玩法</h3>
+  <div class="quadrant">
+    <div class="quadrant-item"><h5>① 品味匹配（已验证）</h5><p>Shelf/Tastebuds 验证品味相似度→匹配权重。现有实现停留标签层面，缺可感知化。</p></div>
+    <div class="quadrant-item"><h5>② AI 品味画像（技术就绪）</h5><p>Earprint/MiMoScore：播放列表→人格原型。技术开源，尚未产品化。</p></div>
+    <div class="quadrant-item"><h5>③ 共创社交（高增长）</h5><p>「为你生成一首歌」互动性远强于展示听歌记录。Donna AI Song MAU 437 万验证需求。</p></div>
+    <div class="quadrant-item"><h5>④ 品味可视化传播（待验证）</h5><p>Spotify Wrapped 是唯一规模化品味传播事件（年度一次）。「随时可分享的品味快照」= 产品空白。</p></div>
+  </div>
+
+  <h3 id="p1-taste">1.3 品味作为产品卖点</h3>
+  <div class="counter">
+    <strong>洞察 ①：品味 ≠ 数据呈现。</strong> 「你听了 2000 首歌，最爱 Indie Pop」没有传播力。品味的传播力来自<strong>审美判断的可感知性</strong>——帮用户表达的是「为什么选这个」，是选择背后的态度。
+  </div>
+  <div class="counter">
+    <strong>洞察 ②：品味 ≠ 小众。</strong> 品味社交受众不限于发烧友。Spotify Wrapped 全民刷屏证明每个人都有表达品味的欲望，缺的是「低门槛 + 高辨识度」的工具。MBTI 传播力来自「一个标签代表我」，跟深度无关。
+  </div>
+
+  <h4>技术路径验证（开源）</h4>
+  <table>
+    <thead><tr><th>项目</th><th>方法</th><th>产出</th><th>传播潜力</th></tr></thead>
+    <tbody>
+      <tr><td>Earprint</td><td>YouTube → Gemini → 12 原型</td><td>Music Zodiac 卡片</td><td>★★★★ 星座类比天然传播</td></tr>
+      <tr><td>MiMoScore</td><td>歌曲→原型 + Genre DNA</td><td>人格卡 + 雷达图</td><td>★★★★ 视觉强，适合截图</td></tr>
+      <tr><td>Playlist Psychologist</td><td>Spotify → 3 层分析</td><td>心理画像</td><td>★★★ 类 MBTI 动机</td></tr>
+    </tbody>
+  </table>
+
+  <h4>产品化方向</h4>
+  <div class="callout">
+    将听歌数据转化为「品味人格」（类 MBTI，基于真实行为数据），关键属性：
+    <ul class="bl">
+      <li><strong>一张卡片</strong>代表我（非报告）</li>
+      <li><strong>可对比</strong>——与他人差异产生讨论</li>
+      <li><strong>动态</strong>——随行为变化，反复分享理由</li>
+      <li><strong>有态度感</strong>——AI 解读选择背后逻辑，呈现审美态度</li>
+    </ul>
+  </div>
+
+  <h3 id="p1-window">1.4 机会窗口</h3>
+  <div class="insight-box">
+    Shelf 验证品味社交需求存在（趋势明确）。开源项目验证 AI 品味分析技术就绪。两者尚未合并——<strong>「AI 品味可感知化 + 以此为社交货币做匹配/广场」仍是产品空白。</strong>
+  </div>
+  <table>
+    <thead><tr><th>维度</th><th>当前状态</th><th>空白机会</th></tr></thead>
+    <tbody>
+      <tr><td>品味→人格建模</td><td>开源方案多个</td><td>无 C 端产品将此作为核心卖点</td></tr>
+      <tr><td>品味社交匹配</td><td>Shelf/Tastebuds 已做</td><td>匹配停留数据层，缺品味感知层</td></tr>
+      <tr><td>品味传播物</td><td>Wrapped（年度一次）</td><td>随时可分享的品味快照</td></tr>
+      <tr><td>AI 音乐共创</td><td>Suno/Donna（工具向）</td><td>共创嵌入社交（为对方生成歌曲）</td></tr>
+    </tbody>
+  </table>
+
+  <h3 id="p1-algo">1.5 算法与运营：在「记录」之外适度「引导」品味</h3>
+  
+  <div class="insight-box">
+    品味产品容易陷入「被动记录」的思路——只帮用户看到自己听了什么。但平台真正的价值在于<strong>帮用户「构建」和「进化」品味</strong>，让品味成为平台内的可积累虚拟资产。
+  </div>
+
+  <h4>① 推荐与品味塑造</h4>
+  <ul class="bl">
+    <li><strong>舒适区推荐：</strong>对应画像中的强偏好做精准推荐，提高点击和满意度，强化用户「被理解」的感知</li>
+    <li><strong>半步领先推荐：</strong>基于现有偏好略微扩展到邻近风格（如从 Indie Pop → Dream Pop），帮用户拓宽品味又不至于完全陌生——这是让品味「进化」的核心机制</li>
+    <li><strong>推荐理由外显：</strong>在推荐页解释部分逻辑（如「因为你偏爱 XX 风格的编曲结构」），让用户感知品味正在被识别和用来驱动体验</li>
+    <li><strong>参考案例：</strong>网易云「每日推荐」将听歌行为转化为外化的品味形象，算法不断强化和引导，用户逐渐将平台推荐视为「了解自己品味的镜子」</li>
+  </ul>
+
+  <h4>② 运营策展：引导用户主动表达品味</h4>
+  <ul class="bl">
+    <li><strong>官方策展示范：</strong>用官方歌单/运营账号示范如何围绕主题/情绪/场景表达审美（类似网易云「歌单道格」），降低用户自我表达的门槛</li>
+    <li><strong>UGC 策展激励：</strong>对优质用户歌单做曝光和运营，鼓励普通用户参与品味策展，从被动听歌转向主动品味输出</li>
+    <li><strong>话题活动：</strong>发起「用一张歌单介绍自己」「年度冷门发现分享」等品味表达活动，让用户围绕音乐品味持续创作内容</li>
+    <li><strong>品味勋章/称号：</strong>对参与活动的用户给出画像更新（称号、勋章、等级），把品味变成平台内的<strong>虚拟社交资本</strong>——这也是虚拟商品付费的天然锚点（高阶称号/稀有勋章需付费解锁）</li>
+  </ul>
+
+  <div class="callout">
+    <strong>对产品设计的启示：</strong>品味产品的运营不应止步于「帮你看清自己」，而应设计一套「品味成长体系」——用户在平台上的品味有等级、有进化、有外显标识。这套体系既是留存引擎（用户积累沉没成本），也是变现引擎（虚拟商品天然挂载在品味身份上）。
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ==================== PART 2 ==================== -->
+<div class="section" id="part2">
+  <span class="part-label">PART 2</span>
+  <h2>新 AI 产品机会</h2>
+  <p class="section-subtitle">AI 结合玩法的高增长 C 端产品（排除音乐×社交，与 Part 1 不重复）</p>
+
+  <h3 id="p2-signal">市场信号</h3>
+  <div style="margin: 20px 0;">
+    <h4>Revenue/MAU 跨赛道对比（$/MAU/季度）</h4>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-label">Tipsy Chat (AI 伴侣)</div><div class="bar-track"><div class="bar-fill" style="width:100%; background:#7c3aed;">$8.60</div></div><div class="bar-value">$8.60</div></div>
+      <div class="bar-row"><div class="bar-label">Sondo (AI MV)</div><div class="bar-track"><div class="bar-fill" style="width:85%; background:#6366f1;">$7.31</div></div><div class="bar-value">$7.31</div></div>
+      <div class="bar-row"><div class="bar-label">Claude (AI 助手)</div><div class="bar-track"><div class="bar-fill" style="width:35%; background:#3b82f6;">$2.99</div></div><div class="bar-value">$2.99</div></div>
+      <div class="bar-row"><div class="bar-label">zeta (AI 角色 RP)</div><div class="bar-track"><div class="bar-fill" style="width:34%; background:#06b6d4;">$2.90</div></div><div class="bar-value">$2.90</div></div>
+      <div class="bar-row"><div class="bar-label">Suno (AI 音乐)</div><div class="bar-track"><div class="bar-fill" style="width:23%; background:#10b981;">$2.00</div></div><div class="bar-value">$2.00</div></div>
+      <div class="bar-row"><div class="bar-label">ChatGPT (AI 助手)</div><div class="bar-track"><div class="bar-fill" style="width:12%; background:#6b7280;">$0.99</div></div><div class="bar-value">$0.99</div></div>
+    </div>
+    <p class="source">Sensor Tower API Q2 2026</p>
+  </div>
+  <div class="insight-box">
+    <strong>筛选逻辑：</strong>用户为「一段关系」或「一个作品」付费意愿是「一次查询」的 4-8 倍。以下按 AI 增强（现有品类升级）和 AI 创新（全新形态）展开。
+  </div>
+
+  <hr class="divider" style="margin:28px 0;">
+  <h3 id="p2-enhanced">AI 增强型</h3>
+
+  <!-- ===== AI Short Video ===== -->
+  <div class="product-card" style="border-left: 4px solid var(--accent);">
+    <h5>AI 一体化短视频生成</h5>
+    <div class="metrics"><span><span class="tag tag-growth">Sondo +107%</span></span><span><span class="tag tag-revenue">Rev/MAU $7.31</span></span><span>Suno Q2 $16.2M</span><span>Yuna +3,833%</span></div>
+    <div class="summary"><ul class="bl">
+      <li>短视频创作者核心矛盾：平台要高频原创，多数人缺音乐和剪辑能力</li>
+      <li>Sondo 验证「一句话→完整短视频」的融合工作流，Rev/MAU $7.31 仅次于 AI 伴侣</li>
+      <li>产出物即 TikTok/Reels 内容，发布即分发，使用行为天然构成拉新</li>
+    </ul></div>
+    <button class="expand-btn" onclick="toggle('d-video')">详细分析 <span class="arrow">›</span></button>
+    <div class="product-detail" id="d-video">
+      <div class="detail-grid">
+        <div class="detail-card"><h6>数据</h6><ul><li>Sondo: Rev/MAU $7.31, +107% QoQ</li><li>Suno: 6.06M DL, $16.2M, MAU 4.5M</li><li>Yuna: 92K DL, $472K, +3,833%</li><li>Kling AI: 408K DL, $127K</li></ul></div>
+        <div class="detail-card"><h6>亮点</h6><ul><li><strong>融合 > 分离：</strong>音乐+视频合并后 Rev/MAU 达单功能的 3.5 倍</li><li><strong>产出=获客：</strong>每条发布获算法分发，零边际获客</li><li><strong>变现：</strong>按导出计费 + 商业授权</li></ul></div>
+        <div class="detail-card path-card"><h6>路径</h6><ul><li>核心「一句话变短视频」，接入 Suno/Udio + Kling/Runway API</li><li>重点投入编排层（意图理解、多模态协调）</li><li>分发优先 TikTok 生态</li></ul></div>
+      </div>
+      <p class="source">Sensor Tower: Suno (6480136315), Sondo (com.ai.music.video.generator)</p>
+    </div>
+  </div>
+
+  <!-- ===== AI Vertical ===== -->
+  <div class="product-card" style="border-left: 4px solid var(--accent);">
+    <h5>AI 垂直场景（宠物 / 占星 / 美妆）</h5>
+    <div class="metrics"><span><span class="tag tag-growth">Traini 4.53M, +12,921%</span></span><span><span class="tag tag-growth">Astro99 2.19M, +25,213%</span></span><span>Fravix 778K, +19,895%</span><span>Her 75: $356K</span></div>
+    <div class="summary"><ul class="bl">
+      <li>共同模式：「专家服务原本昂贵」的垂直场景，AI 压缩为「拍照/输入→即时结果」</li>
+      <li>转化漏斗极短（看到→下载→体验→付费 < 3 分钟），社交传播驱动零成本获客</li>
+      <li>单次付费模式下留存非核心指标（Traini D1 仅 6%），关键是 RPD 和分享率</li>
+    </ul></div>
+    <button class="expand-btn" onclick="toggle('d-vertical')">详细分析 <span class="arrow">›</span></button>
+    <div class="product-detail" id="d-vertical">
+      <table><thead><tr><th>产品</th><th>场景</th><th>Q2 DL</th><th>增速</th><th>MAU</th><th>D1</th><th>AI 能力</th></tr></thead>
+      <tbody>
+        <tr><td>Traini</td><td>宠物训练</td><td class="num">4.53M</td><td class="num">+12,921%</td><td class="num">1.78M</td><td class="num">6%</td><td>视频分析狗行为→方案</td></tr>
+        <tr><td>Astro99</td><td>占星</td><td class="num">2.19M</td><td class="num">+25,213%</td><td class="num">852K</td><td class="num">24%</td><td>AI 个性化星盘</td></tr>
+        <tr><td>Fravix</td><td>发型试穿</td><td class="num">778K</td><td class="num">+19,895%</td><td class="num">159K</td><td class="num">14%</td><td>AI 换发型预览</td></tr>
+        <tr><td>Her 75</td><td>年龄预测</td><td class="num">541K</td><td class="num">+25,145%</td><td class="num">233K</td><td class="num">29%</td><td>AI 老化模拟</td></tr>
+      </tbody></table>
+      <div class="detail-grid">
+        <div class="detail-card"><h6>亮点</h6><ul><li>Traini 将 $50-100/h 训练师压缩为免费+增值</li><li>结果自带分享动机：「看 AI 分析我家狗」「我的星盘」</li><li>Astro99 D1 24%：占星场景留存最高，可持续使用（每日运势）</li></ul></div>
+        <div class="detail-card path-card"><h6>路径</h6><ul><li>选一个场景快速验证</li><li>产品极简（单页 App），2-3 周出 MVP</li><li>多场景并行测试降低单点风险</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== AI Health & Personalization - NEW ===== -->
+  <div class="product-card" style="border-left: 4px solid var(--accent);">
+    <h5>AI 健康与个性化（营养 / 心理 / 美容 / 健身）</h5>
+    <div class="metrics"><span><span class="tag tag-health">Cal AI: 15M DL, $50M ARR (18个月)</span></span><span><span class="tag tag-health">Finch: $30-40M ARR</span></span><span>AI 健身市场 $4.5B IAP</span></div>
+    <div class="summary"><ul class="bl">
+      <li>Cal AI（AI 拍照记卡路里）18 个月从 0 到 $50M ARR、15M 下载，2026/03 被 MyFitnessPal 收购——验证了「拍照/输入→即时结果」在健康场景的变现力</li>
+      <li>Finch（AI 自我关怀宠物）bootstrapped 到 $30-40M ARR，用「养电子宠物」包装心理健康习惯</li>
+      <li>Health & Fitness 品类 2025 年 IAP 收入 $4.5B（+13% YoY），AI 营养追踪是增长最快子类</li>
+    </ul></div>
+    <button class="expand-btn" onclick="toggle('d-health')">详细分析 <span class="arrow">›</span></button>
+    <div class="product-detail" id="d-health">
+      <table><thead><tr><th>产品/方向</th><th>模式</th><th>规模</th><th>增长信号</th><th>AI 核心</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Cal AI</strong></td><td>拍照记卡路里</td><td>15M DL, ~$50M ARR</td><td>18 个月 0→$50M; 被 MFP 收购</td><td>视觉识别→即时营养分析</td></tr>
+        <tr><td><strong>Finch</strong></td><td>心理自护（养宠物）</td><td>$30-40M ARR, bootstrapped</td><td>Gen Z 心理健康入口</td><td>AI 个性化每日任务/情绪追踪</td></tr>
+        <tr><td><strong>Strava + AI</strong></td><td>社交健身 + AI 教练</td><td>Apr 2026: 8.2M DL, DAU +75% YoY</td><td>收购 Runna (AI coaching); 计划 IPO</td><td>AI 训练计划/恢复建议</td></tr>
+        <tr><td><strong>YouCam 系列</strong></td><td>AI 美容分析 + 试妆</td><td>1M+ 付费订阅; Q1'25 $14.1M</td><td>订阅 +14.3% YoY</td><td>AI 皮肤诊断/虚拟试妆</td></tr>
+        <tr><td><strong>AI 皮肤分析</strong></td><td>拍照→皮肤诊断+方案</td><td>市场 $2.09B (2026)</td><td>CAGR 16.2%</td><td>图像→皮肤问题识别→个性化方案</td></tr>
+      </tbody></table>
+      <div class="detail-grid">
+        <div class="detail-card"><h6>亮点</h6><ul>
+          <li><strong>Cal AI 增长公式：</strong>拍照即用（零学习成本）+ 网红营销 + paywall 实验（123 次 A/B）→ 月收入 3x in 10 个月</li>
+          <li><strong>Finch 的游戏化心理健康：</strong>把 CBT 技术包装成养电子宠物，Gen Z 无抵触地建立心理健康习惯</li>
+          <li><strong>Strava AI 教练：</strong>收购 Runna 后整合 AI coaching，DAU 增速是 MAU 的 2.7 倍（用户更高频打开）</li>
+          <li><strong>美容 AI 变现路径清晰：</strong>皮肤诊断→产品推荐→电商佣金/品牌合作</li>
+        </ul></div>
+        <div class="detail-card path-card"><h6>路径</h6><ul>
+          <li><strong>营养/饮食：</strong>Cal AI 模式已被收购验证，仍有垂直空间（如中餐识别、特殊饮食如 GLP-1 配套）</li>
+          <li><strong>心理健康：</strong>Finch 模式证明游戏化+AI 可以做出 $30M+ bootstrapped 业务，关键是降低「我在做心理治疗」的感知</li>
+          <li><strong>美容/皮肤：</strong>拍照→诊断→推荐 链路短，变现可走电商（佣金 15-30%）或虚拟商品（高级分析报告）</li>
+          <li><strong>健身：</strong>市场已有 Strava 等巨头，更适合垂直切入（如产后恢复、老年健身、特定运动）</li>
+        </ul></div>
+      </div>
+      <p class="source">TechCrunch 2026/03/02 (Cal AI acquisition); Superwall case study; Sensor Tower Health & Fitness report; Apptopia Strava 2026/04</p>
+    </div>
+  </div>
+
+  <!-- ===== AI Short Drama - LAST ===== -->
+  <div class="product-card" style="border-left: 4px solid var(--border); opacity: 0.85;">
+    <h5>AI × 短剧 <span style="font-size:0.72rem; color:var(--text-secondary); margin-left:6px;">（已有独立调研，仅标注坐标）</span></h5>
+    <div class="metrics"><span>DramaBox $56.7M</span><span>ReelShort $52.8M</span><span>DramaWave $28.2M</span><span>头部 5 款 >$2.1 亿</span></div>
+    <p style="margin-top:6px; font-size:0.88rem; color:var(--text-secondary);">变现最成熟品类。AI 价值在内容生产降本 + 互动叙事新形态。</p>
+  </div>
+
+  <hr class="divider" style="margin:28px 0;">
+  <h3 id="p2-innovative">AI 创新型</h3>
+
+  <!-- ===== AI Social ===== -->
+  <div class="product-card" style="border-left: 4px solid #7c3aed;">
+    <h5>AI 原生社交</h5>
+    <div class="metrics"><span><span class="tag tag-ai">shapes.inc 400K MAU, $8M</span></span><span><span class="tag tag-growth">Focustown 1.39M, +20,564%</span></span><span><span class="tag tag-growth">playus D7: 60%</span></span><span>setlog 5.26M</span></div>
+    <div class="summary"><ul class="bl">
+      <li>shapes.inc：AI 角色作为群聊破冰催化剂，3 个月 300 万角色被创建（TechCrunch）</li>
+      <li>playus「每天 1 分钟挑战」实现 D7 60%——社交品类极罕见</li>
+      <li>共同点：给用户每天一个打开 App 并与朋友互动的理由，AI 持续制造互动话题</li>
+    </ul></div>
+    <button class="expand-btn" onclick="toggle('d-social')">详细分析 <span class="arrow">›</span></button>
+    <div class="product-detail" id="d-social">
+      <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:14%;">产品</th><th style="width:20%;">模式</th><th style="width:12%;">Q2 DL</th><th style="width:12%;">增速</th><th style="width:14%;">D1/D7</th><th style="width:28%;">信号</th></tr></thead>
+      <tbody>
+        <tr><td>shapes.inc</td><td>AI 角色+群聊</td><td class="num">91K</td><td class="num">+3,136%</td><td class="num">—</td><td>Lightspeed $8M; 3M 角色</td></tr>
+        <tr><td>Focustown</td><td>社交学习+AI</td><td class="num">1.39M</td><td class="num">+20,564%</td><td class="num">36%/—</td><td>多人学习+AI 分析</td></tr>
+        <tr><td>playus</td><td>每日挑战</td><td class="num">1.36M</td><td class="num">+7,535%</td><td class="num">70%/60%</td><td>仪式感社交</td></tr>
+        <tr><td>setlog</td><td>朋友相机</td><td class="num">5.26M</td><td class="num">+6,707%</td><td class="num">67%/51%</td><td>MAU 1.48M</td></tr>
+      </tbody></table>
+      <div class="detail-grid">
+        <div class="detail-card"><h6>亮点</h6><ul><li>shapes.inc 定位「next-gen chat app」，AI 角色以共同朋友身份存在</li><li>playus 仪式感（每天固定时间、1 分钟完成）打败传统社交留存</li><li>网络效应一旦启动增长极陡</li></ul></div>
+        <div class="detail-card path-card"><h6>路径</h6><ul><li>① Gravity 中嵌入 AI 角色做互动引导（低风险验证）</li><li>② 独立产品：AI 每日轻互动（playus 仪式感 + AI 内容生成）</li><li>AI 角色可作为语音房破冰工具</li></ul></div>
+      </div>
+      <p class="source">Sensor Tower ios_social_top50; TechCrunch 2026/04/29</p>
+    </div>
+  </div>
+
+  <!-- ===== AI Self-expression ===== -->
+  <div class="product-card" style="border-left: 4px solid #7c3aed;">
+    <h5>AI 自我表达（身份生成 × 病毒传播）</h5>
+    <div class="metrics"><span><span class="tag tag-growth">BabyGenie 14.7M (7 周)</span></span><span><span class="tag tag-growth">MyPanini 4.58M</span></span><span>Her 75: $356K</span><span>Heart Moments: 1.01M</span></div>
+    <div class="summary">
+      <div class="counter"><strong>洞察 ③：壁垒在选题，不在技术。</strong> BabyGenie 7 周 1470 万下载，核心在「预测宝宝长相」这个主题天然让情侣想分享。关键能力是快速测试主题的分享系数。</div>
+      <ul class="bl">
+        <li>每个用户完成「关于我的有趣表达」，结果天然被分享。增长靠 K-factor > 1，无需买量</li>
+        <li>可批量测试主题（年老化、宝宝、动漫化、星座化……），跑通一个即爆发</li>
+      </ul>
+    </div>
+    <button class="expand-btn" onclick="toggle('d-expression')">详细分析 <span class="arrow">›</span></button>
+    <div class="product-detail" id="d-expression">
+      <table><thead><tr><th>产品</th><th>主题</th><th>Q2 DL</th><th>增速</th><th>收入</th><th>传播机制</th></tr></thead>
+      <tbody>
+        <tr><td>BabyGenie</td><td>预测宝宝</td><td class="num">14.7M*</td><td class="num">—</td><td class="num">印度 Top 8</td><td>情侣→病毒传播</td></tr>
+        <tr><td>MyPanini™</td><td>自拍变球星卡</td><td class="num">4.58M</td><td class="num">+12,041%</td><td class="num">$0</td><td>赛事节点+朋友</td></tr>
+        <tr><td>Her 75</td><td>75 岁的你</td><td class="num">541K</td><td class="num">+25,145%</td><td class="num">$356K</td><td>猎奇+情感触动</td></tr>
+        <tr><td>Heart Moments</td><td>AI 纪念物</td><td class="num">1.01M</td><td class="num">+18,590%</td><td class="num">$249K</td><td>纪念日传播</td></tr>
+      </tbody></table>
+      <p class="note">* BabyGenie 14.7M 为 2026/05/15-07/03 全球，AppBrain India Top Grossing</p>
+      <div class="detail-grid">
+        <div class="detail-card"><h6>亮点</h6><ul><li>Her 75 RPD $0.66（$356K / 541K DL）</li><li>MyPanini 赛事节点爆发（世界杯/欧洲杯）</li><li>每分享一次触达 50-200 人，5-10% 转化</li></ul></div>
+        <div class="detail-card path-card"><h6>路径</h6><ul><li>极轻量（Web/小程序），2 周一个主题上线</li><li>核心指标：分享率 + K-factor</li><li>「AI 音乐人格卡」= 音乐场景垂直应用，可与品味社交复用</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== AI Companion ===== -->
+  <div class="product-card" style="border-left: 4px solid #7c3aed;">
+    <h5>AI 陪伴进化：从对话到共同体验</h5>
+    <div class="metrics"><span><span class="tag tag-revenue">Tipsy Chat $8.60/MAU</span></span><span><span class="tag tag-revenue">RPD $9.67</span></span><span>zeta +38% MAU, RPD $5.28</span><span>MookRun +24,870%</span></div>
+    <div class="summary"><ul class="bl">
+      <li>Tipsy Chat 变现效率达 ChatGPT 的 8.7 倍，核心差异在沉浸式叙事——用户在经历故事</li>
+      <li>zeta 验证 IP 锚点（动漫角色）付费率高 5 倍</li>
+      <li>MookRun（+24,870%）验证「创建虚拟角色 + 社区互动」新形态</li>
+    </ul></div>
+    <button class="expand-btn" onclick="toggle('d-companion')">详细分析 <span class="arrow">›</span></button>
+    <div class="product-detail" id="d-companion">
+      <table><thead><tr><th>产品</th><th>差异化</th><th>Rev/MAU</th><th>RPD</th><th>信号</th></tr></thead>
+      <tbody>
+        <tr><td>Tipsy Chat</td><td>沉浸式叙事</td><td class="num">$8.60</td><td class="num">$9.67</td><td>ChatGPT 8.7x</td></tr>
+        <tr><td>zeta</td><td>动漫 IP 角色</td><td class="num">$2.90</td><td class="num">$5.28</td><td>日本; IP 5x 付费率</td></tr>
+        <tr><td>MookRun</td><td>影视 AI+社区</td><td class="num">—</td><td class="num">$1.29</td><td>+24,870%</td></tr>
+      </tbody></table>
+      <div class="detail-grid">
+        <div class="detail-card"><h6>亮点</h6><ul><li>Tipsy Chat：加入叙事后用户从「提问」切到「体验」，付费意愿跃升</li><li>IP 杠杆：zeta 用动漫 IP 在日本做到 5x 付费率</li><li>进化方向：从文字到共同体验（一起看、一起玩、一起创作）</li></ul></div>
+        <div class="detail-card path-card"><h6>路径 A：现有产品验证</h6><ul><li>synclub 增加「共同体验」模块（互动故事/共同创作）</li><li>Gravity 语音房接入 AI 角色做实时互动引导</li><li>日本优先（运营 + VTuber + 动漫 IP + ARPU）</li></ul></div>
+        <div class="detail-card path-card"><h6>路径 B：独立产品</h6><ul><li>AI 角色 + 互动叙事引擎（沉浸式故事体验）</li><li>AI 角色 + 实时语音（陪伴类新品类）</li><li>IP 授权合作（动漫/游戏角色），降低冷启动门槛</li></ul></div>
+      </div>
+      <p class="source">Sensor Tower: MookRun (6740849417); Tipsy Chat, zeta 经 API 验证</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DATA SOURCES ==================== -->
+<div class="section" style="background: var(--bg-section);" id="datasource">
+  <h3>数据来源</h3>
+  <table>
+    <thead><tr><th>类型</th><th>来源</th><th>口径说明</th></tr></thead>
+    <tbody>
+      <tr><td>下载/收入/MAU/留存</td><td>Sensor Tower API</td><td>Q2 2026 (04/01-06/30), 全球, iOS+Android</td></tr>
+      <tr><td>增速百分比</td><td>Sensor Tower</td><td>Q2 vs Q1 环比 (transformed_delta)。新品 Q1=0 时增速反映爆发力而非可持续增长率</td></tr>
+      <tr><td>Cal AI</td><td>TechCrunch + Superwall</td><td>2026/03/02 收购报道; Superwall case study</td></tr>
+      <tr><td>Strava</td><td>Apptopia</td><td>2026/04 全球 8.2M DL; DAU +75% YoY</td></tr>
+      <tr><td>shapes.inc / playus</td><td>TechCrunch + App Store</td><td>2026/04/29; Dapps Pte. Ltd.</td></tr>
+      <tr><td>BabyGenie</td><td>AppBrain</td><td>India Top Grossing, 14.7M (05/15-07/03)</td></tr>
+      <tr><td>开源项目</td><td>GitHub</td><td>playlist-psychologist, earprint, mimoscore</td></tr>
+    </tbody>
+  </table>
+  <p class="source" style="margin-top:10px;">revenue_absolute 原始单位 cents，已转 USD。Revenue/MAU = Q2 总收入 ÷ Q2 末 MAU。</p>
+</div>
+
+</main>
+
+<script>
+function toggle(id) {
+  const el = document.getElementById(id);
+  const btn = el.previousElementSibling;
+  el.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+// Sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+// Click outside to close on mobile
+document.querySelector('.main-content').addEventListener('click', function() {
+  document.getElementById('sidebar').classList.remove('open');
+});
+
+// Smooth scroll + active state
+const navLinks = document.querySelectorAll('#tocNav a');
+navLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    // Close mobile sidebar
+    document.getElementById('sidebar').classList.remove('open');
+  });
+});
+
+// Scroll spy
+function updateActive() {
+  const scrollPos = window.scrollY + 80;
+  let current = '';
+  document.querySelectorAll('[id]').forEach(el => {
+    if (el.offsetTop <= scrollPos) current = el.id;
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  });
+}
+window.addEventListener('scroll', updateActive);
+updateActive();
+</script>
+</body>
+</html>
