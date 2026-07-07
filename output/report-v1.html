@@ -135,10 +135,8 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   <nav id="tocNav">
     <a href="#overview">战略方向与能力平台</a>
     <a href="#part1">Part 1: AI × 音乐社交</a>
-    <a href="#p1-matrix" class="indent">产品矩阵</a>
-    <a href="#p1-plays" class="indent">社交场景玩法</a>
-    <a href="#p1-taste" class="indent">品味作为卖点</a>
-    <a href="#p1-window" class="indent">机会窗口</a>
+    <a href="#p1-matrix" class="indent">产品矩阵与社交场景</a>
+    <a href="#p1-taste" class="indent">品味卖点 & 机会窗口</a>
     <a href="#p1-algo" class="indent">算法与运营</a>
     <a href="#part2">Part 2: 新 AI 产品机会</a>
     <a href="#p2-signal" class="indent">市场信号</a>
@@ -181,9 +179,9 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   <h2>AI × 音乐社交</h2>
   <p class="section-subtitle">AI 如何让「音乐品味」成为可感知、可传播、可变现的社交资产</p>
 
-  <h3 id="p1-matrix">1.1 产品矩阵</h3>
-  <table>
-    <thead><tr><th>层级</th><th>产品</th><th>核心能力</th><th>规模</th><th>与品味社交的关系</th></tr></thead>
+  <h3 id="p1-matrix">1.1 产品矩阵与社交场景</h3>
+  <table style="table-layout:fixed; width:100%;">
+    <thead><tr><th style="width:10%;">层级</th><th style="width:14%;">产品</th><th style="width:20%;">核心能力</th><th style="width:24%;">规模</th><th style="width:32%;">与品味社交的关系</th></tr></thead>
     <tbody>
       <tr><td><span class="tag tag-music">AI 生成</span></td><td>Suno</td><td>文本→完整歌曲</td><td class="num">MAU 4.5M / Q2 $16.2M</td><td>品味的「创造」— 从消费变创作</td></tr>
       <tr><td><span class="tag tag-music">AI 生成</span></td><td>Sondo (AI MV)</td><td>文本→音乐+视频</td><td class="num">Rev/MAU $7.31 / +107%</td><td>产出物天然可分享</td></tr>
@@ -197,7 +195,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   <p class="note">* Shelf +21,733% 为 Q2 vs Q1 环比增速，基于 Q1 绝对值极低（约 470 次下载），Q2 达 102K。说明方向验证有效，但绝对规模仍小，仅作趋势参考。</p>
   <p class="source">Sensor Tower API Q2 2026, GitHub, top.gg</p>
 
-  <h3 id="p1-plays">1.2 社交场景玩法</h3>
+  <h4>社交场景四象限</h4>
   <div class="quadrant">
     <div class="quadrant-item"><h5>① 品味匹配（已验证）</h5><p>Shelf/Tastebuds 验证品味相似度→匹配权重。现有实现停留标签层面，缺可感知化。</p></div>
     <div class="quadrant-item"><h5>② AI 品味画像（技术就绪）</h5><p>Earprint/MiMoScore：播放列表→人格原型。技术开源，尚未产品化。</p></div>
@@ -205,7 +203,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <div class="quadrant-item"><h5>④ 品味可视化传播（待验证）</h5><p>Spotify Wrapped 是唯一规模化品味传播事件（年度一次）。「随时可分享的品味快照」= 产品空白。</p></div>
   </div>
 
-  <h3 id="p1-taste">1.3 品味作为产品卖点</h3>
+  <h3 id="p1-taste">1.2 品味作为卖点 & 机会窗口</h3>
   <div class="counter">
     <strong>洞察 ①：品味 ≠ 数据呈现。</strong> 「你听了 2000 首歌，最爱 Indie Pop」没有传播力。品味的传播力来自<strong>审美判断的可感知性</strong>——帮用户表达的是「为什么选这个」，是选择背后的态度。
   </div>
@@ -214,12 +212,25 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   </div>
 
   <h4>技术路径验证（开源）</h4>
-  <table>
-    <thead><tr><th>项目</th><th>方法</th><th>产出</th><th>传播潜力</th></tr></thead>
+  <table style="table-layout:fixed; width:100%;">
+    <thead><tr><th style="width:22%;">项目</th><th style="width:28%;">方法</th><th style="width:22%;">产出</th><th style="width:28%;">传播潜力</th></tr></thead>
     <tbody>
       <tr><td>Earprint</td><td>YouTube → Gemini → 12 原型</td><td>Music Zodiac 卡片</td><td>★★★★ 星座类比天然传播</td></tr>
       <tr><td>MiMoScore</td><td>歌曲→原型 + Genre DNA</td><td>人格卡 + 雷达图</td><td>★★★★ 视觉强，适合截图</td></tr>
       <tr><td>Playlist Psychologist</td><td>Spotify → 3 层分析</td><td>心理画像</td><td>★★★ 类 MBTI 动机</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight-box">
+    <strong>机会空白：</strong>Shelf 验证品味社交需求存在，开源项目验证 AI 品味分析技术就绪，两者尚未合并——<strong>「AI 品味可感知化 + 以此为社交货币做匹配/广场」仍是产品空白。</strong>
+  </div>
+  <table style="table-layout:fixed; width:100%;">
+    <thead><tr><th style="width:22%;">维度</th><th style="width:36%;">当前状态</th><th style="width:42%;">空白机会</th></tr></thead>
+    <tbody>
+      <tr><td>品味→人格建模</td><td>开源方案多个</td><td>无 C 端产品将此作为核心卖点</td></tr>
+      <tr><td>品味社交匹配</td><td>Shelf/Tastebuds 已做</td><td>匹配停留数据层，缺品味感知层</td></tr>
+      <tr><td>品味传播物</td><td>Wrapped（年度一次）</td><td>随时可分享的品味快照</td></tr>
+      <tr><td>AI 音乐共创</td><td>Suno/Donna（工具向）</td><td>共创嵌入社交（为对方生成歌曲）</td></tr>
     </tbody>
   </table>
 
@@ -234,44 +245,26 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     </ul>
   </div>
 
-  <h3 id="p1-window">1.4 机会窗口</h3>
+  <h3 id="p1-algo">1.3 算法与运营：在「记录」之外适度「引导」品味</h3>
+  
   <div class="insight-box">
-    Shelf 验证品味社交需求存在（趋势明确）。开源项目验证 AI 品味分析技术就绪。两者尚未合并——<strong>「AI 品味可感知化 + 以此为社交货币做匹配/广场」仍是产品空白。</strong>
+    品味产品容易陷入「被动记录」——只帮用户看到自己听了什么。平台真正的价值在于<strong>帮用户「构建」和「进化」品味</strong>，让品味成为平台内可积累的虚拟资产。
   </div>
-  <table>
-    <thead><tr><th>维度</th><th>当前状态</th><th>空白机会</th></tr></thead>
+
+  <table style="table-layout:fixed; width:100%;">
+    <thead><tr><th style="width:18%;">策略</th><th style="width:40%;">做法</th><th style="width:42%;">效果 / 案例</th></tr></thead>
     <tbody>
-      <tr><td>品味→人格建模</td><td>开源方案多个</td><td>无 C 端产品将此作为核心卖点</td></tr>
-      <tr><td>品味社交匹配</td><td>Shelf/Tastebuds 已做</td><td>匹配停留数据层，缺品味感知层</td></tr>
-      <tr><td>品味传播物</td><td>Wrapped（年度一次）</td><td>随时可分享的品味快照</td></tr>
-      <tr><td>AI 音乐共创</td><td>Suno/Donna（工具向）</td><td>共创嵌入社交（为对方生成歌曲）</td></tr>
+      <tr><td><strong>舒适区推荐</strong></td><td>按画像强偏好精准推荐</td><td>强化「被理解」感知，提高点击满意度</td></tr>
+      <tr><td><strong>半步领先推荐</strong></td><td>基于偏好扩展邻近风格（Indie Pop → Dream Pop）</td><td>品味「进化」的核心机制，拓宽而不陌生</td></tr>
+      <tr><td><strong>推荐理由外显</strong></td><td>解释推荐逻辑（「因为你偏爱 XX 编曲结构」）</td><td>网易云「每日推荐」=品味形象的镜子</td></tr>
+      <tr><td><strong>官方策展</strong></td><td>运营账号示范主题/情绪/场景歌单表达</td><td>降低品味表达门槛（网易云「歌单道格」）</td></tr>
+      <tr><td><strong>UGC 策展激励</strong></td><td>优质用户歌单曝光 + 品味表达活动</td><td>从被动消费→主动品味输出</td></tr>
+      <tr><td><strong>品味勋章/称号</strong></td><td>参与活动给画像更新（勋章、等级）</td><td>品味=虚拟社交资本，高阶需付费解锁</td></tr>
     </tbody>
   </table>
 
-  <h3 id="p1-algo">1.5 算法与运营：在「记录」之外适度「引导」品味</h3>
-  
-  <div class="insight-box">
-    品味产品容易陷入「被动记录」的思路——只帮用户看到自己听了什么。但平台真正的价值在于<strong>帮用户「构建」和「进化」品味</strong>，让品味成为平台内的可积累虚拟资产。
-  </div>
-
-  <h4>① 推荐与品味塑造</h4>
-  <ul class="bl">
-    <li><strong>舒适区推荐：</strong>对应画像中的强偏好做精准推荐，提高点击和满意度，强化用户「被理解」的感知</li>
-    <li><strong>半步领先推荐：</strong>基于现有偏好略微扩展到邻近风格（如从 Indie Pop → Dream Pop），帮用户拓宽品味又不至于完全陌生——这是让品味「进化」的核心机制</li>
-    <li><strong>推荐理由外显：</strong>在推荐页解释部分逻辑（如「因为你偏爱 XX 风格的编曲结构」），让用户感知品味正在被识别和用来驱动体验</li>
-    <li><strong>参考案例：</strong>网易云「每日推荐」将听歌行为转化为外化的品味形象，算法不断强化和引导，用户逐渐将平台推荐视为「了解自己品味的镜子」</li>
-  </ul>
-
-  <h4>② 运营策展：引导用户主动表达品味</h4>
-  <ul class="bl">
-    <li><strong>官方策展示范：</strong>用官方歌单/运营账号示范如何围绕主题/情绪/场景表达审美（类似网易云「歌单道格」），降低用户自我表达的门槛</li>
-    <li><strong>UGC 策展激励：</strong>对优质用户歌单做曝光和运营，鼓励普通用户参与品味策展，从被动听歌转向主动品味输出</li>
-    <li><strong>话题活动：</strong>发起「用一张歌单介绍自己」「年度冷门发现分享」等品味表达活动，让用户围绕音乐品味持续创作内容</li>
-    <li><strong>品味勋章/称号：</strong>对参与活动的用户给出画像更新（称号、勋章、等级），把品味变成平台内的<strong>虚拟社交资本</strong>——这也是虚拟商品付费的天然锚点（高阶称号/稀有勋章需付费解锁）</li>
-  </ul>
-
   <div class="callout">
-    <strong>对产品设计的启示：</strong>品味产品的运营不应止步于「帮你看清自己」，而应设计一套「品味成长体系」——用户在平台上的品味有等级、有进化、有外显标识。这套体系既是留存引擎（用户积累沉没成本），也是变现引擎（虚拟商品天然挂载在品味身份上）。
+    <strong>产品启示：</strong>设计「品味成长体系」——品味有等级、有进化、有外显标识。既是留存引擎（沉没成本），也是变现引擎（虚拟商品挂载在品味身份上）。
   </div>
 </div>
 
@@ -285,19 +278,32 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
 
   <h3 id="p2-signal">市场信号</h3>
   <div style="margin: 20px 0;">
-    <h4>Revenue/MAU 跨赛道对比（$/MAU/季度）</h4>
-    <div class="bar-chart">
-      <div class="bar-row"><div class="bar-label">Tipsy Chat (AI 伴侣)</div><div class="bar-track"><div class="bar-fill" style="width:100%; background:#7c3aed;">$8.60</div></div><div class="bar-value">$8.60</div></div>
-      <div class="bar-row"><div class="bar-label">Sondo (AI MV)</div><div class="bar-track"><div class="bar-fill" style="width:85%; background:#6366f1;">$7.31</div></div><div class="bar-value">$7.31</div></div>
-      <div class="bar-row"><div class="bar-label">Claude (AI 助手)</div><div class="bar-track"><div class="bar-fill" style="width:35%; background:#3b82f6;">$2.99</div></div><div class="bar-value">$2.99</div></div>
-      <div class="bar-row"><div class="bar-label">zeta (AI 角色 RP)</div><div class="bar-track"><div class="bar-fill" style="width:34%; background:#06b6d4;">$2.90</div></div><div class="bar-value">$2.90</div></div>
-      <div class="bar-row"><div class="bar-label">Suno (AI 音乐)</div><div class="bar-track"><div class="bar-fill" style="width:23%; background:#10b981;">$2.00</div></div><div class="bar-value">$2.00</div></div>
-      <div class="bar-row"><div class="bar-label">ChatGPT (AI 助手)</div><div class="bar-track"><div class="bar-fill" style="width:12%; background:#6b7280;">$0.99</div></div><div class="bar-value">$0.99</div></div>
-    </div>
-    <p class="source">Sensor Tower API Q2 2026</p>
+    <h4>Revenue/MAU 跨赛道对比（$/MAU/季度，按用户规模分层）</h4>
+    <p class="note" style="margin-bottom:12px;">同一指标在不同规模区间含义不同：MAU <100K 时 Rev/MAU 偏高更多反映早期高价值用户集中，而非可持续能力。</p>
+    
+    <h5 style="margin:18px 0 6px; color:var(--text-secondary); font-size:0.85rem;">▎规模 >1M MAU</h5>
+    <table style="table-layout:fixed; width:100%;">
+      <thead><tr><th style="width:22%;">产品</th><th style="width:22%;">赛道</th><th style="width:18%;">MAU</th><th style="width:18%;">Rev/MAU</th><th style="width:20%;">Q2 收入</th></tr></thead>
+      <tbody>
+        <tr><td>ChatGPT</td><td>AI 助手</td><td class="num">~60M</td><td class="num">$0.99</td><td class="num">$59.4M</td></tr>
+        <tr><td>Suno</td><td>AI 音乐</td><td class="num">4.5M</td><td class="num">$2.00</td><td class="num">$16.2M</td></tr>
+        <tr><td>Claude</td><td>AI 助手</td><td class="num">3.7M</td><td class="num">$2.99</td><td class="num">$11.1M</td></tr>
+      </tbody>
+    </table>
+
+    <h5 style="margin:18px 0 6px; color:var(--text-secondary); font-size:0.85rem;">▎规模 100K–1M MAU</h5>
+    <table style="table-layout:fixed; width:100%;">
+      <thead><tr><th style="width:22%;">产品</th><th style="width:22%;">赛道</th><th style="width:18%;">MAU</th><th style="width:18%;">Rev/MAU</th><th style="width:20%;">Q2 收入</th></tr></thead>
+      <tbody>
+        <tr><td>zeta</td><td>AI 角色 RP</td><td class="num">401K</td><td class="num">$2.90</td><td class="num">$1.16M</td></tr>
+        <tr><td>Tipsy Chat</td><td>AI 沉浸叙事</td><td class="num">142K</td><td class="num">$8.60</td><td class="num">$1.22M</td></tr>
+        <tr><td>Sondo</td><td>AI MV</td><td class="num">127K</td><td class="num">$7.31</td><td class="num">$928K</td></tr>
+      </tbody>
+    </table>
+    <p class="source">Sensor Tower API Q2 2026。MAU 为 2026/06 月活，收入为 Q2 季度累计。</p>
   </div>
   <div class="insight-box">
-    <strong>筛选逻辑：</strong>用户为「一段关系」或「一个作品」付费意愿是「一次查询」的 4-8 倍。以下按 AI 增强（现有品类升级）和 AI 创新（全新形态）展开。
+    <strong>筛选逻辑：</strong>用户为「一段关系」或「一个作品」付费意愿是「一次查询」的 4-8 倍。Tipsy Chat / Sondo 在较小规模下展现极高变现密度，规模化验证仍需观察。以下按 AI 增强（现有品类升级）和 AI 创新（全新形态）展开。
   </div>
 
   <hr class="divider" style="margin:28px 0;">
@@ -315,7 +321,15 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <button class="expand-btn" onclick="toggle('d-video')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-video">
       <div class="detail-grid">
-        <div class="detail-card"><h6>数据</h6><ul><li>Sondo: Rev/MAU $7.31, +107% QoQ</li><li>Suno: 6.06M DL, $16.2M, MAU 4.5M</li><li>Yuna: 92K DL, $472K, +3,833%</li><li>Kling AI: 408K DL, $127K</li></ul></div>
+        <div class="detail-card"><h6>数据</h6>
+          <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:22%;">产品</th><th style="width:18%;">Q2 下载</th><th style="width:18%;">Q2 收入</th><th style="width:18%;">MAU</th><th style="width:24%;">增速</th></tr></thead>
+          <tbody>
+            <tr><td>Sondo</td><td class="num">—</td><td class="num">$928K</td><td class="num">127K</td><td class="num">+107% QoQ</td></tr>
+            <tr><td>Suno</td><td class="num">6.06M</td><td class="num">$16.2M</td><td class="num">4.5M</td><td class="num">—</td></tr>
+            <tr><td>Yuna</td><td class="num">92K</td><td class="num">$472K</td><td class="num">—</td><td class="num">+3,833%</td></tr>
+            <tr><td>Kling AI</td><td class="num">408K</td><td class="num">$127K</td><td class="num">—</td><td class="num">—</td></tr>
+          </tbody></table>
+        </div>
         <div class="detail-card"><h6>亮点</h6><ul><li><strong>融合 > 分离：</strong>音乐+视频合并后 Rev/MAU 达单功能的 3.5 倍</li><li><strong>产出=获客：</strong>每条发布获算法分发，零边际获客</li><li><strong>变现：</strong>按导出计费 + 商业授权</li></ul></div>
         <div class="detail-card path-card"><h6>路径</h6><ul><li>核心「一句话变短视频」，接入 Suno/Udio + Kling/Runway API</li><li>重点投入编排层（意图理解、多模态协调）</li><li>分发优先 TikTok 生态</li></ul></div>
       </div>
@@ -460,7 +474,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     </ul></div>
     <button class="expand-btn" onclick="toggle('d-companion')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-companion">
-      <table><thead><tr><th>产品</th><th>差异化</th><th>Rev/MAU</th><th>RPD</th><th>信号</th></tr></thead>
+      <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:20%;">产品</th><th style="width:24%;">差异化</th><th style="width:16%;">Rev/MAU</th><th style="width:16%;">RPD</th><th style="width:24%;">信号</th></tr></thead>
       <tbody>
         <tr><td>Tipsy Chat</td><td>沉浸式叙事</td><td class="num">$8.60</td><td class="num">$9.67</td><td>ChatGPT 8.7x</td></tr>
         <tr><td>zeta</td><td>动漫 IP 角色</td><td class="num">$2.90</td><td class="num">$5.28</td><td>日本; IP 5x 付费率</td></tr>
