@@ -668,6 +668,8 @@ updateActive();
 const PRODUCT_DATA = {
   "Sondo": {
     company: "Sondo Inc.", founded: "2025", hq: "San Francisco, US", funding: "Seed (undisclosed)",
+    icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4f/d4/41/4fd441bc-1c0d-1bfb-a5e7-1ed57a678ef1/AppIcon-0-0-1x_U007ephone-0-1-0-sRGB-85-220.png/200x200bb.jpg",
+    stLink: "https://app.sensortower.com/overview/sondo",
     summary: "一句话生成完整短视频（音乐+画面+编排），融合 AI 音乐与视频生成的全链路创作工具。",
     metrics: "Q2 Rev $928K | MAU 127K | Rev/MAU $7.31 | 融合模式 Rev/MAU 为单功能产品 3.5x",
     model: "按导出付费 + Pro 订阅（$9.99/月）。用户免费生成，导出无水印版本需付费。",
@@ -676,14 +678,18 @@ const PRODUCT_DATA = {
   },
   "Suno": {
     company: "Suno Inc.", founded: "2023", hq: "Cambridge, MA, US", funding: "Series B $125M (Lightspeed, 2024/05)",
+    icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c0/7a/c2/c07ac2ca-642b-f2bf-94ec-75bc565c9273/AppIcon-0-0-1x_U007ephone-0-1-0-sRGB-85-220.png/200x200bb.jpg",
+    stLink: "https://app.sensortower.com/overview/66838f83ad4adbfbe0247872/6480136315",
     summary: "文本生成完整歌曲（歌词+旋律+编曲+人声），面向非音乐人的 AI 创作平台。",
-    metrics: "Q2 Rev $16.2M | MAU 4.5M | Rev/MAU $3.60 | 月增速 ~15%",
+    metrics: "Q2 Rev $16.2M | MAU 4.5M | Rev/MAU $3.60 | DAU 1.5M | 日均使用 12.5 min",
     model: "免费 10 首/天 + Pro $10/月（500 首）+ Premier $30/月（2000 首，商用授权）。",
     moat: "自研音乐生成大模型（v4 支持 4 分钟完整编曲），社区歌曲广场形成 UGC 飞轮。竞品 Udio 质量接近但用户规模仅 1/5。",
     growth: "创作→分享链路天然：用户生成歌曲后分享到社交媒体。社区广场提供发现和互动场景，提升留存。"
   },
   "BabyGenie": {
     company: "BabyGenie (独立开发者/小团队)", founded: "2026", hq: "India (推测)", funding: "Bootstrapped",
+    icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/fc/76/a1/fc76a1d5-05cd-2dcd-814d-335b511fc91a/AppIcon-0-1x_U007emarketing-0-8-0-sRGB-0-85-220-0.png/200x200bb.jpg",
+    stLink: "https://app.sensortower.com/overview/babygenie",
     summary: "上传情侣照片，AI 预测未来宝宝长相。7 周内 14.7M 下载的现象级病毒产品。",
     metrics: "7 周 14.7M DL | India Top 8 Grossing | RPD 估算 ~$0.35",
     model: "Hard paywall：免费预览模糊版本，付费（$2.99 单次）解锁高清结果。",
@@ -692,6 +698,8 @@ const PRODUCT_DATA = {
   },
   "Tipsy Chat": {
     company: "Tipsy Interactive Ltd.", founded: "2025", hq: "UK (推测)", funding: "未披露",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/tipsy-chat",
     summary: "AI 角色驱动的沉浸式互动叙事平台，用户通过对话推进多分支故事。按章节付费。",
     metrics: "MAU 142K | Rev/MAU $8.60 | RPD $9.67 | Q2 Rev $1.22M",
     model: "免费体验前 1-2 章 + 按章节购买（$1.99-3.99/章）+ 月度订阅解锁全部。",
@@ -700,6 +708,8 @@ const PRODUCT_DATA = {
   },
   "zeta": {
     company: "zeta Inc. (日本)", founded: "2024", hq: "Tokyo, Japan", funding: "Pre-Series A (推测)",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/zeta",
     summary: "动漫 IP 角色对话 + 角色扮演平台，主打日本 VTuber 和动漫 IP 粉丝群体。",
     metrics: "MAU 401K | Rev/MAU $2.90 | RPD $5.28 | MAU MoM +38%",
     model: "对话消耗虚拟货币（gems）+ 月度订阅。IP 授权角色付费率为自建角色的 5 倍。",
@@ -708,6 +718,8 @@ const PRODUCT_DATA = {
   },
   "Cal AI": {
     company: "Cal AI Inc. (被 MyFitnessPal/Francisco Partners 收购)", founded: "2024", hq: "US", funding: "Bootstrapped → 2026/03 被收购",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/cal-ai",
     summary: "拍照即知卡路里。AI 视觉识别食物并即时返回营养数据，零手动输入。",
     metrics: "15M DL | ~$50M ARR (18 个月达成) | 2026/03 被 MyFitnessPal 收购",
     model: "Hard paywall + 年订阅（$69.99/年）。123 次 paywall A/B 测试极致优化转化率。",
@@ -716,6 +728,8 @@ const PRODUCT_DATA = {
   },
   "Finch": {
     company: "Finch Care Inc.", founded: "2021", hq: "San Francisco, US", funding: "Bootstrapped ($30-40M ARR)",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/finch",
     summary: "用「养虚拟宠物」包装心理健康习惯（CBT 技术）。完成冥想/日记/运动等任务让宠物成长。",
     metrics: "$30-40M ARR | Bootstrapped | App Store 编辑精选",
     model: "免费（基础宠物+任务）+ 订阅解锁高级功能/装扮/深度内容。",
@@ -724,6 +738,8 @@ const PRODUCT_DATA = {
   },
   "shapes.inc": {
     company: "Shapes Inc.", founded: "2025", hq: "San Francisco, US", funding: "Seed $8M",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/shapes",
     summary: "AI 角色作为群聊成员存在于 Discord/iMessage/WhatsApp 中，自动参与对话、引发话题。3 个月 300 万角色被创建。",
     metrics: "MAU 400K | 300 万角色被创建 (3 个月) | Pre-revenue",
     model: "免费（增长优先）。未来可能通过角色付费装扮/高级角色能力变现。",
@@ -732,6 +748,8 @@ const PRODUCT_DATA = {
   },
   "playus": {
     company: "playus (韩国团队)", founded: "2025", hq: "Seoul, Korea", funding: "未披露",
+    icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/20/5c/d0/205cd0df-8c1f-1f06-6564-1b0bdd1df510/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/200x200bb.jpg",
+    stLink: "https://app.sensortower.com/overview/playus",
     summary: "每天固定时间推送 1 分钟互动挑战（类 Wordle 的社交仪式感），AI 生成每日新内容保持新鲜感。",
     metrics: "Q2 DL 1.36M | D1 70% | D7 60% (社交品类极罕见)",
     model: "免费 + 付费道具/高级挑战。",
@@ -740,6 +758,8 @@ const PRODUCT_DATA = {
   },
   "Traini": {
     company: "Traini Inc.", founded: "2025", hq: "US (推测)", funding: "未披露",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/traini",
     summary: "拍摄狗狗视频，AI 分析行为问题并生成个性化训练方案。将 $50-100/h 训练师压缩为即时 AI 服务。",
     metrics: "Q2 DL 4.53M | MAU 1.78M | D1 6% | DL 增速 +12,921%",
     model: "免费基础分析 + 付费高级训练方案。单次付费为主（留存非核心指标）。",
@@ -748,6 +768,8 @@ const PRODUCT_DATA = {
   },
   "Astro99": {
     company: "Astro99 (独立团队)", founded: "2025", hq: "未披露", funding: "未披露",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/astro99",
     summary: "输入生日，AI 生成个性化星盘 + 每日运势推送。占星场景的 AI 个性化内容产品。",
     metrics: "Q2 DL 2.19M | MAU 852K | D1 24% | DL 增速 +25,213%",
     model: "免费基础星盘 + 订阅解锁深度解读/每日推送。",
@@ -762,11 +784,19 @@ function openProductModal(name) {
   
   if (PRODUCT_DATA[name]) {
     const p = PRODUCT_DATA[name];
+    const iconHtml = p.icon ? `<img src="${p.icon}" style="width:64px;height:64px;border-radius:14px;margin-right:16px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />` : '';
+    const stLinkHtml = p.stLink ? `<a href="${p.stLink}" target="_blank" style="font-size:0.78rem;color:var(--accent);text-decoration:none;margin-right:12px;">📊 Sensor Tower</a>` : '';
     content.innerHTML = `
-      <h3>${name}</h3>
-      <div class="modal-sub">${p.company} · Founded ${p.founded} · ${p.hq} · ${p.funding}</div>
+      <div style="display:flex;align-items:center;margin-bottom:16px;">
+        ${iconHtml}
+        <div>
+          <h3 style="margin:0;">${name}</h3>
+          <div class="modal-sub" style="margin:4px 0 0;">${p.company} · ${p.founded} · ${p.hq}</div>
+          <div style="margin-top:4px;">${stLinkHtml}<span style="font-size:0.78rem;color:var(--text-secondary);">${p.funding}</span></div>
+        </div>
+      </div>
       <div class="modal-section"><h6>产品定位</h6><p>${p.summary}</p></div>
-      <div class="modal-section"><h6>核心数据</h6><p>${p.metrics}</p></div>
+      <div class="modal-section"><h6>核心数据</h6><p style="font-weight:500;color:var(--heading);">${p.metrics}</p></div>
       <div class="modal-section"><h6>商业模式</h6><p>${p.model}</p></div>
       <div class="modal-section"><h6>壁垒与差异化</h6><p>${p.moat}</p></div>
       <div class="modal-section"><h6>增长机制</h6><p>${p.growth}</p></div>
