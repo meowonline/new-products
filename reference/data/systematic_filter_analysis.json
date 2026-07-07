@@ -1,0 +1,48 @@
+{
+  "methodology": {
+    "data_sources": [
+      "unified_overall_top200_dl_growth_q2.json (Top 200 cross-category by DL growth)",
+      "ios_entertainment_top100_downloads_q2.json",
+      "ios_entertainment_top100_revenue_q2.json",
+      "ios_lifestyle_top100_growth_q2.json",
+      "ios_lifestyle_top50_revenue_growth_q2.json",
+      "ios_music_top50_growth_q2.json",
+      "ios_music_top50_revenue_growth_q2.json",
+      "ios_social_top50_growth_q2.json",
+      "ios_social_top50_mau_growth_jun.json",
+      "ios_entertainment_top50_mau_growth_jun.json",
+      "ios_music_top50_mau_growth_jun.json"
+    ],
+    "total_unique_apps": 637,
+    "filter_criteria": "Q2 Revenue > $100K AND MAU > 50K, OR Q2 Downloads > 100K AND growth > 500%",
+    "filter_hits": 283,
+    "ai_relevant_subset": "Manual exclusion of traditional non-AI apps (Netflix, Spotify, Disney+, etc.)"
+  },
+  "key_findings": {
+    "highest_rev_per_mau": {
+      "app_id": "1419815487",
+      "category": "Health & Fitness",
+      "rev_per_mau": 9.45,
+      "mau": 62853,
+      "q2_revenue_usd": 593801,
+      "note": "Extremely high monetization density in health/AI vertical"
+    },
+    "highest_growth_with_revenue": {
+      "app_id": "6758667154",
+      "category": "Entertainment",
+      "growth": "14773%",
+      "mau": 2398299,
+      "q2_revenue_usd": 5921687,
+      "rev_per_mau": 2.47,
+      "note": "Q1\u2192Q2 explosive growth, already at $5.9M quarterly revenue and 2.4M MAU"
+    },
+    "ai_music_confirmed": {
+      "app_id": "6480136315",
+      "name": "Suno",
+      "rev_per_mau": 3.6,
+      "mau": 4510651,
+      "q2_revenue_usd": 16227735,
+      "note": "Corrected from earlier $2.00 estimate to $3.60 based on API data"
+    }
+  }
+}
