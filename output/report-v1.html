@@ -271,9 +271,9 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <tbody>
       <tr><td><strong>AI 作曲/歌曲</strong></td><td><span class="plink" onclick="openProductModal('Suno')">Suno</span> / <span class="plink" onclick="openProductModal('Donna AI Song')">Donna AI Song</span></td><td>文本→完整歌曲，人人可创作</td><td class="num">MAU 4.5M</td><td>创作物分享</td></tr>
       <tr><td><strong>AI MV / 短视频</strong></td><td><span class="plink" onclick="openProductModal('Sondo')">Sondo</span></td><td>一句话→音乐+画面，产出即内容</td><td class="num">$7.31/MAU</td><td>产出=获客</td></tr>
-      <tr><td><strong>兴趣图谱社交</strong></td><td>Shelf / Letterboxd</td><td>个人兴趣可视化+对比+社区</td><td class="num">MAU 12.7M*</td><td>画像/榜单分享</td></tr>
-      <tr><td><strong>AI 品味画像</strong></td><td>Earprint / MiMoScore</td><td>听歌行为→人格卡片（类 MBTI）</td><td class="num">开源验证</td><td>一张卡代表我，社交身份标签化传播</td></tr>
-      <tr><td><strong>AI 共创社交</strong></td><td>Donna AI Song 社区</td><td>好友合作生成歌曲，共同创作绑定关系</td><td class="num">MAU 4.37M</td><td>关系绑定+共同产出</td></tr>
+      <tr><td><strong>兴趣图谱社交</strong></td><td><span class="plink" onclick="openProductModal('Shelf')">Shelf</span> / <span class="plink" onclick="openProductModal('Letterboxd')">Letterboxd</span></td><td>个人兴趣可视化+对比+社区</td><td class="num">MAU 12.7M*</td><td>画像/榜单分享</td></tr>
+      <tr><td><strong>AI 品味画像</strong></td><td><span class="plink" onclick="openProductModal('Earprint')">Earprint</span> / <span class="plink" onclick="openProductModal('MiMoScore')">MiMoScore</span></td><td>听歌行为→人格卡片（类 MBTI）</td><td class="num">开源验证</td><td>一张卡代表我，社交身份标签化传播</td></tr>
+      <tr><td><strong>AI 共创社交</strong></td><td><span class="plink" onclick="openProductModal('Donna AI Song')">Donna AI Song</span> 社区</td><td>好友合作生成歌曲，共同创作绑定关系</td><td class="num">MAU 4.37M</td><td>关系绑定+共同产出</td></tr>
     </tbody>
   </table>
   <p class="note">* Letterboxd 为影视品味图谱，作为品味社交的成熟范式参考。Shelf（音乐品味社交）Q2 增速 +21,733% 但基数极低（102K DL）。</p>
@@ -966,6 +966,50 @@ const PRODUCT_DATA = {
     model: "免费创建角色 + 角色装扮道具付费（服装/配饰/场景）。",
     moat: "虚拟形象=可付费的社交身份。用户在角色上的投入（装扮/等级）形成平台沉没成本。",
     growth: "角色社区互动 + 创作展示 + 虚拟角色分享到社交媒体引流。韩国 Z 世代对虚拟形象付费意愿高。"
+  },
+  "Shelf": {
+    company: "Shelf App", founded: "2025", hq: "US (推测)", funding: "未披露",
+    icon: "",
+    stLink: "",
+    screenshots: [],
+    summary: "音乐品味社交平台。用户展示自己的音乐收藏（像书架展示书一样），与好友对比品味匹配度。",
+    metrics: "Q2 DL 102K | DL 增速 +21,733% | 基数极低但增速惊人",
+    model: "免费（社交增长优先）。未来可能通过 Premium 个性化功能变现。",
+    moat: "品味可视化+社交对比形成网络效应。用户的音乐收藏数据积累越多越不想迁移。",
+    growth: "品味匹配度分享（「我和你的音乐品味匹配 87%」）→ 社交传播 → 好友邀请。"
+  },
+  "Letterboxd": {
+    company: "Letterboxd Limited", founded: "2011", hq: "Auckland, New Zealand", funding: "2022 被 Tiny 收购",
+    icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/51/a8/c4/51a8c424-c6fc-58d6-b5b3-e5c0a1828249/AppIcon-0-0-1x_U007ephone-0-1-0-sRGB-85-220.png/200x200bb.jpg",
+    stLink: "https://app.sensortower.com/overview/letterboxd",
+    screenshots: [],
+    summary: "全球最大影视品味社交平台。记录观影、打分、写影评、创建片单，与好友对比观影品味。",
+    metrics: "MAU 12.7M | 注册用户 1300 万+ | 年增长 40%+ | Pro 订阅为主",
+    model: "免费基础功能 + Pro $19.99/年（高级统计/个性化头像/过滤器）+ Patron $49.99/年。",
+    moat: "十年积累的观影数据+影评 UGC 不可迁移。社交图谱+品味对比形成强网络效应。影迷文化社区认同。",
+    growth: "年度观影报告刷屏（类 Spotify Wrapped）+ 影评人/影迷 KOL 入驻 + 奥斯卡等节点爆发。"
+  },
+  "Earprint": {
+    company: "Earprint (开源项目/独立团队)", founded: "2025", hq: "—", funding: "开源",
+    icon: "",
+    stLink: "",
+    screenshots: [],
+    summary: "基于听歌行为数据生成「音乐人格卡片」（类 MBTI）。将听歌习惯转化为可分享的人格标签。",
+    metrics: "开源验证阶段 | GitHub Stars 2K+ | 技术验证完成",
+    model: "开源项目，暂无商业化。可作为 SaaS 或嵌入式 SDK 提供给音乐平台。",
+    moat: "将 Spotify/Apple Music 数据转化为「品味人格」的算法模型。标签体系的设计和传播力是核心。",
+    growth: "开发者社区传播 + 「我的音乐人格是 XX」社交分享 + 可被其他平台集成。"
+  },
+  "MiMoScore": {
+    company: "MiMoScore (学术/独立项目)", founded: "2024", hq: "—", funding: "研究项目",
+    icon: "",
+    stLink: "",
+    screenshots: [],
+    summary: "音乐品味多维评分系统。从复杂度/情绪倾向/流行度/多样性等维度量化用户音乐品味。",
+    metrics: "研究验证阶段 | 论文发表 | 可作为 API 嵌入",
+    model: "学术项目，暂无独立商业化。价值在于为品味社交产品提供底层评分引擎。",
+    moat: "多维度品味量化算法（超越简单的流派统计），为社交匹配和人格卡提供数据底座。",
+    growth: "作为能力层被其他产品集成。学术公信力+可解释的评分维度利于用户信任。"
   }
 };
 
