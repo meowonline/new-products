@@ -149,10 +149,41 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
 .detail-card p { font-size: 0.94rem; }
 .detail-card.path-card { background: #f0fdf4; border-color: #bbf7d0; }
 .detail-card.path-card h6 { color: #047857; }
+
+/* Product clickable link */
+.plink { color: var(--accent); cursor: pointer; border-bottom: 1px dashed var(--accent); font-weight: 500; transition: opacity 0.15s; }
+.plink:hover { opacity: 0.7; }
+
+/* Product Modal */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center; padding:20px; }
+.modal-overlay.show { display:flex; }
+.modal-box { background:#fff; border-radius:12px; max-width:640px; width:100%; max-height:80vh; overflow-y:auto; padding:28px 32px; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+.modal-box h3 { font-size:1.1rem; margin-bottom:4px; color:var(--heading); }
+.modal-box .modal-sub { font-size:0.82rem; color:var(--text-secondary); margin-bottom:16px; }
+.modal-box .modal-section { margin-bottom:14px; }
+.modal-box .modal-section h6 { font-size:0.78rem; color:var(--accent); text-transform:uppercase; margin-bottom:4px; font-weight:600; letter-spacing:0.3px; }
+.modal-box .modal-section p, .modal-box .modal-section li { font-size:0.92rem; line-height:1.6; }
+.modal-box .modal-section ul { margin-left:16px; }
+.modal-close { position:absolute; top:12px; right:16px; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-secondary); }
+.modal-loading { text-align:center; padding:40px 0; color:var(--text-secondary); font-size:0.9rem; }
+.modal-loading .spinner { display:inline-block; width:24px; height:24px; border:3px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; margin-bottom:12px; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.api-setup { background:#f9fafb; border:1px solid var(--border); border-radius:8px; padding:16px; margin-top:12px; }
+.api-setup input { width:100%; padding:8px 12px; border:1px solid var(--border); border-radius:6px; font-size:0.88rem; margin:8px 0; }
+.api-setup button { background:var(--accent); color:#fff; border:none; border-radius:6px; padding:8px 16px; cursor:pointer; font-size:0.85rem; }
+
 @media (max-width: 600px) { .quadrant { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
+
+<!-- Product Analysis Modal -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
 
 <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">☰</button>
 
@@ -272,14 +303,14 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <thead><tr><th style="width:18%;">策略</th><th style="width:40%;">做法</th><th style="width:42%;">效果 / 案例</th></tr></thead>
     <tbody>
       <tr><td><strong>半步领先推荐</strong></td><td>基于偏好扩展邻近风格（Indie Pop → Dream Pop）</td><td>品味「进化」的核心机制，拓宽而不陌生</td></tr>
-      <tr><td><strong>官方策展</strong></td><td>运营账号示范主题/情绪/场景歌单表达</td><td>降低品味表达门槛（网易云「歌单道格」）</td></tr>
-      <tr><td><strong>UGC 策展激励</strong></td><td>优质用户歌单曝光 + 品味表达活动</td><td>从被动消费→主动品味输出</td></tr>
-      <tr><td><strong>品味勋章/称号</strong></td><td>参与活动给画像更新（勋章、等级）</td><td>品味=虚拟社交资本，高阶需付费解锁</td></tr>
+      <tr><td><strong>引导表达 & 品味成长体系</strong></td><td>官方策展示范品味表达方式 + 设计兴趣等级/勋章/称号的成长路径，品味行为（歌单创建/分享/被收藏）积累经验值</td><td>用户的品味投入可量化、可外显。等级越高，沉没成本越高，迁移意愿越低（网易云「歌单道格」示范 + 等级制度）</td></tr>
+      <tr><td><strong>UGC 品味输出激励</strong></td><td>品味活动（"用一张歌单介绍自己"）+ 优质内容曝光 + 品味排行</td><td>从被动消费→主动品味输出，强化「我是XX品味的人」自我认同</td></tr>
+      <tr><td><strong>人设分层 & 身份认同</strong></td><td>基于品味等级/偏好数据自动生成「品味人设标签」，高阶人设需持续行为解锁或付费解锁</td><td>品味分层=社交身份分层。用户为「被认可的品味人设」付费（虚拟商品与身份绑定），形成持续付费动力</td></tr>
     </tbody>
   </table>
 
   <div class="callout">
-    <strong>产品启示：</strong>设计「品味成长体系」——品味有等级、有进化、有外显标识。既是留存引擎（沉没成本），也是变现引擎（虚拟商品挂载在品味身份上）。
+    <strong>产品启示：</strong>设计「品味成长体系」——品味有等级、有进化、有外显标识。用户在平台上的品味投入（歌单/分享/互动）转化为不可迁移的虚拟资产，既是留存引擎（沉没成本），也是变现引擎（人设升级挂载虚拟商品）。
     <ul class="bl" style="margin-top:8px;">
       <li><strong>AI 画像引擎：</strong>用 LLM + Embedding 模型将听歌行为实时转化为多维品味向量，生成「品味人格卡」（类 MBTI）——这是整套体系的数据底座</li>
       <li><strong>AI 内容生成：</strong>基于品味向量自动生成个性化歌单、品味快照图片、「品味周报」等可分享物，降低用户主动表达的创作成本</li>
@@ -311,25 +342,25 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <p class="note" style="margin-bottom:12px;">同一指标在不同规模区间含义不同：MAU &lt;100K 时 Rev/MAU 偏高更多反映早期高价值用户集中，而非可持续能力。</p>
     
     <div class="bar-chart" style="margin-bottom:18px;">
-      <div class="bar-row"><div class="bar-label">Tipsy Chat <span style="font-size:0.75rem;color:var(--text-secondary);">142K</span></div><div class="bar-track"><div class="bar-fill" style="width:100%; background:#7c3aed;">$8.60</div></div><div class="bar-value">$8.60</div></div>
-      <div class="bar-row"><div class="bar-label">Sondo (AI MV) <span style="font-size:0.75rem;color:var(--text-secondary);">127K</span></div><div class="bar-track"><div class="bar-fill" style="width:85%; background:#6366f1;">$7.31</div></div><div class="bar-value">$7.31</div></div>
-      <div class="bar-row"><div class="bar-label">Suno (AI 音乐) <span style="font-size:0.75rem;color:var(--text-secondary);">4.5M</span></div><div class="bar-track"><div class="bar-fill" style="width:42%; background:#10b981;">$3.60</div></div><div class="bar-value">$3.60</div></div>
-      <div class="bar-row"><div class="bar-label">Claude <span style="font-size:0.75rem;color:var(--text-secondary);">3.7M</span></div><div class="bar-track"><div class="bar-fill" style="width:35%; background:#3b82f6;">$2.99</div></div><div class="bar-value">$2.99</div></div>
-      <div class="bar-row"><div class="bar-label">zeta (AI RP) <span style="font-size:0.75rem;color:var(--text-secondary);">401K</span></div><div class="bar-track"><div class="bar-fill" style="width:34%; background:#06b6d4;">$2.90</div></div><div class="bar-value">$2.90</div></div>
-      <div class="bar-row"><div class="bar-label">VibeShort (AI 短剧) <span style="font-size:0.75rem;color:var(--text-secondary);">2.4M</span></div><div class="bar-track"><div class="bar-fill" style="width:29%; background:#f59e0b;">$2.47</div></div><div class="bar-value">$2.47</div></div>
-      <div class="bar-row"><div class="bar-label">Donna AI Song <span style="font-size:0.75rem;color:var(--text-secondary);">4.37M</span></div><div class="bar-track"><div class="bar-fill" style="width:15%; background:#f97316;">$1.25</div></div><div class="bar-value">$1.25</div></div>
-      <div class="bar-row"><div class="bar-label">ChatGPT <span style="font-size:0.75rem;color:var(--text-secondary);">~60M</span></div><div class="bar-track"><div class="bar-fill" style="width:12%; background:#6b7280;">$0.99</div></div><div class="bar-value">$0.99</div></div>
+      <div class="bar-row"><div class="bar-label"><span class="plink" onclick="openProductModal('Tipsy Chat')">Tipsy Chat</span> <span style="font-size:0.75rem;color:var(--text-secondary);">142K</span></div><div class="bar-track"><div class="bar-fill" style="width:100%; background:#7c3aed;">$8.60</div></div><div class="bar-value">$8.60</div></div>
+      <div class="bar-row"><div class="bar-label"><span class="plink" onclick="openProductModal('Sondo')">Sondo</span> (AI MV) <span style="font-size:0.75rem;color:var(--text-secondary);">127K</span></div><div class="bar-track"><div class="bar-fill" style="width:85%; background:#6366f1;">$7.31</div></div><div class="bar-value">$7.31</div></div>
+      <div class="bar-row"><div class="bar-label"><span class="plink" onclick="openProductModal('Suno')">Suno</span> (AI 音乐) <span style="font-size:0.75rem;color:var(--text-secondary);">4.5M</span></div><div class="bar-track"><div class="bar-fill" style="width:42%; background:#10b981;">$3.60</div></div><div class="bar-value">$3.60</div></div>
+      <div class="bar-row"><div class="bar-label"><span class="plink" onclick="openProductModal('Claude')">Claude</span> <span style="font-size:0.75rem;color:var(--text-secondary);">3.7M</span></div><div class="bar-track"><div class="bar-fill" style="width:35%; background:#3b82f6;">$2.99</div></div><div class="bar-value">$2.99</div></div>
+      <div class="bar-row"><div class="bar-label"><span class="plink" onclick="openProductModal('zeta')">zeta</span> (AI RP) <span style="font-size:0.75rem;color:var(--text-secondary);">401K</span></div><div class="bar-track"><div class="bar-fill" style="width:34%; background:#06b6d4;">$2.90</div></div><div class="bar-value">$2.90</div></div>
+      <div class="bar-row"><div class="bar-label"><span class="plink" onclick="openProductModal('VibeShort')">VibeShort</span> (AI 短剧) <span style="font-size:0.75rem;color:var(--text-secondary);">2.4M</span></div><div class="bar-track"><div class="bar-fill" style="width:29%; background:#f59e0b;">$2.47</div></div><div class="bar-value">$2.47</div></div>
+      <div class="bar-row"><div class="bar-label"><span class="plink" onclick="openProductModal('Donna AI Song')">Donna AI Song</span> <span style="font-size:0.75rem;color:var(--text-secondary);">4.37M</span></div><div class="bar-track"><div class="bar-fill" style="width:15%; background:#f97316;">$1.25</div></div><div class="bar-value">$1.25</div></div>
+      <div class="bar-row"><div class="bar-label"><span class="plink" onclick="openProductModal('ChatGPT')">ChatGPT</span> <span style="font-size:0.75rem;color:var(--text-secondary);">~60M</span></div><div class="bar-track"><div class="bar-fill" style="width:12%; background:#6b7280;">$0.99</div></div><div class="bar-value">$0.99</div></div>
     </div>
 
     <h5 style="margin:18px 0 6px; color:var(--text-secondary); font-size:0.9rem;">▎规模 >1M MAU</h5>
     <table style="table-layout:fixed; width:100%;">
       <thead><tr><th style="width:18%;">产品</th><th style="width:20%;">赛道</th><th style="width:20%;" class="num">MAU</th><th style="width:20%;" class="num">Rev/MAU</th><th style="width:22%;" class="num">Q2 收入</th></tr></thead>
       <tbody>
-        <tr><td>ChatGPT</td><td>AI 助手</td><td class="num">~60M</td><td class="num">$0.99</td><td class="num">$59.4M</td></tr>
-        <tr><td>Suno</td><td>AI 音乐</td><td class="num">4.5M</td><td class="num">$3.60</td><td class="num">$16.2M</td></tr>
-        <tr><td>Donna AI Song</td><td>AI 歌曲生成</td><td class="num">4.37M</td><td class="num">$1.25</td><td class="num">$5.5M</td></tr>
-        <tr><td>Claude</td><td>AI 助手</td><td class="num">3.7M</td><td class="num">$2.99</td><td class="num">$11.1M</td></tr>
-        <tr><td>VibeShort</td><td>AI 短剧 (<span class="growth-up">14,773%</span>)</td><td class="num">2.4M</td><td class="num">$2.47</td><td class="num">$5.9M</td></tr>
+        <tr><td><span class="plink" onclick="openProductModal('ChatGPT')">ChatGPT</span></td><td>AI 助手</td><td class="num">~60M</td><td class="num">$0.99</td><td class="num">$59.4M</td></tr>
+        <tr><td><span class="plink" onclick="openProductModal('Suno')">Suno</span></td><td>AI 音乐</td><td class="num">4.5M</td><td class="num">$3.60</td><td class="num">$16.2M</td></tr>
+        <tr><td><span class="plink" onclick="openProductModal('Donna AI Song')">Donna AI Song</span></td><td>AI 歌曲生成</td><td class="num">4.37M</td><td class="num">$1.25</td><td class="num">$5.5M</td></tr>
+        <tr><td><span class="plink" onclick="openProductModal('Claude')">Claude</span></td><td>AI 助手</td><td class="num">3.7M</td><td class="num">$2.99</td><td class="num">$11.1M</td></tr>
+        <tr><td><span class="plink" onclick="openProductModal('VibeShort')">VibeShort</span></td><td>AI 短剧 (<span class="growth-up">14,773%</span>)</td><td class="num">2.4M</td><td class="num">$2.47</td><td class="num">$5.9M</td></tr>
       </tbody>
     </table>
 
@@ -337,10 +368,10 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <table style="table-layout:fixed; width:100%;">
       <thead><tr><th style="width:18%;">产品</th><th style="width:20%;">赛道</th><th style="width:20%;" class="num">MAU</th><th style="width:20%;" class="num">Rev/MAU</th><th style="width:22%;" class="num">Q2 收入</th></tr></thead>
       <tbody>
-        <tr><td>zeta</td><td>AI 角色 RP</td><td class="num">401K</td><td class="num">$2.90</td><td class="num">$1.16M</td></tr>
-        <tr class="row-highlight"><td>Tipsy Chat</td><td>AI 沉浸叙事</td><td class="num">142K</td><td class="num">$8.60</td><td class="num">$1.22M</td></tr>
-        <tr><td>Sondo</td><td>AI MV</td><td class="num">127K</td><td class="num">$7.31</td><td class="num">$928K</td></tr>
-        <tr><td>BabyGenie</td><td>AI 自我表达</td><td class="num">~200K</td><td class="num">$2.52</td><td class="num">$512K</td></tr>
+        <tr><td><span class="plink" onclick="openProductModal('zeta')">zeta</span></td><td>AI 角色 RP</td><td class="num">401K</td><td class="num">$2.90</td><td class="num">$1.16M</td></tr>
+        <tr class="row-highlight"><td><span class="plink" onclick="openProductModal('Tipsy Chat')">Tipsy Chat</span></td><td>AI 沉浸叙事</td><td class="num">142K</td><td class="num">$8.60</td><td class="num">$1.22M</td></tr>
+        <tr><td><span class="plink" onclick="openProductModal('Sondo')">Sondo</span></td><td>AI MV</td><td class="num">127K</td><td class="num">$7.31</td><td class="num">$928K</td></tr>
+        <tr><td><span class="plink" onclick="openProductModal('BabyGenie')">BabyGenie</span></td><td>AI 自我表达</td><td class="num">~200K</td><td class="num">$2.52</td><td class="num">$512K</td></tr>
       </tbody>
     </table>
     <p class="note">VibeShort 归入短剧赛道（已有调研覆盖，此处不重复展开）。</p>
@@ -367,10 +398,10 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
       <div class="detail-card"><h6>数据</h6>
         <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:12%;">产品</th><th style="width:18%;">产品模式</th><th style="width:18%;">商业模式</th><th style="width:20%;">增长抓手</th><th style="width:16%;" class="num">Q2 收入</th><th style="width:16%;" class="num">MAU</th></tr></thead>
         <tbody>
-          <tr class="row-highlight"><td>Sondo</td><td>一句话→短视频（音乐+画面）</td><td>按导出付费 + Pro 订阅</td><td>产出即 TikTok 内容，发布=分发</td><td class="num">$928K</td><td class="num">127K</td></tr>
-          <tr><td>Suno</td><td>文本→完整歌曲</td><td>免费额度 + $10/$30 订阅</td><td>创作分享 + 社区歌曲广场</td><td class="num">$16.2M</td><td class="num">4.5M</td></tr>
-          <tr><td>Yuna</td><td>AI MV 生成器</td><td>按次付费 + 订阅</td><td>短视频平台内容需求驱动</td><td class="num">$472K</td><td class="num">—</td></tr>
-          <tr><td>Kling AI</td><td>文本/图片→视频</td><td>免费额度 + 订阅</td><td>TikTok 生态导流</td><td class="num">$127K</td><td class="num">—</td></tr>
+          <tr class="row-highlight"><td><span class="plink" onclick="openProductModal('Sondo')">Sondo</span></td><td>一句话→短视频（音乐+画面）</td><td>按导出付费 + Pro 订阅</td><td>产出即 TikTok 内容，发布=分发</td><td class="num">$928K</td><td class="num">127K</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('Suno')">Suno</span></td><td>文本→完整歌曲</td><td>免费额度 + $10/$30 订阅</td><td>创作分享 + 社区歌曲广场</td><td class="num">$16.2M</td><td class="num">4.5M</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('Yuna')">Yuna</span></td><td>AI MV 生成器</td><td>按次付费 + 订阅</td><td>短视频平台内容需求驱动</td><td class="num">$472K</td><td class="num">—</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('Kling AI')">Kling AI</span></td><td>文本/图片→视频</td><td>免费额度 + 订阅</td><td>TikTok 生态导流</td><td class="num">$127K</td><td class="num">—</td></tr>
         </tbody></table>
       </div>
       <div class="detail-grid">
@@ -406,10 +437,10 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
       <div class="detail-card"><h6>数据</h6>
         <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:11%;">产品</th><th style="width:18%;">产品模式</th><th style="width:18%;">商业模式</th><th style="width:20%;">增长抓手</th><th style="width:12%;" class="num">Q2 DL</th><th style="width:11%;" class="num">MAU</th><th style="width:10%;" class="num">D1</th></tr></thead>
         <tbody>
-          <tr><td>Traini</td><td>拍摄狗视频→AI 行为分析→训练方案</td><td>免费+付费高级方案</td><td>结果截图分享（「看AI分析我家狗」）</td><td class="num">4.53M</td><td class="num">1.78M</td><td class="num">6%</td></tr>
-          <tr class="row-highlight"><td>Astro99</td><td>输入生日→AI 个性化星盘+每日运势</td><td>免费基础+订阅深度解读</td><td>每日运势推送拉活 + 社交分享</td><td class="num">2.19M</td><td class="num">852K</td><td class="num">24%</td></tr>
-          <tr><td>Fravix</td><td>自拍→AI 换发型预览</td><td>按次解锁 + 订阅</td><td>效果图分享 + 理发前决策刚需</td><td class="num">778K</td><td class="num">159K</td><td class="num">14%</td></tr>
-          <tr><td>Her 75</td><td>自拍→AI 老化模拟</td><td>单次付费解锁结果</td><td>猎奇心理 + 社交病毒传播</td><td class="num">541K</td><td class="num">233K</td><td class="num">29%</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('Traini')">Traini</span></td><td>拍摄狗视频→AI 行为分析→训练方案</td><td>免费+付费高级方案</td><td>结果截图分享（「看AI分析我家狗」）</td><td class="num">4.53M</td><td class="num">1.78M</td><td class="num">6%</td></tr>
+          <tr class="row-highlight"><td><span class="plink" onclick="openProductModal('Astro99')">Astro99</span></td><td>输入生日→AI 个性化星盘+每日运势</td><td>免费基础+订阅深度解读</td><td>每日运势推送拉活 + 社交分享</td><td class="num">2.19M</td><td class="num">852K</td><td class="num">24%</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('Fravix')">Fravix</span></td><td>自拍→AI 换发型预览</td><td>按次解锁 + 订阅</td><td>效果图分享 + 理发前决策刚需</td><td class="num">778K</td><td class="num">159K</td><td class="num">14%</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('Her 75')">Her 75</span></td><td>自拍→AI 老化模拟</td><td>单次付费解锁结果</td><td>猎奇心理 + 社交病毒传播</td><td class="num">541K</td><td class="num">233K</td><td class="num">29%</td></tr>
         </tbody></table>
       </div>
       <div class="detail-grid">
@@ -444,10 +475,10 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
       <div class="detail-card"><h6>数据</h6>
         <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:12%;">产品</th><th style="width:18%;">产品模式</th><th style="width:16%;">商业模式</th><th style="width:22%;">增长抓手</th><th style="width:18%;">规模</th><th style="width:14%;">增长信号</th></tr></thead>
         <tbody>
-          <tr class="row-highlight"><td><strong>Cal AI</strong></td><td>拍照→即时卡路里分析</td><td>Hard paywall + 订阅（年/月）</td><td>网红营销 + 123 次 paywall A/B 测试</td><td>15M DL, ~$50M ARR</td><td>18月 0→$50M; 被收购</td></tr>
-          <tr><td><strong>Finch</strong></td><td>养虚拟宠物=完成心理健康任务</td><td>免费+订阅（高级功能）</td><td>Gen Z 口碑 + App Store 编辑推荐</td><td>$30-40M ARR</td><td>Bootstrapped</td></tr>
-          <tr><td><strong>Strava+AI</strong></td><td>社交健身+AI 训练计划</td><td>免费+$12/月订阅</td><td>运动社交网络效应 + AI coaching</td><td>8.2M DL (Apr'26)</td><td>DAU +75% YoY</td></tr>
-          <tr><td><strong>YouCam</strong></td><td>AI 皮肤诊断+虚拟试妆</td><td>订阅+电商佣金</td><td>品牌合作导流 + 效果图分享</td><td>1M+ 付费订阅</td><td>订阅 +14.3% YoY</td></tr>
+          <tr class="row-highlight"><td><strong><span class="plink" onclick="openProductModal('Cal AI')">Cal AI</span></strong></td><td>拍照→即时卡路里分析</td><td>Hard paywall + 订阅（年/月）</td><td>网红营销 + 123 次 paywall A/B 测试</td><td>15M DL, ~$50M ARR</td><td>18月 0→$50M; 被收购</td></tr>
+          <tr><td><strong><span class="plink" onclick="openProductModal('Finch')">Finch</span></strong></td><td>养虚拟宠物=完成心理健康任务</td><td>免费+订阅（高级功能）</td><td>Gen Z 口碑 + App Store 编辑推荐</td><td>$30-40M ARR</td><td>Bootstrapped</td></tr>
+          <tr><td><strong><span class="plink" onclick="openProductModal('Strava')">Strava+AI</span></strong></td><td>社交健身+AI 训练计划</td><td>免费+$12/月订阅</td><td>运动社交网络效应 + AI coaching</td><td>8.2M DL (Apr'26)</td><td>DAU +75% YoY</td></tr>
+          <tr><td><strong><span class="plink" onclick="openProductModal('YouCam')">YouCam</span></strong></td><td>AI 皮肤诊断+虚拟试妆</td><td>订阅+电商佣金</td><td>品牌合作导流 + 效果图分享</td><td>1M+ 付费订阅</td><td>订阅 +14.3% YoY</td></tr>
         </tbody></table>
       </div>
       <div class="detail-grid">
@@ -498,10 +529,10 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
       <div class="detail-card"><h6>数据</h6>
         <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:12%;">产品</th><th style="width:20%;">产品模式</th><th style="width:16%;">商业模式</th><th style="width:22%;">增长抓手</th><th style="width:10%;" class="num">Q2 DL</th><th style="width:10%;" class="num">D1/D7</th><th style="width:10%;">融资</th></tr></thead>
         <tbody>
-          <tr><td>shapes.inc</td><td>AI 角色嵌入群聊做互动催化</td><td>免费（pre-revenue）</td><td>角色 UGC + 群聊网络效应</td><td class="num">91K</td><td class="num">—</td><td>$8M Seed</td></tr>
-          <tr><td>Focustown</td><td>多人学习房+AI 分析进度</td><td>免费+付费房间/功能</td><td>学习社群口碑 + 考试节点</td><td class="num">1.39M</td><td class="num">36%/—</td><td>—</td></tr>
-          <tr class="row-highlight"><td>playus</td><td>每天固定时间 1 分钟互动挑战</td><td>免费+付费道具</td><td>仪式感（固定时间）+ 朋友邀请</td><td class="num">1.36M</td><td class="num">70%/60%</td><td>—</td></tr>
-          <tr><td>setlog</td><td>朋友相机（互相拍照+AI 滤镜）</td><td>免费+付费滤镜</td><td>双向拍照=双向拉新</td><td class="num">5.26M</td><td class="num">67%/51%</td><td>—</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('shapes.inc')">shapes.inc</span></td><td>AI 角色嵌入群聊做互动催化</td><td>免费（pre-revenue）</td><td>角色 UGC + 群聊网络效应</td><td class="num">91K</td><td class="num">—</td><td>$8M Seed</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('Focustown')">Focustown</span></td><td>多人学习房+AI 分析进度</td><td>免费+付费房间/功能</td><td>学习社群口碑 + 考试节点</td><td class="num">1.39M</td><td class="num">36%/—</td><td>—</td></tr>
+          <tr class="row-highlight"><td><span class="plink" onclick="openProductModal('playus')">playus</span></td><td>每天固定时间 1 分钟互动挑战</td><td>免费+付费道具</td><td>仪式感（固定时间）+ 朋友邀请</td><td class="num">1.36M</td><td class="num">70%/60%</td><td>—</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('setlog')">setlog</span></td><td>朋友相机（互相拍照+AI 滤镜）</td><td>免费+付费滤镜</td><td>双向拍照=双向拉新</td><td class="num">5.26M</td><td class="num">67%/51%</td><td>—</td></tr>
         </tbody></table>
       </div>
       <div class="detail-grid">
@@ -539,10 +570,10 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
       <div class="detail-card"><h6>数据</h6>
         <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:14%;">产品</th><th style="width:18%;">产品模式</th><th style="width:16%;">商业模式</th><th style="width:22%;">增长抓手</th><th style="width:12%;" class="num">Q2 DL</th><th style="width:12%;" class="num">收入</th></tr></thead>
         <tbody>
-          <tr class="row-highlight"><td>BabyGenie</td><td>情侣照→AI 预测宝宝长相</td><td>单次付费解锁结果</td><td>情侣天然双人传播链</td><td class="num">14.7M*</td><td class="num">印度 Top 8</td></tr>
-          <tr><td>MyPanini™</td><td>自拍→AI 生成球星卡</td><td>免费（品牌合作）</td><td>赛事节点爆发 + 朋友对比</td><td class="num">4.58M</td><td class="num">$0</td></tr>
-          <tr><td>Her 75</td><td>自拍→AI 模拟 75 岁的你</td><td>单次付费解锁高清</td><td>猎奇+情感触动→截图分享</td><td class="num">541K</td><td class="num">$356K</td></tr>
-          <tr><td>Heart Moments</td><td>照片→AI 生成纪念视频/物</td><td>付费解锁高级模板</td><td>纪念日节点 + 情感驱动分享</td><td class="num">1.01M</td><td class="num">$249K</td></tr>
+          <tr class="row-highlight"><td><span class="plink" onclick="openProductModal('BabyGenie')">BabyGenie</span></td><td>情侣照→AI 预测宝宝长相</td><td>单次付费解锁结果</td><td>情侣天然双人传播链</td><td class="num">14.7M*</td><td class="num">印度 Top 8</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('MyPanini')">MyPanini™</span></td><td>自拍→AI 生成球星卡</td><td>免费（品牌合作）</td><td>赛事节点爆发 + 朋友对比</td><td class="num">4.58M</td><td class="num">$0</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('Her 75')">Her 75</span></td><td>自拍→AI 模拟 75 岁的你</td><td>单次付费解锁高清</td><td>猎奇+情感触动→截图分享</td><td class="num">541K</td><td class="num">$356K</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('Heart Moments')">Heart Moments</span></td><td>照片→AI 生成纪念视频/物</td><td>付费解锁高级模板</td><td>纪念日节点 + 情感驱动分享</td><td class="num">1.01M</td><td class="num">$249K</td></tr>
         </tbody></table>
       </div>
       <p class="note">* BabyGenie 14.7M 为 2026/05/15-07/03 全球，AppBrain India Top Grossing</p>
@@ -578,9 +609,9 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
       <div class="detail-card"><h6>数据</h6>
         <table style="table-layout:fixed; width:100%;"><thead><tr><th style="width:14%;">产品</th><th style="width:22%;">产品模式</th><th style="width:18%;">商业模式</th><th style="width:22%;">增长抓手</th><th style="width:12%;" class="num">Rev/MAU</th><th style="width:12%;" class="num">RPD</th></tr></thead>
         <tbody>
-          <tr class="row-highlight"><td>Tipsy Chat</td><td>AI 角色+沉浸式互动叙事</td><td>按章节付费 + 订阅</td><td>剧情悬念驱动复访+社区 UGC 剧本</td><td class="num">$8.60</td><td class="num">$9.67</td></tr>
-          <tr><td>zeta</td><td>动漫 IP 角色对话+角色扮演</td><td>对话消耗货币 + 订阅</td><td>动漫 IP 粉丝导入 + 日本 VTuber 生态</td><td class="num">$2.90</td><td class="num">$5.28</td></tr>
-          <tr><td>MookRun</td><td>创建虚拟角色+社区互动展示</td><td>角色装扮道具付费</td><td>角色社区 + 创作展示</td><td class="num">—</td><td class="num">$1.29</td></tr>
+          <tr class="row-highlight"><td><span class="plink" onclick="openProductModal('Tipsy Chat')">Tipsy Chat</span></td><td>AI 角色+沉浸式互动叙事</td><td>按章节付费 + 订阅</td><td>剧情悬念驱动复访+社区 UGC 剧本</td><td class="num">$8.60</td><td class="num">$9.67</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('zeta')">zeta</span></td><td>动漫 IP 角色对话+角色扮演</td><td>对话消耗货币 + 订阅</td><td>动漫 IP 粉丝导入 + 日本 VTuber 生态</td><td class="num">$2.90</td><td class="num">$5.28</td></tr>
+          <tr><td><span class="plink" onclick="openProductModal('MookRun')">MookRun</span></td><td>创建虚拟角色+社区互动展示</td><td>角色装扮道具付费</td><td>角色社区 + 创作展示</td><td class="num">—</td><td class="num">$1.29</td></tr>
         </tbody></table>
       </div>
       <div class="detail-grid">
@@ -671,6 +702,186 @@ function updateActive() {
 }
 window.addEventListener('scroll', updateActive);
 updateActive();
+
+// ===== Product Analysis Modal =====
+const PRODUCT_DATA = {
+  "Sondo": {
+    company: "Sondo Inc.", founded: "2025", hq: "San Francisco, US", funding: "Seed (undisclosed)",
+    summary: "一句话生成完整短视频（音乐+画面+编排），融合 AI 音乐与视频生成的全链路创作工具。",
+    metrics: "Q2 Rev $928K | MAU 127K | Rev/MAU $7.31 | 融合模式 Rev/MAU 为单功能产品 3.5x",
+    model: "按导出付费 + Pro 订阅（$9.99/月）。用户免费生成，导出无水印版本需付费。",
+    moat: "核心壁垒在编排层（意图理解 + 多模态协调），接入 Suno/Udio API 生成音乐 + Kling/Runway 生成画面，自研的是串联编排引擎。",
+    growth: "产出即 TikTok 可发布内容 → 平台分发 → 观看者看到 'Made with Sondo' 水印 → 零边际获客。"
+  },
+  "Suno": {
+    company: "Suno Inc.", founded: "2023", hq: "Cambridge, MA, US", funding: "Series B $125M (Lightspeed, 2024/05)",
+    summary: "文本生成完整歌曲（歌词+旋律+编曲+人声），面向非音乐人的 AI 创作平台。",
+    metrics: "Q2 Rev $16.2M | MAU 4.5M | Rev/MAU $3.60 | 月增速 ~15%",
+    model: "免费 10 首/天 + Pro $10/月（500 首）+ Premier $30/月（2000 首，商用授权）。",
+    moat: "自研音乐生成大模型（v4 支持 4 分钟完整编曲），社区歌曲广场形成 UGC 飞轮。竞品 Udio 质量接近但用户规模仅 1/5。",
+    growth: "创作→分享链路天然：用户生成歌曲后分享到社交媒体。社区广场提供发现和互动场景，提升留存。"
+  },
+  "BabyGenie": {
+    company: "BabyGenie (独立开发者/小团队)", founded: "2026", hq: "India (推测)", funding: "Bootstrapped",
+    summary: "上传情侣照片，AI 预测未来宝宝长相。7 周内 14.7M 下载的现象级病毒产品。",
+    metrics: "7 周 14.7M DL | India Top 8 Grossing | RPD 估算 ~$0.35",
+    model: "Hard paywall：免费预览模糊版本，付费（$2.99 单次）解锁高清结果。",
+    moat: "壁垒不在技术（基础 face morphing + diffusion），在选题。「预测宝宝长相」让情侣天然双人传播（两人都要下载）。",
+    growth: "K-factor > 1：每次分享触达 50-200 人，5-10% 转化下载。情侣双向传播链 + 社交媒体猎奇驱动。"
+  },
+  "Tipsy Chat": {
+    company: "Tipsy Interactive Ltd.", founded: "2025", hq: "UK (推测)", funding: "未披露",
+    summary: "AI 角色驱动的沉浸式互动叙事平台，用户通过对话推进多分支故事。按章节付费。",
+    metrics: "MAU 142K | Rev/MAU $8.60 | RPD $9.67 | Q2 Rev $1.22M",
+    model: "免费体验前 1-2 章 + 按章节购买（$1.99-3.99/章）+ 月度订阅解锁全部。",
+    moat: "章节制叙事 + 悬念驱动复访。社区 UGC 剧本扩展内容库。变现密度 $8.60/MAU 是 ChatGPT（$0.99）的 8.7 倍——用户为「经历故事」付费意愿远超「获取信息」。",
+    growth: "剧情悬念（cliffhanger）驱动复访 → 社区 UGC 剧本降低内容成本 → 优质剧本作者分成激励创作。"
+  },
+  "zeta": {
+    company: "zeta Inc. (日本)", founded: "2024", hq: "Tokyo, Japan", funding: "Pre-Series A (推测)",
+    summary: "动漫 IP 角色对话 + 角色扮演平台，主打日本 VTuber 和动漫 IP 粉丝群体。",
+    metrics: "MAU 401K | Rev/MAU $2.90 | RPD $5.28 | MAU MoM +38%",
+    model: "对话消耗虚拟货币（gems）+ 月度订阅。IP 授权角色付费率为自建角色的 5 倍。",
+    moat: "日本动漫 IP 授权 + VTuber 生态绑定。IP 粉丝基础提供冷启动优势，付费率显著高于无 IP 产品。",
+    growth: "动漫 IP 粉丝社群导入 → VTuber 联动活动 → 高 ARPU 日本市场天然匹配角色付费。"
+  },
+  "Cal AI": {
+    company: "Cal AI Inc. (被 MyFitnessPal/Francisco Partners 收购)", founded: "2024", hq: "US", funding: "Bootstrapped → 2026/03 被收购",
+    summary: "拍照即知卡路里。AI 视觉识别食物并即时返回营养数据，零手动输入。",
+    metrics: "15M DL | ~$50M ARR (18 个月达成) | 2026/03 被 MyFitnessPal 收购",
+    model: "Hard paywall + 年订阅（$69.99/年）。123 次 paywall A/B 测试极致优化转化率。",
+    moat: "极致的产品-市场匹配：「拍照→结果」零学习成本。壁垒在 paywall 优化能力（123 次 A/B）和网红营销矩阵。",
+    growth: "网红营销（健身/美食 KOL）→ 拍照即用体验 → hard paywall 高转化 → 月收入 10 个月内 3x。"
+  },
+  "Finch": {
+    company: "Finch Care Inc.", founded: "2021", hq: "San Francisco, US", funding: "Bootstrapped ($30-40M ARR)",
+    summary: "用「养虚拟宠物」包装心理健康习惯（CBT 技术）。完成冥想/日记/运动等任务让宠物成长。",
+    metrics: "$30-40M ARR | Bootstrapped | App Store 编辑精选",
+    model: "免费（基础宠物+任务）+ 订阅解锁高级功能/装扮/深度内容。",
+    moat: "游戏化降低「我在做心理治疗」的感知门槛。Gen Z 群体口碑传播 + App Store 编辑推荐形成持续自然增长。",
+    growth: "Gen Z 口碑（TikTok 自发内容）+ App Store 编辑推荐 + 游戏化留存（宠物成长=用户坚持习惯的外化）。"
+  },
+  "shapes.inc": {
+    company: "Shapes Inc.", founded: "2025", hq: "San Francisco, US", funding: "Seed $8M",
+    summary: "AI 角色作为群聊成员存在于 Discord/iMessage/WhatsApp 中，自动参与对话、引发话题。3 个月 300 万角色被创建。",
+    metrics: "MAU 400K | 300 万角色被创建 (3 个月) | Pre-revenue",
+    model: "免费（增长优先）。未来可能通过角色付费装扮/高级角色能力变现。",
+    moat: "AI 角色嵌入现有社交平台（而非创建新平台），降低用户迁移成本。角色 UGC 生态 + 群聊网络效应。",
+    growth: "群聊中一人添加 AI 角色 → 全群体验 → 其他群成员在自己的群也添加。角色 UGC 驱动长尾内容。"
+  },
+  "playus": {
+    company: "playus (韩国团队)", founded: "2025", hq: "Seoul, Korea", funding: "未披露",
+    summary: "每天固定时间推送 1 分钟互动挑战（类 Wordle 的社交仪式感），AI 生成每日新内容保持新鲜感。",
+    metrics: "Q2 DL 1.36M | D1 70% | D7 60% (社交品类极罕见)",
+    model: "免费 + 付费道具/高级挑战。",
+    moat: "仪式感（固定时间+1 分钟完成）+ AI 每日生成新内容。D7 60% 在社交品类中极罕见（通常 <20%）。",
+    growth: "固定时间推送 → 1 分钟完成=低门槛 → 朋友邀请对比成绩 → 网络效应启动。"
+  },
+  "Traini": {
+    company: "Traini Inc.", founded: "2025", hq: "US (推测)", funding: "未披露",
+    summary: "拍摄狗狗视频，AI 分析行为问题并生成个性化训练方案。将 $50-100/h 训练师压缩为即时 AI 服务。",
+    metrics: "Q2 DL 4.53M | MAU 1.78M | D1 6% | DL 增速 +12,921%",
+    model: "免费基础分析 + 付费高级训练方案。单次付费为主（留存非核心指标）。",
+    moat: "壁垒在「结果即传播物」——「看 AI 分析我家狗」天然具备截图分享动机。D1 仅 6% 但不影响商业逻辑：核心是 RPD 和 K-factor。",
+    growth: "结果截图分享（「看 AI 分析我家狗」）→ 社交传播 → 零获客成本。下载量爆发靠病毒传播而非买量。"
+  },
+  "Astro99": {
+    company: "Astro99 (独立团队)", founded: "2025", hq: "未披露", funding: "未披露",
+    summary: "输入生日，AI 生成个性化星盘 + 每日运势推送。占星场景的 AI 个性化内容产品。",
+    metrics: "Q2 DL 2.19M | MAU 852K | D1 24% | DL 增速 +25,213%",
+    model: "免费基础星盘 + 订阅解锁深度解读/每日推送。",
+    moat: "占星场景天然有持续使用理由（每日运势），D1 24% 为同类最高。每日推送维持打开率。",
+    growth: "每日运势推送拉活 → 星盘结果社交分享 → 持续使用场景支撑高留存。"
+  }
+};
+
+function openProductModal(name) {
+  const modal = document.getElementById('productModal');
+  const content = document.getElementById('modalContent');
+  
+  if (PRODUCT_DATA[name]) {
+    const p = PRODUCT_DATA[name];
+    content.innerHTML = `
+      <h3>${name}</h3>
+      <div class="modal-sub">${p.company} · Founded ${p.founded} · ${p.hq} · ${p.funding}</div>
+      <div class="modal-section"><h6>产品定位</h6><p>${p.summary}</p></div>
+      <div class="modal-section"><h6>核心数据</h6><p>${p.metrics}</p></div>
+      <div class="modal-section"><h6>商业模式</h6><p>${p.model}</p></div>
+      <div class="modal-section"><h6>壁垒与差异化</h6><p>${p.moat}</p></div>
+      <div class="modal-section"><h6>增长机制</h6><p>${p.growth}</p></div>
+    `;
+  } else {
+    const apiKey = sessionStorage.getItem('llm_api_key') || '';
+    if (!apiKey) {
+      content.innerHTML = `
+        <h3>${name}</h3>
+        <div class="api-setup">
+          <p style="font-size:0.88rem; margin-bottom:8px;">输入 OpenAI API Key 实时生成产品分析：</p>
+          <input type="password" id="apiKeyInput" placeholder="sk-..." />
+          <button onclick="saveKeyAndGenerate('${name}')">生成分析</button>
+          <p style="font-size:0.75rem; color:var(--text-secondary); margin-top:8px;">Key 仅存于当前会话（sessionStorage），关闭标签页即清除。</p>
+        </div>
+      `;
+    } else {
+      generateAnalysis(name, apiKey);
+    }
+  }
+  modal.classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('productModal').classList.remove('show');
+}
+
+document.getElementById('productModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+function saveKeyAndGenerate(name) {
+  const key = document.getElementById('apiKeyInput').value.trim();
+  if (!key) return;
+  sessionStorage.setItem('llm_api_key', key);
+  generateAnalysis(name, key);
+}
+
+async function generateAnalysis(name, apiKey) {
+  const content = document.getElementById('modalContent');
+  content.innerHTML = `<h3>${name}</h3><div class="modal-loading"><div class="spinner"></div><p>正在生成分析...</p></div>`;
+  
+  const prompt = `你是一位专业的移动互联网产品分析师。请对「${name}」这款产品进行精简专业的分析，输出以下结构（中文，每段 2-3 句话）：
+1. 产品定位：一句话说清楚产品是什么
+2. 公司/团队：公司名、成立时间、总部、融资情况
+3. 核心数据：用户规模、收入、增长指标
+4. 商业模式：变现方式
+5. 壁垒与差异化：核心竞争力
+6. 增长机制：用户获取和留存策略
+
+请用 JSON 格式返回：{"summary":"...","company":"...","metrics":"...","model":"...","moat":"...","growth":"..."}`;
+
+  try {
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+      body: JSON.stringify({ model: 'gpt-4o-mini', messages: [{ role: 'user', content: prompt }], temperature: 0.3, response_format: { type: 'json_object' } })
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+    const p = JSON.parse(data.choices[0].message.content);
+    content.innerHTML = `
+      <h3>${name}</h3>
+      <div class="modal-sub">${p.company || '—'}</div>
+      <div class="modal-section"><h6>产品定位</h6><p>${p.summary || '—'}</p></div>
+      <div class="modal-section"><h6>核心数据</h6><p>${p.metrics || '—'}</p></div>
+      <div class="modal-section"><h6>商业模式</h6><p>${p.model || '—'}</p></div>
+      <div class="modal-section"><h6>壁垒与差异化</h6><p>${p.moat || '—'}</p></div>
+      <div class="modal-section"><h6>增长机制</h6><p>${p.growth || '—'}</p></div>
+      <p style="font-size:0.72rem; color:var(--text-secondary); margin-top:12px; text-align:right;">⚡ AI 生成，可能存在不准确信息</p>
+    `;
+  } catch (err) {
+    content.innerHTML = `<h3>${name}</h3><p style="color:#dc2626; font-size:0.9rem;">生成失败：${err.message}</p>
+      <div class="api-setup"><p style="font-size:0.88rem;">重新输入 API Key：</p><input type="password" id="apiKeyInput" placeholder="sk-..." /><button onclick="saveKeyAndGenerate('${name}')">重试</button></div>`;
+  }
+}
 </script>
 </body>
 </html>
