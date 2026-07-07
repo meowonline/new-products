@@ -177,6 +177,11 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
 .modal-screenshots img { height:260px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.12); flex-shrink:0; object-fit:cover; }
 .screenshot-placeholder { display:flex; align-items:center; justify-content:center; height:260px; min-width:140px; border-radius:10px; background:#f3f4f6; border:2px dashed #d1d5db; color:#9ca3af; font-size:0.78rem; text-align:center; padding:16px; flex-shrink:0; }
 
+/* Image Lightbox */
+.lightbox-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:99999; align-items:center; justify-content:center; cursor:zoom-out; }
+.lightbox-overlay.show { display:flex; }
+.lightbox-overlay img { max-width:90vw; max-height:90vh; border-radius:8px; box-shadow:0 8px 40px rgba(0,0,0,0.5); }
+
 @media (max-width: 600px) { .quadrant { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -188,6 +193,11 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <button class="modal-close" onclick="closeModal()">&times;</button>
     <div id="modalContent"></div>
   </div>
+</div>
+
+<!-- Image Lightbox -->
+<div class="lightbox-overlay" id="lightbox" onclick="this.classList.remove('show')">
+  <img id="lightboxImg" src="" alt="enlarged" />
 </div>
 
 <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">☰</button>
@@ -262,7 +272,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
       <tr><td><strong>AI 作曲/歌曲</strong></td><td><span class="plink" onclick="openProductModal('Suno')">Suno</span> / <span class="plink" onclick="openProductModal('Donna AI Song')">Donna AI Song</span></td><td>文本→完整歌曲，人人可创作</td><td class="num">MAU 4.5M</td><td>创作物分享</td></tr>
       <tr><td><strong>AI MV / 短视频</strong></td><td><span class="plink" onclick="openProductModal('Sondo')">Sondo</span></td><td>一句话→音乐+画面，产出即内容</td><td class="num">$7.31/MAU</td><td>产出=获客</td></tr>
       <tr><td><strong>品味图谱社交</strong></td><td>Shelf / Letterboxd</td><td>品味可视化+对比+社区</td><td class="num">MAU 12.7M*</td><td>画像/榜单分享</td></tr>
-      <tr><td><strong>AI 品味画像</strong></td><td>Earprint / MiMoScore</td><td>听歌行为→人格卡片（类 MBTI）</td><td class="num">开源验证</td><td>★★★★ 一张卡代表我</td></tr>
+      <tr><td><strong>AI 品味画像</strong></td><td>Earprint / MiMoScore</td><td>听歌行为→人格卡片（类 MBTI）</td><td class="num">开源验证</td><td>一张卡代表我，社交身份标签化传播</td></tr>
       <tr><td><strong>AI 共创社交</strong></td><td>Donna AI Song 社区</td><td>好友合作生成歌曲，共同创作绑定关系</td><td class="num">MAU 4.37M</td><td>关系绑定+共同产出</td></tr>
     </tbody>
   </table>
@@ -298,13 +308,13 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   </div>
 
   <table style="table-layout:fixed; width:100%;">
-    <thead><tr><th style="width:22%;">行动目的</th><th style="width:38%;">具体做法</th><th style="width:40%;">预期效果</th></tr></thead>
+    <thead><tr><th style="width:16%;">行动目的</th><th style="width:28%;">具体做法</th><th style="width:28%;">预期效果</th><th style="width:28%;">参考 case</th></tr></thead>
     <tbody>
-      <tr><td><strong>拓展品味边界</strong></td><td>推荐算法做「半步领先」扩展（Indie Pop → Dream Pop），基于偏好拓宽而不陌生</td><td>用户感知品味在「进化」，产生分享新发现的动力</td></tr>
-      <tr><td><strong>降低表达门槛</strong></td><td>官方策展示范品味表达方式（主题/情绪/场景歌单），让用户有模板可参考</td><td>从「不知道怎么表达」→ 模仿→自主表达，UGC 内容量提升</td></tr>
-      <tr><td><strong>构建沉没成本</strong></td><td>设计兴趣等级/经验值/成长路径，品味行为（创建/分享/被收藏）积累可量化资产</td><td>等级越高迁移意愿越低，平台粘性随使用时长非线性增长</td></tr>
-      <tr><td><strong>强化社交人设</strong></td><td>基于品味数据自动生成「人设标签」，高阶人设需持续行为或付费解锁</td><td>品味分层=社交身份分层，用户为「被认可的人设」付费</td></tr>
-      <tr><td><strong>驱动身份付费</strong></td><td>虚拟商品挂载在身份等级上（专属卡面/称号/社交权益），付费=强化认同</td><td>虚拟商品与身份绑定形成持续付费动力，非消耗性</td></tr>
+      <tr><td><strong>拓展品味边界</strong></td><td>推荐算法做「半步领先」扩展（Indie Pop → Dream Pop），基于偏好拓宽而不陌生</td><td>用户感知品味在「进化」，产生分享新发现的动力</td><td>Spotify「Discover Weekly」— 30% 用户因此发现新艺人并加入收藏</td></tr>
+      <tr><td><strong>降低表达门槛</strong></td><td>官方策展示范品味表达方式（主题/情绪/场景歌单），让用户有模板可参考</td><td>从「不知道怎么表达」→ 模仿→自主表达，UGC 内容量提升</td><td>网易云「歌单达人」体系 — 通过策展模板将 UGC 歌单数提升 3x</td></tr>
+      <tr><td><strong>构建沉没成本</strong></td><td>设计兴趣等级/经验值/成长路径，品味行为（创建/分享/被收藏）积累可量化资产</td><td>等级越高迁移意愿越低，平台粘性随使用时长非线性增长</td><td>Letterboxd 观影日志 — 长期记录形成不可迁移的个人影史数据库</td></tr>
+      <tr><td><strong>强化社交人设</strong></td><td>基于品味数据自动生成「人设标签」，高阶人设需持续行为或付费解锁</td><td>品味分层=社交身份分层，用户为「被认可的人设」付费</td><td>Last.fm「Scrobble 排名」— 听歌数据外化为社交身份标识</td></tr>
+      <tr><td><strong>驱动身份付费</strong></td><td>虚拟商品挂载在身份等级上（专属卡面/称号/社交权益），付费=强化认同</td><td>虚拟商品与身份绑定形成持续付费动力，非消耗性</td><td>QQ 音乐「乐迷等级+装扮」— 等级特权+虚拟道具驱动音乐场景付费</td></tr>
     </tbody>
   </table>
 
@@ -791,6 +801,171 @@ const PRODUCT_DATA = {
     model: "免费基础星盘 + 订阅解锁深度解读/每日推送。",
     moat: "占星场景天然有持续使用理由（每日运势），D1 24% 为同类最高。每日推送维持打开率。",
     growth: "每日运势推送拉活 → 星盘结果社交分享 → 持续使用场景支撑高留存。"
+  },
+  "Donna AI Song": {
+    company: "Donna AI (Music AI Inc.)", founded: "2024", hq: "Singapore", funding: "Series A (推测)",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/donna-ai-song",
+    screenshots: [],
+    summary: "文本输入歌词或主题，AI 生成完整歌曲并支持社区分享。强调社交共创（好友合写歌曲）。",
+    metrics: "MAU 4.37M | Rev/MAU $1.25 | Q2 Rev $5.5M",
+    model: "免费额度 + Pro 订阅（$9.99/月解锁无限生成+高音质导出）。",
+    moat: "社区歌曲广场+合作创作功能构建 UGC 飞轮。与 Suno 竞争但侧重社交属性（共创绑定关系）。",
+    growth: "好友合作写歌→双向拉新 + 社区热歌排行激励创作 + 东南亚市场优先（竞争较轻）。"
+  },
+  "Claude": {
+    company: "Anthropic", founded: "2021", hq: "San Francisco, US", funding: "Series D $4B+ (Amazon, Google)",
+    icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4c/d3/c0/4cd3c0fb-6a25-bc3f-dc65-0c5e3a15f280/AppIcon-0-0-1x_U007ephone-0-1-0-sRGB-85-220.png/200x200bb.jpg",
+    stLink: "https://app.sensortower.com/overview/claude",
+    screenshots: [],
+    summary: "Anthropic 的 AI 助手，强调安全对齐和长上下文能力（200K tokens）。面向专业用户的生产力工具。",
+    metrics: "MAU 3.7M | Rev/MAU $2.99 | Q2 Rev $11.1M | B2B ARR 远高于移动端",
+    model: "免费版（Claude 3.5 Sonnet）+ Pro $20/月 + Team $30/月。",
+    moat: "200K 长上下文窗口 + Constitutional AI 安全对齐 + 编程能力行业领先。企业 API 是核心收入。",
+    growth: "开发者口碑 + 编程场景强烈偏好 + 企业 B2B 合同。移动端 MAU 增长主要来自品牌溢出。"
+  },
+  "VibeShort": {
+    company: "VibeShort Inc.", founded: "2025", hq: "US (推测)", funding: "未披露",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/vibeshort",
+    screenshots: [],
+    summary: "AI 驱动的互动短剧平台。用户选择分支推进剧情，AI 生成个性化叙事和画面。",
+    metrics: "MAU 2.4M | Rev/MAU $2.47 | Q2 Rev $5.9M | DL 增速 +14,773%",
+    model: "免费观看前几集 + 按集/章节付费解锁（$1.99-2.99/集）+ 月度订阅。",
+    moat: "AI 生成叙事内容的成本远低于真人拍摄短剧。互动选择增加用户投入感和复看率。",
+    growth: "悬念 cliffhanger 驱动章节付费 + 社交讨论不同结局 + 短视频平台片段引流。"
+  },
+  "ChatGPT": {
+    company: "OpenAI", founded: "2015", hq: "San Francisco, US", funding: "$13B+ (Microsoft)",
+    icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/46/29/24/462924b7-37d6-c031-7a47-d568c4e8f543/AppIcon-0-0-1x_U007ephone-0-1-0-sRGB-85-220.png/200x200bb.jpg",
+    stLink: "https://app.sensortower.com/overview/chatgpt",
+    screenshots: [],
+    summary: "全球最大 AI 对话助手。GPT-4o 多模态，覆盖问答/写作/编程/分析/图像生成等全场景。",
+    metrics: "MAU ~60M（移动端）| Rev/MAU $0.99 | Q2 Rev $59.4M | 全平台 ARR 预估 $5B+",
+    model: "免费（GPT-4o-mini）+ Plus $20/月 + Pro $200/月。",
+    moat: "模型能力领先 + 1 亿+ 周活用户 + 生态（GPTs, API, 企业版）+ OpenAI 品牌。",
+    growth: "品类定义者的品牌认知 + 搜索替代场景自然增长 + 口碑传播。Rev/MAU $0.99 反映免费用户占比极高。"
+  },
+  "Yuna": {
+    company: "Yuna Inc.", founded: "2025", hq: "US (推测)", funding: "未披露",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/yuna",
+    screenshots: [],
+    summary: "AI MV 生成器。上传音乐或选择曲风，AI 生成匹配画面的完整 MV，面向独立音乐人和创作者。",
+    metrics: "Q2 Rev $472K | DL 增速 +3,833%",
+    model: "按次导出付费（$2.99/次）+ Pro 订阅（$12.99/月无限导出）。",
+    moat: "专注音乐→视觉的单一场景，比通用视频工具（Kling/Runway）更贴合 MV 创作需求。",
+    growth: "独立音乐人需要 MV 但拍不起 → AI 解决成本问题 → 音乐人分享 MV → 观看者成为用户。"
+  },
+  "Kling AI": {
+    company: "Kuaishou (快手)", founded: "2024 (产品)", hq: "Beijing, China", funding: "快手子业务（NYSE: KUAI）",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/kling-ai",
+    screenshots: [],
+    summary: "文本/图片生成视频的 AI 工具。快手自研视频生成模型 Kling，质量对标 Runway/Sora。",
+    metrics: "Q2 Rev $127K（海外移动端）| 全平台收入远高于此 | TikTok 生态流量支持",
+    model: "免费试用 + 按次付费 + 订阅（$9.99/月 300 次生成）。",
+    moat: "背靠快手/TikTok 短视频生态，模型质量第一梯队（运动一致性优于多数竞品）。",
+    growth: "TikTok 生态内嵌推广 + 创作者在 TikTok 展示 AI 效果 → 自然曝光。"
+  },
+  "Fravix": {
+    company: "Fravix (独立团队)", founded: "2025", hq: "未披露", funding: "Bootstrapped (推测)",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/fravix",
+    screenshots: [],
+    summary: "自拍上传后 AI 换发型预览。帮用户在理发前看到效果，降低决策风险。",
+    metrics: "Q2 DL 778K | MAU 159K | D1 14% | DL 增速 +19,895%",
+    model: "免费预览低清 + 按次解锁高清效果图（$1.99/次）+ 订阅无限使用。",
+    moat: "理发前决策是刚需场景（高试错成本），AI 效果图比文字描述有效 10x。爆发期主要靠短视频传播。",
+    growth: "「我用 AI 试了新发型」→ 效果对比图天然适合社交分享 → TikTok 自发内容驱动下载。"
+  },
+  "Her 75": {
+    company: "Her 75 (独立开发者)", founded: "2025", hq: "未披露", funding: "Bootstrapped",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/her-75",
+    screenshots: [],
+    summary: "自拍上传，AI 生成 75 岁时的你。老化模拟引发猎奇和情感触动，驱动病毒传播。",
+    metrics: "Q2 DL 541K | MAU 233K | D1 29% | Q2 Rev $356K",
+    model: "免费预览模糊版 + 单次付费解锁高清（$2.99）。",
+    moat: "选题本身即壁垒——「看看老了的自己」触动情感+猎奇双重动机。D1 29% 说明用户有回看/分享行为。",
+    growth: "猎奇心理驱动尝试 → 结果图情感冲击力强 → 截图分享 → 社交病毒传播。"
+  },
+  "Strava": {
+    company: "Strava Inc.", founded: "2009", hq: "San Francisco, US", funding: "Series F $110M (2020)",
+    icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/40/42/d8/4042d8a7-0a1c-a9ac-93f8-9de8bf5b7e4f/AppIcon-0-0-1x_U007ephone-0-1-0-sRGB-85-220.png/200x200bb.jpg",
+    stLink: "https://app.sensortower.com/overview/strava",
+    screenshots: [],
+    summary: "全球最大运动社交网络。GPS 追踪跑步/骑车+社区排行+AI 训练计划。运动版 Instagram。",
+    metrics: "8.2M DL (Apr 2026) | DAU +75% YoY | 估值 $1.5B+ | 1.2亿注册用户",
+    model: "免费基础 GPS 追踪 + 订阅 $11.99/月（排行/训练/路线/高级数据）。",
+    moat: "运动社交网络效应（朋友在这里→我也在这里）+ 十年累积的运动数据不可迁移 + AI 教练功能增量。",
+    growth: "运动社交网络效应 + AI coaching（个性化训练计划）提升付费转化 + 赛事/马拉松节点爆发。"
+  },
+  "YouCam": {
+    company: "Perfect Corp (玩美移动)", founded: "2015", hq: "Taipei, Taiwan", funding: "NYSE: PERF（2023 SPAC 上市）",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/youcam",
+    screenshots: [],
+    summary: "AI 皮肤诊断+虚拟试妆平台。拍照即可分析肤质、模拟化妆/护肤品效果，与品牌联动电商转化。",
+    metrics: "1M+ 付费订阅 | 订阅 +14.3% YoY | 合作 600+ 美妆品牌",
+    model: "免费基础功能 + 订阅（$5.99/月）+ B2B 品牌合作（AR 试妆 SDK 授权）+ 电商佣金。",
+    moat: "AR + AI 试妆技术积累 + 600+ 品牌合作生态 + B2B SDK 收入 = 双轮模式。",
+    growth: "B2B 品牌合作导流（品牌页面嵌入试妆→下载 App）+ 效果图社交分享 + KOL 内容合作。"
+  },
+  "Focustown": {
+    company: "Focustown (独立团队)", founded: "2024", hq: "Asia (推测)", funding: "未披露",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/focustown",
+    screenshots: [],
+    summary: "多人学习自习室+AI 进度分析。用户进入虚拟房间一起学习，AI 追踪时间并给出效率建议。",
+    metrics: "Q2 DL 1.39M | D1 36% | 学习社群场景",
+    model: "免费基础功能 + 付费高级房间/数据分析/虚拟装扮。",
+    moat: "社交压力驱动学习效率（和别人一起学比一个人学更有动力）+ 考试节点爆发性增长。",
+    growth: "学习社群口碑传播 + 考试季节性爆发（考研/高考/期末）+ 虚拟房间邀请=网络效应。"
+  },
+  "setlog": {
+    company: "setlog (独立团队)", founded: "2025", hq: "Korea (推测)", funding: "未披露",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/setlog",
+    screenshots: [],
+    summary: "朋友相机 App。互相给对方拍照+AI 滤镜，强调「被拍」比「自拍」更真实更有趣。",
+    metrics: "Q2 DL 5.26M | D1 67% | D7 51% | 社交相机品类罕见高留存",
+    model: "免费拍照 + 付费 AI 滤镜/高级特效包。",
+    moat: "「我拍你+你拍我」的双向机制天然绑定关系对。D1 67%/D7 51% 在社交相机品类中极突出。",
+    growth: "双向拍照=双向拉新（必须有朋友才能用）→ 天然网络效应 + 滤镜效果图社交分享。"
+  },
+  "MyPanini": {
+    company: "Panini Group (合作方)", founded: "2025 (App)", hq: "Italy/Global", funding: "品牌合作项目",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/mypanini",
+    screenshots: [],
+    summary: "自拍生成个人球星卡（Panini 贴纸风格）。赛事节点（欧洲杯/世界杯）触发，品牌化 AI 滤镜。",
+    metrics: "Q2 DL 4.58M | 免费（品牌推广产品）| 赛事节点爆发",
+    model: "免费（Panini 品牌推广产品，不直接变现，驱动品牌认知和实体贴纸销售）。",
+    moat: "Panini 官方 IP 授权 + 赛事节点爆发力极强（欧洲杯/世界杯期间集中下载）。",
+    growth: "赛事节点触发 → 球迷圈层自发传播 → 「我的球星卡 vs 你的球星卡」对比分享。"
+  },
+  "Heart Moments": {
+    company: "Heart Moments (独立团队)", founded: "2025", hq: "未披露", funding: "Bootstrapped (推测)",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/heart-moments",
+    screenshots: [],
+    summary: "照片上传后 AI 生成纪念视频/纪念物（周年纪念、宝宝成长回顾等）。情感场景驱动付费。",
+    metrics: "Q2 DL 1.01M | Q2 Rev $249K | 纪念日节点驱动",
+    model: "免费基础模板 + 付费解锁高级模板/长视频/实体打印。",
+    moat: "情感场景（纪念日/生日/婚礼）天然付费意愿高——用户为「情感价值」而非「功能」买单。",
+    growth: "纪念日/节日节点触发 → 生成物情感冲击力强 → 分享引发同场景需求 → 家庭圈层传播。"
+  },
+  "MookRun": {
+    company: "MookRun (韩国团队)", founded: "2025", hq: "Seoul, Korea", funding: "未披露",
+    icon: "",
+    stLink: "https://app.sensortower.com/overview/mookrun",
+    screenshots: [],
+    summary: "创建 AI 虚拟角色并在社区互动展示。类似 AI 版 ZEPETO，角色装扮+社区秀场。",
+    metrics: "RPD $1.29 | 角色装扮付费为主 | 韩国市场优先",
+    model: "免费创建角色 + 角色装扮道具付费（服装/配饰/场景）。",
+    moat: "虚拟形象=可付费的社交身份。用户在角色上的投入（装扮/等级）形成平台沉没成本。",
+    growth: "角色社区互动 + 创作展示 + 虚拟角色分享到社交媒体引流。韩国 Z 世代对虚拟形象付费意愿高。"
   }
 };
 
@@ -804,7 +979,7 @@ function openProductModal(name) {
     const stLinkHtml = p.stLink ? `<a href="${p.stLink}" target="_blank" style="font-size:0.78rem;color:var(--accent);text-decoration:none;margin-right:12px;">📊 Sensor Tower</a>` : '';
     let screenshotHtml = '';
     if (p.screenshots && p.screenshots.length > 0) {
-      screenshotHtml = `<div class="modal-screenshots">${p.screenshots.map(s => `<img src="${s}" alt="${name} screenshot" />`).join('')}</div>`;
+      screenshotHtml = `<div class="modal-screenshots">${p.screenshots.map(s => `<img src="${s}" alt="${name} screenshot" onclick="event.stopPropagation();document.getElementById('lightboxImg').src=this.src;document.getElementById('lightbox').classList.add('show');" style="cursor:zoom-in;" />`).join('')}</div>`;
     } else {
       screenshotHtml = `<div class="modal-screenshots"><div class="screenshot-placeholder">产品功能截图<br/>待补充<br/><span style="font-size:0.68rem;margin-top:6px;display:block;">来源：Sensor Tower<br/>应用描述 / 投放素材</span></div></div>`;
     }
@@ -825,20 +1000,13 @@ function openProductModal(name) {
       <div class="modal-section"><h6>增长机制</h6><p>${p.growth}</p></div>
     `;
   } else {
-    const apiKey = sessionStorage.getItem('llm_api_key') || '';
-    if (!apiKey) {
-      content.innerHTML = `
-        <h3>${name}</h3>
-        <div class="api-setup">
-          <p style="font-size:0.88rem; margin-bottom:8px;">输入 OpenAI API Key 实时生成产品分析：</p>
-          <input type="password" id="apiKeyInput" placeholder="sk-..." />
-          <button onclick="saveKeyAndGenerate('${name}')">生成分析</button>
-          <p style="font-size:0.75rem; color:var(--text-secondary); margin-top:8px;">Key 仅存于当前会话（sessionStorage），关闭标签页即清除。</p>
-        </div>
-      `;
-    } else {
-      generateAnalysis(name, apiKey);
-    }
+    content.innerHTML = `
+      <h3>${name}</h3>
+      <div class="modal-section" style="text-align:center; padding:40px 0; color:var(--text-secondary);">
+        <p style="font-size:0.92rem;">该产品暂未纳入深度分析范围</p>
+        <p style="font-size:0.78rem; margin-top:8px;">如需补充，请联系报告作者</p>
+      </div>
+    `;
   }
   modal.classList.add('show');
 }
@@ -850,52 +1018,6 @@ function closeModal() {
 document.getElementById('productModal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
-
-function saveKeyAndGenerate(name) {
-  const key = document.getElementById('apiKeyInput').value.trim();
-  if (!key) return;
-  sessionStorage.setItem('llm_api_key', key);
-  generateAnalysis(name, key);
-}
-
-async function generateAnalysis(name, apiKey) {
-  const content = document.getElementById('modalContent');
-  content.innerHTML = `<h3>${name}</h3><div class="modal-loading"><div class="spinner"></div><p>正在生成分析...</p></div>`;
-  
-  const prompt = `你是一位专业的移动互联网产品分析师。请对「${name}」这款产品进行精简专业的分析，输出以下结构（中文，每段 2-3 句话）：
-1. 产品定位：一句话说清楚产品是什么
-2. 公司/团队：公司名、成立时间、总部、融资情况
-3. 核心数据：用户规模、收入、增长指标
-4. 商业模式：变现方式
-5. 壁垒与差异化：核心竞争力
-6. 增长机制：用户获取和留存策略
-
-请用 JSON 格式返回：{"summary":"...","company":"...","metrics":"...","model":"...","moat":"...","growth":"..."}`;
-
-  try {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-      body: JSON.stringify({ model: 'gpt-4o-mini', messages: [{ role: 'user', content: prompt }], temperature: 0.3, response_format: { type: 'json_object' } })
-    });
-    const data = await res.json();
-    if (data.error) throw new Error(data.error.message);
-    const p = JSON.parse(data.choices[0].message.content);
-    content.innerHTML = `
-      <h3>${name}</h3>
-      <div class="modal-sub">${p.company || '—'}</div>
-      <div class="modal-section"><h6>产品定位</h6><p>${p.summary || '—'}</p></div>
-      <div class="modal-section"><h6>核心数据</h6><p>${p.metrics || '—'}</p></div>
-      <div class="modal-section"><h6>商业模式</h6><p>${p.model || '—'}</p></div>
-      <div class="modal-section"><h6>壁垒与差异化</h6><p>${p.moat || '—'}</p></div>
-      <div class="modal-section"><h6>增长机制</h6><p>${p.growth || '—'}</p></div>
-      <p style="font-size:0.72rem; color:var(--text-secondary); margin-top:12px; text-align:right;">⚡ AI 生成，可能存在不准确信息</p>
-    `;
-  } catch (err) {
-    content.innerHTML = `<h3>${name}</h3><p style="color:#dc2626; font-size:0.9rem;">生成失败：${err.message}</p>
-      <div class="api-setup"><p style="font-size:0.88rem;">重新输入 API Key：</p><input type="password" id="apiKeyInput" placeholder="sk-..." /><button onclick="saveKeyAndGenerate('${name}')">重试</button></div>`;
-  }
-}
 </script>
 </body>
 </html>
