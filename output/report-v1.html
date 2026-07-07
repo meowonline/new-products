@@ -193,8 +193,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   <nav id="tocNav">
     <a href="#exec-summary" class="l1">Summary</a>
     <a href="#part1" class="l1">Part 1: AI × 音乐社交</a>
-    <a href="#p1-matrix" class="l2">赛道数据坐标</a>
-    <a href="#p1-taste" class="l2">品味产品化逻辑</a>
+    <a href="#p1-matrix" class="l2">玩法与产品化属性</a>
     <a href="#p1-algo" class="l2">算法与运营</a>
     <a href="#part2" class="l1">Part 2: 新 AI 产品机会</a>
     <a href="#p2-signal" class="l2">市场信号</a>
@@ -249,63 +248,58 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   <h2>AI × 音乐社交</h2>
   <p class="section-subtitle">AI 如何让「音乐品味」成为可感知、可传播、可变现的社交资产</p>
 
-  <h3 id="p1-matrix">1.1 赛道数据坐标</h3>
-  <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;">团队已在做这个方向，以下仅标注关键竞品数据供对标参考。</p>
+  <h3 id="p1-matrix">1.1 AI × 音乐：当前玩法与产品化关键属性</h3>
+
+  <h4>市面已验证的 AI × 音乐玩法</h4>
   <table style="table-layout:fixed; width:100%;">
-    <thead><tr><th style="width:20%;">产品</th><th style="width:25%;">定位</th><th style="width:30%;" class="num">规模（Q2 2026）</th><th style="width:25%;">参考价值</th></tr></thead>
+    <thead><tr><th style="width:16%;">玩法类型</th><th style="width:24%;">代表产品</th><th style="width:28%;">核心机制</th><th style="width:16%;" class="num">规模验证</th><th style="width:16%;">传播属性</th></tr></thead>
     <tbody>
-      <tr><td>Suno</td><td>AI 作曲</td><td class="num">MAU 4.5M / $16.2M</td><td>品味创造的天花板</td></tr>
-      <tr><td>Sondo</td><td>AI MV</td><td class="num">Rev/MAU $7.31 / +107%</td><td>产出物=传播物验证</td></tr>
-      <tr><td>Shelf</td><td>品味社交</td><td class="num">102K DL / +21,733%*</td><td>需求验证（规模尚小）</td></tr>
-      <tr><td>Letterboxd</td><td>影视品味图谱</td><td class="num">MAU 12.7M</td><td>品味社交的成熟范式</td></tr>
-      <tr><td>Donna AI Song</td><td>AI 歌曲生成</td><td class="num">MAU 4.37M</td><td>共创社交需求</td></tr>
+      <tr><td><strong>AI 作曲/歌曲</strong></td><td><span class="plink" onclick="openProductModal('Suno')">Suno</span> / <span class="plink" onclick="openProductModal('Donna AI Song')">Donna AI Song</span></td><td>文本→完整歌曲，人人可创作</td><td class="num">MAU 4.5M</td><td>创作物分享</td></tr>
+      <tr><td><strong>AI MV / 短视频</strong></td><td><span class="plink" onclick="openProductModal('Sondo')">Sondo</span></td><td>一句话→音乐+画面，产出即内容</td><td class="num">$7.31/MAU</td><td>产出=获客</td></tr>
+      <tr><td><strong>品味图谱社交</strong></td><td>Shelf / Letterboxd</td><td>品味可视化+对比+社区</td><td class="num">MAU 12.7M*</td><td>画像/榜单分享</td></tr>
+      <tr><td><strong>AI 品味画像</strong></td><td>Earprint / MiMoScore</td><td>听歌行为→人格卡片（类 MBTI）</td><td class="num">开源验证</td><td>★★★★ 一张卡代表我</td></tr>
+      <tr><td><strong>AI 共创社交</strong></td><td>Donna AI Song 社区</td><td>好友合作生成歌曲，共同创作绑定关系</td><td class="num">MAU 4.37M</td><td>关系绑定+共同产出</td></tr>
     </tbody>
   </table>
-  <p class="note">* Shelf 增速基于 Q1 极低基数，仅作趋势参考。</p>
-  <p class="source">Sensor Tower API Q2 2026</p>
+  <p class="note">* Letterboxd 为影视品味图谱，作为品味社交的成熟范式参考。Shelf（音乐品味社交）Q2 增速 +21,733% 但基数极低（102K DL）。</p>
 
-  <h3 id="p1-taste">1.2 品味的产品化逻辑</h3>
+  <h4>洞察</h4>
   <div class="counter">
-    <strong>洞察 ①：品味 ≠ 数据呈现。</strong> 「你听了 2000 首歌，最爱 Indie Pop」没有传播力。品味的传播力来自<strong>审美判断的可感知性</strong>——帮用户表达的是「为什么选这个」，是选择背后的态度。
+    <strong>① 品味 ≠ 数据呈现。</strong> 「你听了 2000 首歌，最爱 Indie Pop」没有传播力。传播力来自<strong>审美判断的可感知性</strong>——帮用户表达「为什么选这个」，选择背后的态度。
   </div>
   <div class="counter">
-    <strong>洞察 ②：品味 ≠ 小众。</strong> Spotify Wrapped 全民刷屏证明每个人都有表达品味的欲望，缺的是「低门槛 + 高辨识度」的工具。MBTI 传播力来自「一个标签代表我」，跟深度无关。
+    <strong>② 品味 ≠ 小众。</strong> Spotify Wrapped 全民刷屏证明每个人都有表达品味的欲望。MBTI 传播力来自「一个标签代表我」，跟深度无关——关键是低门槛 + 高辨识度。
   </div>
-
-  <h4>AI 品味画像的技术底座（已开源验证）</h4>
-  <table style="table-layout:fixed; width:100%;">
-    <thead><tr><th style="width:22%;">项目</th><th style="width:30%;">方法</th><th style="width:22%;">产出</th><th style="width:26%;">传播潜力</th></tr></thead>
-    <tbody>
-      <tr><td>Earprint</td><td>YouTube → Gemini → 12 原型</td><td>Music Zodiac 卡片</td><td>★★★★ 星座类比</td></tr>
-      <tr><td>MiMoScore</td><td>歌曲→原型 + Genre DNA</td><td>人格卡 + 雷达图</td><td>★★★★ 视觉强</td></tr>
-      <tr><td>Playlist Psychologist</td><td>Spotify → 3 层分析</td><td>心理画像</td><td>★★★ 类 MBTI</td></tr>
-    </tbody>
-  </table>
+  <div class="counter">
+    <strong>③ 产出物=传播物。</strong> Sondo $7.31/MAU 证明：当用户的创作结果天然是可发布的社交内容时，每次使用即一次零成本获客。
+  </div>
 
   <h4>产品化关键属性</h4>
   <div class="callout">
-    将听歌数据转化为「品味人格」（类 MBTI，基于真实行为数据）：
+    将听歌数据转化为「品味人格」（类 MBTI，基于真实行为数据）。成功的品味产品需要：
     <ul class="bl">
-      <li><strong>一张卡片</strong>代表我（非报告）</li>
-      <li><strong>可对比</strong>——与他人差异产生讨论</li>
-      <li><strong>动态</strong>——随行为变化，反复分享理由</li>
-      <li><strong>有态度感</strong>——AI 解读选择背后逻辑，呈现审美态度</li>
+      <li><strong>一张卡片代表我</strong> — 非报告，视觉强，一眼可感知态度</li>
+      <li><strong>可对比</strong> — 与他人差异产生讨论和社交互动</li>
+      <li><strong>动态进化</strong> — 随行为变化可反复分享，持续提供「再打开」的理由</li>
+      <li><strong>有态度感</strong> — AI 解读选择背后逻辑，呈现审美态度而非统计数据</li>
+      <li><strong>可积累</strong> — 品味等级/勋章形成沉没成本，人设越强越难迁移</li>
     </ul>
   </div>
 
-  <h3 id="p1-algo">1.3 算法与运营：在「记录」之外适度「引导」品味</h3>
+  <h3 id="p1-algo">1.2 算法与运营：在「记录」之外适度「引导」品味</h3>
   
   <div class="insight-box">
     品味产品容易陷入「被动记录」——只帮用户看到自己听了什么。平台真正的价值在于<strong>帮用户「构建」和「进化」品味</strong>，让品味成为平台内可积累的虚拟资产。
   </div>
 
   <table style="table-layout:fixed; width:100%;">
-    <thead><tr><th style="width:18%;">策略</th><th style="width:40%;">做法</th><th style="width:42%;">效果 / 案例</th></tr></thead>
+    <thead><tr><th style="width:22%;">行动目的</th><th style="width:38%;">具体做法</th><th style="width:40%;">预期效果</th></tr></thead>
     <tbody>
-      <tr><td><strong>半步领先推荐</strong></td><td>基于偏好扩展邻近风格（Indie Pop → Dream Pop）</td><td>品味「进化」的核心机制，拓宽而不陌生</td></tr>
-      <tr><td><strong>引导表达 & 品味成长体系</strong></td><td>官方策展示范品味表达方式 + 设计兴趣等级/勋章/称号的成长路径，品味行为（歌单创建/分享/被收藏）积累经验值</td><td>用户的品味投入可量化、可外显。等级越高，沉没成本越高，迁移意愿越低（网易云「歌单道格」示范 + 等级制度）</td></tr>
-      <tr><td><strong>UGC 品味输出激励</strong></td><td>品味活动（"用一张歌单介绍自己"）+ 优质内容曝光 + 品味排行</td><td>从被动消费→主动品味输出，强化「我是XX品味的人」自我认同</td></tr>
-      <tr><td><strong>人设分层 & 身份认同</strong></td><td>基于品味等级/偏好数据自动生成「品味人设标签」，高阶人设需持续行为解锁或付费解锁</td><td>品味分层=社交身份分层。用户为「被认可的品味人设」付费（虚拟商品与身份绑定），形成持续付费动力</td></tr>
+      <tr><td><strong>拓展品味边界</strong></td><td>推荐算法做「半步领先」扩展（Indie Pop → Dream Pop），基于偏好拓宽而不陌生</td><td>用户感知品味在「进化」，产生分享新发现的动力</td></tr>
+      <tr><td><strong>降低表达门槛</strong></td><td>官方策展示范品味表达方式（主题/情绪/场景歌单），让用户有模板可参考</td><td>从「不知道怎么表达」→ 模仿→自主表达，UGC 内容量提升</td></tr>
+      <tr><td><strong>构建沉没成本</strong></td><td>设计兴趣等级/经验值/成长路径，品味行为（创建/分享/被收藏）积累可量化资产</td><td>等级越高迁移意愿越低，平台粘性随使用时长非线性增长</td></tr>
+      <tr><td><strong>强化社交人设</strong></td><td>基于品味数据自动生成「人设标签」，高阶人设需持续行为或付费解锁</td><td>品味分层=社交身份分层，用户为「被认可的人设」付费</td></tr>
+      <tr><td><strong>驱动身份付费</strong></td><td>虚拟商品挂载在身份等级上（专属卡面/称号/社交权益），付费=强化认同</td><td>虚拟商品与身份绑定形成持续付费动力，非消耗性</td></tr>
     </tbody>
   </table>
 
@@ -404,21 +398,16 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
           <tr><td><span class="plink" onclick="openProductModal('Kling AI')">Kling AI</span></td><td>文本/图片→视频</td><td>免费额度 + 订阅</td><td>TikTok 生态导流</td><td class="num">$127K</td><td class="num">—</td></tr>
         </tbody></table>
       </div>
-      <div class="detail-grid">
-        <div class="detail-card"><h6>市场痛点</h6>
-          <p style="font-size:0.94rem;">短视频创作者核心矛盾：平台要求高频原创，但多数人缺音乐版权和剪辑能力。现有工具割裂（分别找音乐→拍画面→剪辑配合），创作门槛高。</p>
-        </div>
-        <div class="detail-card"><h6>产品解法（AI 核心价值）</h6>
-          <p style="font-size:0.94rem;">「一句话→完整短视频」的融合工作流。AI 同时生成音乐+画面+编排，将 3 个独立步骤压缩为 1 个。用户只需表达意图，AI 完成从作曲到成片的全链路。</p>
-        </div>
-        <div class="detail-card"><h6>增长公式</h6>
-          <p style="font-size:0.94rem;"><strong>产出=获客：</strong>每条生成视频即 TikTok/Reels 可发布内容 → 平台算法分发 → 观看者看到「Made with Sondo」→ 零边际获客成本。融合后 Rev/MAU（$7.31）达单功能产品的 3.5 倍。</p>
-        </div>
-        <div class="detail-card"><h6>对我们的启示</h6>
-          <ul style="font-size:0.94rem; margin-left:14px;"><li>核心壁垒在「编排层」（意图理解+多模态协调），不在单一模型</li><li>可接入 Suno/Udio + Kling/Runway API 快速组合</li><li>分发优先 TikTok 生态（已有内容分发管道，冷启动阻力小）</li></ul>
-        </div>
+      <div class="detail-card">
+        <h6>市场痛点</h6>
+        <p>短视频创作者核心矛盾：平台要求高频原创，但多数人缺音乐版权和剪辑能力。现有工具割裂（分别找音乐→拍画面→剪辑配合）。</p>
+        <h6>产品解法</h6>
+        <p>「一句话→完整短视频」的融合工作流。AI 同时生成音乐+画面+编排，将 3 个独立步骤压缩为 1 个。</p>
+        <h6>增长公式</h6>
+        <p><strong>产出=获客：</strong>每条生成视频即 TikTok/Reels 可发布内容 → 平台算法分发 → 观看者看到「Made with Sondo」→ 零边际获客成本。Rev/MAU $7.31 达单功能产品 3.5x。</p>
+        <h6>启示 & 路径</h6>
+        <ul><li>★★★ 核心「一句话变短视频」，接入 Suno/Udio + Kling/Runway API — 壁垒在编排层而非单一模型</li><li>★★ 分发优先 TikTok 生态 — 已有内容分发管道，冷启动阻力小</li></ul>
       </div>
-      <div class="detail-card path-card"><h6>路径优先级</h6><ul><li>★★★ 核心「一句话变短视频」，接入 Suno/Udio + Kling/Runway API — <em>融合工作流 Rev/MAU 最高，且产出=获客</em></li><li>★★ 重点投入编排层（意图理解、多模态协调）— <em>护城河在编排而非单一模型</em></li><li>★ 分发优先 TikTok 生态 — <em>已有内容分发管道，冷启动阻力小</em></li></ul></div>
       <p class="source">Sensor Tower: Suno (6480136315), Sondo (com.ai.music.video.generator)</p>
     </div>
   </div>
@@ -443,21 +432,16 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
           <tr><td><span class="plink" onclick="openProductModal('Her 75')">Her 75</span></td><td>自拍→AI 老化模拟</td><td>单次付费解锁结果</td><td>猎奇心理 + 社交病毒传播</td><td class="num">541K</td><td class="num">233K</td><td class="num">29%</td></tr>
         </tbody></table>
       </div>
-      <div class="detail-grid">
-        <div class="detail-card"><h6>市场痛点</h6>
-          <p style="font-size:0.94rem;">垂直场景的专家服务（宠物训练师 $50-100/h、占星师、皮肤科面诊）价格高、获取不便。用户有即时满足的需求但找不到低门槛入口。</p>
-        </div>
-        <div class="detail-card"><h6>产品解法（AI 核心价值）</h6>
-          <p style="font-size:0.94rem;">将「找专家→预约→等待→获得建议」压缩为「拍照/输入→即时结果」。AI 把专家判断力标准化为秒级响应，转化漏斗从天级缩短到 3 分钟内。</p>
-        </div>
-        <div class="detail-card"><h6>增长公式</h6>
-          <p style="font-size:0.94rem;"><strong>结果即传播物：</strong>「看 AI 分析我家狗」「我的星盘」天然具备分享动机。Traini 4.53M DL 靠截图分享而非买量。Astro99 的每日运势推送实现 D1 24%（品类最高留存），因为占星场景有持续使用理由。</p>
-        </div>
-        <div class="detail-card"><h6>对我们的启示</h6>
-          <ul style="font-size:0.94rem; margin-left:14px;"><li>选场景的核心标准：结果是否自带分享动机 + 是否有持续使用场景</li><li>单次付费模式下留存不重要（Traini D1 仅 6%），关键是 RPD 和 K-factor</li><li>可复用 AI 个性化内容生成能力，快速并行测试多个垂直主题</li></ul>
-        </div>
+      <div class="detail-card">
+        <h6>市场痛点</h6>
+        <p>垂直场景的专家服务（宠物训练师 $50-100/h、占星师、皮肤科面诊）价格高、获取不便。用户有即时满足的需求但找不到低门槛入口。</p>
+        <h6>产品解法</h6>
+        <p>将「找专家→预约→等待→获得建议」压缩为「拍照/输入→即时结果」。AI 把专家判断力标准化为秒级响应，转化漏斗从天级缩短到 3 分钟内。</p>
+        <h6>增长公式</h6>
+        <p><strong>结果即传播物：</strong>「看 AI 分析我家狗」「我的星盘」天然具备分享动机。Traini 4.53M DL 靠截图分享而非买量。Astro99 每日运势推送实现 D1 24%（品类最高）。</p>
+        <h6>启示 & 路径</h6>
+        <ul><li>★★★ 占星场景优先 — D1 24% + 每日运势=持续使用，可复用 AI 个性化内容生成</li><li>★★ 宠物训练 — 下载量最大(4.53M)，适合单次付费+分享裂变</li><li>★ 美容/发型 — 技术门槛低竞争者多，适合快速并行测试</li></ul>
       </div>
-      <div class="detail-card path-card"><h6>路径优先级</h6><ul><li>★★★ 占星场景优先 — <em>D1 24% 最高留存 + 每日运势=持续使用场景，可复用 AI 个性化内容生成</em></li><li>★★ 宠物训练 — <em>下载量最大(4.53M)，但 D1 仅 6%，更适合单次付费 + 分享裂变模式</em></li><li>★ 美容/发型试穿 — <em>技术门槛低，竞争者多，适合作为测试主题快速并行验证</em></li></ul></div>
     </div>
   </div>
 
@@ -481,26 +465,16 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
           <tr><td><strong><span class="plink" onclick="openProductModal('YouCam')">YouCam</span></strong></td><td>AI 皮肤诊断+虚拟试妆</td><td>订阅+电商佣金</td><td>品牌合作导流 + 效果图分享</td><td>1M+ 付费订阅</td><td>订阅 +14.3% YoY</td></tr>
         </tbody></table>
       </div>
-      <div class="detail-grid">
-        <div class="detail-card"><h6>市场痛点</h6>
-          <p style="font-size:0.94rem;">健康管理（记卡路里、心理习惯、护肤方案）需要持续投入和专业知识，用户难以坚持。传统方式要么昂贵（营养师/心理咨询），要么繁琐（手动查询食物热量）。</p>
-        </div>
-        <div class="detail-card"><h6>产品解法（AI 核心价值）</h6>
-          <p style="font-size:0.94rem;">AI 将「高认知负荷的健康行为」降为零摩擦操作：拍照即知卡路里（Cal AI）、养宠物即做 CBT（Finch）、自拍即得护肤方案（YouCam）。降低了「做正确的事」的门槛。</p>
-        </div>
-        <div class="detail-card"><h6>增长公式</h6>
-          <p style="font-size:0.94rem;"><strong>零摩擦体验 × hard paywall × 网红营销：</strong>Cal AI 的公式——拍照即用（零学习成本）+ 123 次 paywall A/B 测试极致优化转化 + 网红营销快速起量。结果：月收入 10 个月内 3x，18 个月 $50M ARR 后被收购。Finch 则靠游戏化包装+口碑实现 bootstrapped $30M+。</p>
-        </div>
-        <div class="detail-card"><h6>对我们的启示</h6>
-          <ul style="font-size:0.94rem; margin-left:14px;"><li>美容/皮肤方向链路最短（拍照→诊断→推荐→电商佣金 15-30%），技术成熟</li><li>营养/饮食方向已被 $50M ARR 退出验证天花板，垂直空间仍在（中餐识别是差异化空白）</li><li>游戏化 + AI 是降低健康行为感知门槛的有效手段（Finch 模式）</li></ul>
-        </div>
+      <div class="detail-card">
+        <h6>市场痛点</h6>
+        <p>健康管理（记卡路里、心理习惯、护肤方案）需要持续投入和专业知识，用户难以坚持。传统方式要么昂贵（营养师/心理咨询），要么繁琐（手动查询）。</p>
+        <h6>产品解法</h6>
+        <p>AI 将「高认知负荷的健康行为」降为零摩擦操作：拍照即知卡路里（Cal AI）、养宠物即做 CBT（Finch）、自拍即得护肤方案（YouCam）。</p>
+        <h6>增长公式</h6>
+        <p><strong>零摩擦 × hard paywall × 网红营销：</strong>Cal AI 拍照即用 + 123 次 paywall A/B 极致优化 + 网红营销 → 月收入 10 个月 3x，18 个月 $50M ARR 后被收购。Finch 靠游戏化+口碑实现 bootstrapped $30M+。</p>
+        <h6>启示 & 路径</h6>
+        <ul><li>★★★ 美容/皮肤 — 链路最短（拍照→诊断→推荐→电商佣金 15-30%），技术成熟</li><li>★★★ 营养/饮食 — $50M ARR 退出验证天花板，中餐识别是差异化空白</li><li>★★ 心理健康 — Finch 模式验证游戏化+AI，但产品设计门槛高</li><li>★ 健身 — Strava 等巨头在场，需极细分切入</li></ul>
       </div>
-      <div class="detail-card path-card"><h6>路径优先级</h6><ul>
-        <li>★★★ <strong>美容/皮肤：</strong>拍照→诊断→推荐 链路短，变现可走电商（佣金 15-30%）或虚拟商品（高级分析报告）— <em>技术成熟、链路最短、变现清晰</em></li>
-        <li>★★★ <strong>营养/饮食：</strong>Cal AI 模式已被收购验证，仍有垂直空间（如中餐识别、特殊饮食如 GLP-1 配套）— <em>$50M ARR 退出验证天花板，中餐识别是差异化空白</em></li>
-        <li>★★ <strong>心理健康：</strong>Finch 模式证明游戏化+AI 可以做出 $30M+ bootstrapped 业务，关键是降低「我在做心理治疗」的感知 — <em>天花板高但产品设计门槛高，需要长期投入</em></li>
-        <li>★ <strong>健身：</strong>市场已有 Strava 等巨头，更适合垂直切入（如产后恢复、老年健身、特定运动）— <em>竞争激烈，需找极细分缝隙</em></li>
-      </ul></div>
       <p class="source">TechCrunch 2026/03/02 (Cal AI acquisition); Superwall case study; Sensor Tower Health & Fitness report; Apptopia Strava 2026/04</p>
     </div>
   </div>
@@ -535,21 +509,16 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
           <tr><td><span class="plink" onclick="openProductModal('setlog')">setlog</span></td><td>朋友相机（互相拍照+AI 滤镜）</td><td>免费+付费滤镜</td><td>双向拍照=双向拉新</td><td class="num">5.26M</td><td class="num">67%/51%</td><td>—</td></tr>
         </tbody></table>
       </div>
-      <div class="detail-grid">
-        <div class="detail-card"><h6>市场痛点</h6>
-          <p style="font-size:0.94rem;">社交产品「冷启动难+留存低」的死亡循环：用户加了好友后缺乏持续互动理由，多数社交 App D7 留存 <20%。群聊中陌生人破冰依赖个人社交能力，大量沉默用户。</p>
-        </div>
-        <div class="detail-card"><h6>产品解法（AI 核心价值）</h6>
-          <p style="font-size:0.94rem;">AI 持续制造互动话题和仪式感：shapes.inc 让 AI 角色作为「共同朋友」存在于群聊中自然引发话题；playus 每天固定时间推 1 分钟互动挑战，AI 生成新内容保持新鲜感。核心是给用户「每天一个打开 App 的理由」。</p>
-        </div>
-        <div class="detail-card"><h6>增长公式</h6>
-          <p style="font-size:0.94rem;"><strong>网络效应 × 仪式感 × AI 内容：</strong>setlog 双向拍照=双向拉新（5.26M DL）；playus 固定时间+1分钟完成=仪式感驱动 D7 60%（社交品类极罕见）。网络效应一旦启动增长极陡。</p>
-        </div>
-        <div class="detail-card"><h6>对我们的启示</h6>
-          <ul style="font-size:0.94rem; margin-left:14px;"><li>Gravity 中嵌入 AI 角色做互动引导——零冷启动成本，已有用户基础</li><li>独立产品可参考 playus 仪式感 + AI 生成每日内容的组合</li><li>AI 角色作为语音房破冰工具——功能级验证，不需独立产品</li></ul>
-        </div>
+      <div class="detail-card">
+        <h6>市场痛点</h6>
+        <p>社交产品「冷启动难+留存低」的死亡循环：用户加了好友后缺乏持续互动理由，多数社交 App D7 留存 &lt;20%。群聊中陌生人破冰依赖个人社交能力。</p>
+        <h6>产品解法</h6>
+        <p>AI 持续制造互动话题和仪式感：shapes.inc 让 AI 角色做群聊破冰催化剂；playus 每天固定时间推 1 分钟挑战，AI 生成新内容保持新鲜感。核心是给用户「每天一个打开 App 的理由」。</p>
+        <h6>增长公式</h6>
+        <p><strong>网络效应 × 仪式感 × AI 内容：</strong>setlog 双向拍照=双向拉新（5.26M DL）；playus 固定时间+1分钟=仪式感驱动 D7 60%（社交品类极罕见）。</p>
+        <h6>启示 & 路径</h6>
+        <ul><li>★★★ Gravity 嵌入 AI 角色做互动引导 — 零冷启动成本，已有用户基础</li><li>★★ 独立产品：AI 每日轻互动（playus 仪式感 + AI 内容生成）</li><li>★ AI 角色作为语音房破冰工具 — 功能级验证</li></ul>
       </div>
-      <div class="detail-card path-card"><h6>路径优先级</h6><ul><li>★★★ Gravity 中嵌入 AI 角色做互动引导 — <em>零冷启动成本，已有用户基础，低风险验证 AI 社交玩法</em></li><li>★★ 独立产品：AI 每日轻互动（playus 仪式感 + AI 内容生成）— <em>D7 60% 验证形态，但需独立冷启动</em></li><li>★ AI 角色作为语音房破冰工具 — <em>功能级验证，不需独立产品</em></li></ul></div>
       <p class="source">Sensor Tower ios_social_top50; TechCrunch 2026/04/29</p>
     </div>
   </div>
@@ -577,21 +546,16 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
         </tbody></table>
       </div>
       <p class="note">* BabyGenie 14.7M 为 2026/05/15-07/03 全球，AppBrain India Top Grossing</p>
-      <div class="detail-grid">
-        <div class="detail-card"><h6>市场痛点</h6>
-          <p style="font-size:0.94rem;">用户有强烈的「关于我的有趣表达」需求（社交货币），但缺少低门槛、高趣味性的生成工具。传统自拍滤镜同质化严重，缺乏话题性。</p>
-        </div>
-        <div class="detail-card"><h6>产品解法（AI 核心价值）</h6>
-          <p style="font-size:0.94rem;">AI 将用户输入（自拍/照片/生日）转化为「关于我的有趣预测/变换」——宝宝长相、75 岁的自己、球星卡。结果天然携带分享动机（「看 AI 说我的宝宝长什么样」），每次使用=一次传播。</p>
-        </div>
-        <div class="detail-card"><h6>增长公式</h6>
-          <p style="font-size:0.94rem;"><strong>K-factor > 1 = 零买量爆发：</strong>BabyGenie 7 周 14.7M DL，核心在「预测宝宝长相」让情侣天然双人传播。每分享一次触达 50-200 人，5-10% 转化。壁垒不在技术，在选题——找到分享系数最高的主题。</p>
-        </div>
-        <div class="detail-card"><h6>对我们的启示</h6>
-          <ul style="font-size:0.94rem; margin-left:14px;"><li>极轻量 Web App 高频测试主题，核心指标是分享率 + K-factor</li><li>「AI 音乐人格卡」可与品味社交复用（已有 Earprint/MiMoScore 技术底座）</li><li>试错成本极低（单主题开发周期短），但需接受单主题失败概率高</li></ul>
-        </div>
+      <div class="detail-card">
+        <h6>市场痛点</h6>
+        <p>用户有强烈的「关于我的有趣表达」需求（社交货币），但缺少低门槛、高趣味性的生成工具。传统自拍滤镜同质化严重，缺乏话题性。</p>
+        <h6>产品解法</h6>
+        <p>AI 将用户输入（自拍/照片/生日）转化为「关于我的有趣预测/变换」——宝宝长相、75 岁的自己、球星卡。结果天然携带分享动机，每次使用=一次传播。</p>
+        <h6>增长公式</h6>
+        <p><strong>K-factor > 1 = 零买量爆发：</strong>BabyGenie 7 周 14.7M DL，「预测宝宝长相」让情侣天然双人传播。壁垒不在技术，在选题——找到分享系数最高的主题。</p>
+        <h6>启示 & 路径</h6>
+        <ul><li>★★★ 极轻量 Web App 高频测试主题 — 核心是选题速度，分享率 + K-factor 为唯一指标</li><li>★★ 「AI 音乐人格卡」— 可与品味社交复用，已有 Earprint/MiMoScore 技术底座</li></ul>
       </div>
-      <div class="detail-card path-card"><h6>路径优先级</h6><ul><li>★★★ 极轻量 Web App，高频测试主题 — <em>BabyGenie 证明轻量形态 + 强分享主题 = 爆发，核心是选题速度</em></li><li>★★ 「AI 音乐人格卡」= 音乐场景垂直应用 — <em>可与品味社交复用，已有技术底座（Earprint/MiMoScore）</em></li><li>★ 核心指标：分享率 + K-factor — <em>单主题失败风险高，但试错成本极低</em></li></ul></div>
     </div>
   </div>
 
@@ -614,22 +578,19 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
           <tr><td><span class="plink" onclick="openProductModal('MookRun')">MookRun</span></td><td>创建虚拟角色+社区互动展示</td><td>角色装扮道具付费</td><td>角色社区 + 创作展示</td><td class="num">—</td><td class="num">$1.29</td></tr>
         </tbody></table>
       </div>
-      <div class="detail-grid">
-        <div class="detail-card"><h6>市场痛点</h6>
-          <p style="font-size:0.94rem;">现有 AI 对话产品（ChatGPT 等）是工具化交互——用户提问、AI 回答、关闭。缺乏情感投入和持续回访动机。用户为「一次查询」付费意愿低（$0.99/MAU），留不住人。</p>
-        </div>
-        <div class="detail-card"><h6>产品解法（AI 核心价值）</h6>
-          <p style="font-size:0.94rem;">从「对话」升级为「共同体验」——AI 角色带用户经历沉浸式互动叙事（Tipsy Chat），或绑定 IP 情感锚点（zeta 动漫角色）。用户从「提问者」变成「参与者」，付费意愿从信息价值跃升为情感/体验价值。</p>
-        </div>
-        <div class="detail-card"><h6>增长公式</h6>
-          <p style="font-size:0.94rem;"><strong>叙事悬念 × IP 锚点 × 社区 UGC：</strong>Tipsy Chat 用章节制叙事驱动复访（按章节付费），zeta 用动漫 IP 粉丝基础实现 5x 付费率。MookRun 验证角色创建+社区展示带来自传播。变现密度 $8.60/MAU 是 ChatGPT 的 8.7 倍。</p>
-        </div>
-        <div class="detail-card"><h6>对我们的启示</h6>
-          <ul style="font-size:0.94rem; margin-left:14px;"><li>synclub 已有角色资产，增加「共同体验」模块（互动故事/共同创作）可直接验证付费提升</li><li>日本市场优先——VTuber + 动漫 IP + 高 ARPU 的组合已被 zeta 验证</li><li>独立产品方向：AI 角色+互动叙事引擎，天花板最高（$8.60/MAU）</li></ul>
-        </div>
+      <div class="detail-card">
+        <h6>市场痛点</h6>
+        <p>现有 AI 对话产品是工具化交互——用户提问、AI 回答、关闭。缺乏情感投入和持续回访动机。用户为「一次查询」付费意愿低（$0.99/MAU）。</p>
+        <h6>产品解法</h6>
+        <p>从「对话」升级为「共同体验」——AI 角色带用户经历沉浸式互动叙事（Tipsy Chat），或绑定 IP 情感锚点（zeta 动漫角色）。付费意愿从信息价值跃升为情感/体验价值。</p>
+        <h6>增长公式</h6>
+        <p><strong>叙事悬念 × IP 锚点 × 社区 UGC：</strong>Tipsy Chat 章节制叙事驱动复访，zeta 用动漫 IP 粉丝基础实现 5x 付费率。变现密度 $8.60/MAU 是 ChatGPT 的 8.7 倍。</p>
+        <h6>启示 & 路径</h6>
+        <p style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:4px;">A. 现有产品验证</p>
+        <ul><li>★★★ synclub 增加「共同体验」模块（互动故事/共同创作）</li><li>★★ Gravity 语音房接入 AI 角色 + 日本市场优先</li></ul>
+        <p style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:4px; margin-top:8px;">B. 独立产品</p>
+        <ul><li>★★★ AI 角色+互动叙事引擎 — Rev/MAU $8.60 天花板最高</li><li>★★ AI 角色+实时语音 — 尚无头部产品，技术可复用 Gravity</li></ul>
       </div>
-      <div class="detail-card path-card"><h6>路径 A：现有产品验证</h6><ul><li>★★★ synclub 增加「共同体验」模块（互动故事/共同创作）— <em>Tipsy Chat 8.7x 变现验证叙事方向，synclub 已有角色资产</em></li><li>★★ Gravity 语音房接入 AI 角色做实时互动引导 — <em>复用语音技术栈，AI 角色降低破冰门槛</em></li><li>★★ 日本优先（运营 + VTuber + 动漫 IP + ARPU）— <em>zeta 证明 IP+日本=5x 付费率</em></li></ul></div>
-      <div class="detail-card path-card"><h6>路径 B：独立产品</h6><ul><li>★★★ AI 角色 + 互动叙事引擎（沉浸式故事体验）— <em>Rev/MAU $8.60 天花板最高，可复用 synclub 角色系统</em></li><li>★★ AI 角色 + 实时语音（陪伴类新品类）— <em>语音 + 角色结合尚无头部产品，技术可复用 Gravity</em></li><li>★ IP 授权合作（动漫/游戏角色）— <em>降低冷启动但受限于 IP 谈判周期</em></li></ul></div>
       <p class="source">Sensor Tower: MookRun (6740849417); Tipsy Chat, zeta 经 API 验证</p>
     </div>
   </div>
