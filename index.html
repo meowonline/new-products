@@ -97,13 +97,15 @@ tr.row-highlight:hover { background: #fef08a; }
 .note { font-size: 0.8rem; color: var(--text-secondary); font-style: italic; margin: 4px 0; }
 
 /* Executive Summary */
-.exec-summary { background: linear-gradient(135deg, #1e293b, #334155); color: white; border-radius: 12px; padding: 28px 32px; margin-bottom: 28px; }
-.exec-summary h2 { color: white; font-size: 1.2rem; margin-bottom: 16px; }
-.exec-summary .es-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-.exec-summary .es-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 16px; }
-.exec-summary .es-card h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
-.exec-summary .es-card p { font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.92); }
-.exec-summary .es-card .es-num { font-size: 1.5rem; font-weight: 700; color: #fbbf24; margin-bottom: 4px; }
+.exec-summary { background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 28px 32px; margin-bottom: 28px; }
+.exec-summary h2 { color: var(--primary); font-size: 1.2rem; margin-bottom: 16px; }
+.exec-summary .es-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.exec-summary .es-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.exec-summary .es-card h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); margin-bottom: 8px; }
+.exec-summary .es-card p { font-size: 0.9rem; line-height: 1.6; color: var(--text); }
+.exec-summary .es-card .es-num { font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+.exec-summary .es-capabilities { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+.exec-summary .es-capabilities h4 { font-size: 0.88rem; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
 @media (max-width: 860px) { .exec-summary .es-grid { grid-template-columns: 1fr; } }
 
 /* Chart */
@@ -157,8 +159,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
 <aside class="sidebar" id="sidebar">
   <div class="logo">报告目录</div>
   <nav id="tocNav">
-    <a href="#exec-summary" class="l1">执行摘要</a>
-    <a href="#overview" class="l1">战略方向与能力平台</a>
+    <a href="#exec-summary" class="l1">Summary</a>
     <a href="#part1" class="l1">Part 1: AI × 音乐社交</a>
     <a href="#p1-matrix" class="l2">赛道数据坐标</a>
     <a href="#p1-taste" class="l2">品味产品化逻辑</a>
@@ -182,16 +183,16 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
 
 <!-- ==================== EXECUTIVE SUMMARY ==================== -->
 <div class="exec-summary" id="exec-summary">
-  <h2>核心发现与行动指南</h2>
+  <h2>Summary</h2>
   <div class="es-grid">
     <div class="es-card">
       <h4>核心发现</h4>
       <div class="es-num">8.7x</div>
-      <p>情感/叙事类 AI 产品变现密度（$8.60/MAU）是通用工具类（$0.99/MAU）的 8.7 倍。用户为「一段关系」或「一个作品」的付费意愿远超「一次查询」。</p>
+      <p>情感/叙事类 AI 产品变现密度（$8.60/MAU）是通用工具类（$0.99/MAU）的 8.7 倍。ToC AI 业务杠杆在高情感密度场景：社交关系、自我表达、陪伴、娱乐消费。</p>
     </div>
     <div class="es-card">
-      <h4>高潜力机会</h4>
-      <div class="es-num">3 赛道</div>
+      <h4>高潜力赛道</h4>
+      <div class="es-num">3 条</div>
       <p><strong>AI 短视频工作流</strong>（产出=获客，Sondo $7.31/MAU）<br><strong>AI 陪伴+叙事</strong>（最高变现，Tipsy $8.60/MAU）<br><strong>AI 自我表达</strong>（爆发最快，BabyGenie 7 周 14.7M DL）</p>
     </div>
     <div class="es-card">
@@ -200,24 +201,20 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
       <p>① 现有产品接入「共同体验/叙事」模块验证付费提升<br>② 极轻量 Web App 快速测试高分享系数主题<br>③ 品味社交构建 AI 画像+成长体系作为差异化护城河</p>
     </div>
   </div>
-</div>
-
-<!-- ==================== OVERVIEW ==================== -->
-<div class="overview-box" id="overview">
-  <h2>战略方向与能力平台</h2>
-  <p><strong>核心判断：</strong>C 端 AI 产品变现效率极度分化——情感绑定类 $8.60/MAU vs 通用工具类 $0.99/MAU，差距 8.7 倍。ToC AI 业务的杠杆在高情感密度场景：社交关系、自我表达、陪伴、娱乐消费。</p>
-  <p><strong>通用能力层：</strong></p>
-  <ul class="bl">
-    <li><strong>AI 个性化内容生成</strong>（文本/图像/音频/视频）— 品味画像、AI MV、AI 对话，底层共用生成+个性化引擎</li>
-    <li><strong>产出物=传播物</strong>的产品设计 — 品味卡片、生成作品、互动结果，每次使用天然产出可分享内容</li>
-    <li><strong>虚拟商品付费体系</strong> — 单次解锁、功能包、增值道具，一套计费系统跨产品复用（参考 Bending Spoons 的跨产品运营能力，但商业模式以虚拟商品为主）</li>
-  </ul>
-  <p><strong>人群聚合与付费转化：</strong></p>
-  <ul class="bl">
-    <li><strong>找准聚合点：</strong>高付费意愿人群围绕「身份认同」聚合——品味标签、角色归属、创作成就。产品需要让用户建立可积累的虚拟身份资产</li>
-    <li><strong>虚拟商品付费逻辑：</strong>用户为「表达自我」和「强化身份」付费——品味卡片升级、专属画像解锁、创作工具增值、社交特权。关键是让虚拟商品与用户身份绑定，形成沉没成本</li>
-    <li><strong>付费触发设计：</strong>免费体验建立身份认同 → 付费解锁更精细的表达/更高阶的社交权益 → 持续更新维持新鲜感和付费动力</li>
-  </ul>
+  <div class="es-capabilities">
+    <h4>通用能力层（跨产品复用）</h4>
+    <ul class="bl" style="font-size:0.88rem;">
+      <li><strong>AI 个性化内容生成</strong>（文本/图像/音频/视频）— 品味画像、AI MV、AI 对话，底层共用生成+个性化引擎</li>
+      <li><strong>产出物=传播物</strong>的产品设计 — 品味卡片、生成作品、互动结果，每次使用天然产出可分享内容</li>
+      <li><strong>虚拟商品付费体系</strong> — 单次解锁、功能包、增值道具，一套计费系统跨产品复用</li>
+    </ul>
+    <h4 style="margin-top:12px;">人群聚合与付费转化</h4>
+    <ul class="bl" style="font-size:0.88rem;">
+      <li><strong>聚合点：</strong>高付费意愿人群围绕「身份认同」聚合——品味标签、角色归属、创作成就，产品需让用户建立可积累的虚拟身份资产</li>
+      <li><strong>付费逻辑：</strong>用户为「表达自我」和「强化身份」付费——品味卡片升级、专属画像解锁、社交特权。关键是让虚拟商品与身份绑定形成沉没成本</li>
+      <li><strong>转化设计：</strong>免费体验建立身份认同 → 付费解锁更精细表达/更高阶社交权益 → 持续更新维持付费动力</li>
+    </ul>
+  </div>
 </div>
 
 <!-- ==================== PART 1 ==================== -->
