@@ -95,6 +95,8 @@ tr.row-highlight:hover { background: #fef08a; }
 .divider { border: none; border-top: 2px solid var(--border); margin: 32px 0; }
 .source { font-size: 0.78rem; color: var(--text-secondary); margin-top: 4px; }
 .note { font-size: 0.85rem; color: var(--text-secondary); font-style: italic; margin: 4px 0; }
+.hl { color: var(--accent); font-weight: 600; }
+.hl-metric { color: #7c3aed; font-weight: 700; font-variant-numeric: tabular-nums; }
 
 /* Executive Summary */
 .exec-summary { background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 28px 32px; margin-bottom: 28px; }
@@ -247,9 +249,9 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   <div class="es-capabilities">
     <h4>可跨产品复用的通用能力</h4>
     <ul class="bl" style="font-size:0.92rem;">
-      <li><strong>基于兴趣图谱的推荐与撮合</strong> — 用 LLM + Embedding 将用户行为转化为多维兴趣向量（品味/偏好/人格），驱动内容推荐、人与人的社交匹配、以及「半步领先」的个性化标签的强化引导扩展</li>
-      <li><strong>运营引导建立基于垂类兴趣的「社交身份分层」</strong> — 通过官方策展、活动话题、成长体系（等级/勋章/称号）让用户的品味可外显、可积累、可进化，形成平台内的虚拟社交资本和身份认同</li>
-      <li><strong>虚拟商品付费的商业模式</strong> — 垂类兴趣人设/品味卡片升级、专属画像解锁、高阶社交权益、创作工具增值；用户为「表达身份」和「强化认同」付费，虚拟商品与身份绑定形成沉没成本和持续付费动力</li>
+      <li><strong>基于兴趣图谱的推荐与撮合</strong> — 用 LLM + Embedding 将用户行为转化为<span class="hl">多维兴趣向量</span>，驱动内容推荐、社交匹配、以及「半步领先」的个性化引导扩展</li>
+      <li><strong>运营引导建立基于垂类兴趣的「社交身份分层」</strong> — 通过官方策展、活动话题、成长体系让用户的品味<span class="hl">可外显、可积累、可进化</span>，形成平台内的虚拟社交资本</li>
+      <li><strong>虚拟商品付费的商业模式</strong> — 人设卡片升级、专属画像解锁、高阶社交权益；用户为<span class="hl">「表达身份」和「强化认同」</span>付费，虚拟商品与身份绑定形成持续付费动力</li>
     </ul>
   </div>
 </div>
@@ -277,13 +279,13 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
 
   <h4>洞察</h4>
   <div class="counter">
-    <strong>① 品味 ≠ 数据呈现。</strong> 「你听了 2000 首歌，最爱 Indie Pop」没有传播力。传播力来自<strong>审美判断的可感知性</strong>——帮用户表达「为什么选这个」，选择背后的态度。
+    <strong>① 品味 ≠ 数据呈现。</strong> 「你听了 2000 首歌，最爱 Indie Pop」没有传播力。传播力来自<span class="hl">审美判断的可感知性</span>——帮用户表达「为什么选这个」，选择背后的态度。
   </div>
   <div class="counter">
-    <strong>② 品味 ≠ 小众。</strong> Spotify Wrapped 全民刷屏证明每个人都有表达兴趣倾向的欲望。MBTI 传播力来自「一个标签代表我」，跟深度无关——关键是低门槛 + 高辨识度。
+    <strong>② 品味 ≠ 小众。</strong> Spotify Wrapped 全民刷屏证明每个人都有表达兴趣倾向的欲望。MBTI 传播力来自「一个标签代表我」，跟深度无关——关键是<span class="hl">低门槛 + 高辨识度</span>。
   </div>
   <div class="counter">
-    <strong>③ 产出物=传播物。</strong> Sondo $7.31/MAU 证明：当用户的创作结果天然是可发布的社交内容时，每次使用即一次零成本获客。
+    <strong>③ 产出物=传播物。</strong> Sondo <span class="hl-metric">$7.31/MAU</span> 证明：当用户的创作结果天然是可发布的社交内容时，<span class="hl">每次使用即一次零成本获客</span>。
   </div>
 
   <h4>产品化关键属性</h4>
@@ -301,7 +303,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   <h3 id="p1-algo">1.2 算法与运营：在「记录」之外，通过产品设计引导用户通过行为「构建」品味</h3>
   
   <div class="insight-box">
-    品味产品容易陷入「被动记录」——只帮用户看到自己听了什么。平台真正的价值在于<strong>帮用户「构建」和「进化」品味</strong>，让品味成为平台内可积累的虚拟资产。
+    品味产品容易陷入「被动记录」——只帮用户看到自己听了什么。平台真正的价值在于<span class="hl">帮用户「构建」和「进化」品味</span>，让品味成为平台内<span class="hl">可积累的虚拟资产</span>。
   </div>
 
   <table style="table-layout:fixed; width:100%;">
@@ -316,7 +318,7 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   </table>
 
   <div class="callout">
-    <strong>产品启示：</strong>设计「品味成长体系」——品味有等级、有进化、有外显标识。用户在平台上的品味投入（歌单/分享/互动）转化为不可迁移的虚拟资产，既是留存引擎（沉没成本），也是变现引擎（人设升级挂载虚拟商品）。
+    <strong>产品启示：</strong>设计「品味成长体系」——品味有等级、有进化、有外显标识。用户在平台上的品味投入（歌单/分享/互动）转化为<span class="hl">不可迁移的虚拟资产</span>，既是<span class="hl">留存引擎</span>（沉没成本），也是<span class="hl">变现引擎</span>（人设升级挂载虚拟商品）。
     <ul class="bl" style="margin-top:8px;">
       <li><strong>AI 画像引擎：</strong>用 LLM + Embedding 模型将听歌行为实时转化为多维品味向量，生成「品味人格卡」（类 MBTI）——这是整套体系的数据底座</li>
       <li><strong>AI 内容生成：</strong>基于品味向量自动生成个性化歌单、品味快照图片、「品味周报」等可分享物，降低用户主动表达的创作成本</li>
@@ -336,9 +338,9 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
 
   <h3 id="p2-signal">市场信号</h3>
   <ul class="bl">
-    <li><strong>变现分化极端：</strong>情感/叙事类 AI 产品（Tipsy Chat $8.60/MAU）变现密度是通用 AI 工具（ChatGPT $0.99/MAU）的 <strong>8.7 倍</strong>。用户为「一段关系」或「一个作品」付费意愿远超「一次查询」</li>
-    <li><strong>产出=获客的模式最具杠杆：</strong>Sondo（AI MV, $7.31/MAU）和 BabyGenie（7 周 14.7M DL）证明——当产出物天然可分享时，每次使用即一次零成本获客</li>
-    <li><strong>爆发集中在新品类：</strong>VibeShort（AI 短剧 +14,773%）、Traini（AI 宠物 +12,921%）、Astro99（AI 占星 +25,213%）——AI 重新定义垂直场景的交互方式时增速最快</li>
+    <li><strong>变现分化极端：</strong>情感/叙事类 AI 产品（Tipsy Chat <span class="hl-metric">$8.60/MAU</span>）变现密度是通用 AI 工具（$0.99/MAU）的 <span class="hl-metric">8.7 倍</span>。用户为「一段关系」或「一个作品」付费意愿远超「一次查询」</li>
+    <li><strong>产出=获客的模式最具杠杆：</strong>Sondo（<span class="hl-metric">$7.31/MAU</span>）和 BabyGenie（<span class="hl-metric">7 周 14.7M DL</span>）证明——当产出物天然可分享时，<span class="hl">每次使用即一次零成本获客</span></li>
+    <li><strong>爆发集中在新品类：</strong>VibeShort（<span class="growth-up">+14,773%</span>）、Traini（<span class="growth-up">+12,921%</span>）、Astro99（<span class="growth-up">+25,213%</span>）——<span class="hl">AI 重新定义垂直场景的交互方式时增速最快</span></li>
   </ul>
   <p class="source" style="margin-top:8px;">基于 Sensor Tower API，从 iOS 多品类 Top 50-200 合并去重 637 个非游戏 App，筛选条件：Q2 收入 >$100K 且 MAU >50K，或 Q2 下载 >100K 且增速 >500%。命中 283 个，排除传统非 AI 产品后取子集。</p>
   
@@ -396,8 +398,8 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <div class="metrics"><span><span class="tag tag-growth">Sondo <span class="growth-up">107%</span></span></span><span><span class="tag tag-revenue">Rev/MAU $7.31</span></span><span>Suno Q2 $16.2M</span><span>Yuna <span class="growth-up">3,833%</span></span></div>
     <div class="summary"><ul class="bl">
       <li>短视频创作者核心矛盾：平台要高频原创，多数人缺音乐和剪辑能力</li>
-      <li>Sondo 验证「一句话→完整短视频」的融合工作流，Rev/MAU $7.31 仅次于 AI 伴侣</li>
-      <li>产出物即 TikTok/Reels 内容，发布即分发，使用行为天然构成拉新</li>
+      <li>Sondo 验证<span class="hl">「一句话→完整短视频」</span>的融合工作流，Rev/MAU <span class="hl-metric">$7.31</span> 仅次于 AI 伴侣</li>
+      <li>产出物即 TikTok/Reels 内容，<span class="hl">发布即分发，使用行为天然构成拉新</span></li>
     </ul></div>
     <button class="expand-btn" onclick="toggle('d-video')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-video">
@@ -429,9 +431,9 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <h5>AI 垂直场景（宠物 / 占星 / 美妆） <span class="tag-driver tag-driver-vertical">垂直刚需</span></h5>
     <div class="metrics"><span><span class="tag tag-growth">Traini 4.53M, <span class="growth-up">12,921%</span></span></span><span><span class="tag tag-growth">Astro99 2.19M, <span class="growth-up">25,213%</span></span></span><span>Fravix 778K, <span class="growth-up">19,895%</span></span><span>Her 75: $356K</span></div>
     <div class="summary"><ul class="bl">
-      <li>共同模式：「专家服务原本昂贵」的垂直场景，AI 压缩为「拍照/输入→即时结果」</li>
-      <li>转化漏斗极短（看到→下载→体验→付费 < 3 分钟），社交传播驱动零成本获客</li>
-      <li>单次付费模式下留存非核心指标（Traini D1 仅 6%），关键是 RPD 和分享率</li>
+      <li>共同模式：「专家服务原本昂贵」的垂直场景，AI 压缩为<span class="hl">「拍照/输入→即时结果」</span></li>
+      <li>转化漏斗极短（看到→下载→体验→付费 <span class="hl-metric">&lt; 3 分钟</span>），社交传播驱动零成本获客</li>
+      <li>单次付费模式下留存非核心指标（Traini D1 仅 6%），关键是 <span class="hl">RPD 和分享率</span></li>
     </ul></div>
     <button class="expand-btn" onclick="toggle('d-vertical')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-vertical">
@@ -462,9 +464,9 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <h5>AI 健康与个性化（营养 / 心理 / 美容 / 健身） <span class="tag-driver tag-driver-vertical">垂直刚需</span></h5>
     <div class="metrics"><span><span class="tag tag-health">Cal AI: 15M DL, $50M ARR (18个月)</span></span><span><span class="tag tag-health">Finch: $30-40M ARR</span></span><span>AI 健身市场 $4.5B IAP</span></div>
     <div class="summary"><ul class="bl">
-      <li>Cal AI（AI 拍照记卡路里）18 个月从 0 到 $50M ARR、15M 下载，2026/03 被 MyFitnessPal 收购——验证了「拍照/输入→即时结果」在健康场景的变现力</li>
-      <li>Finch（AI 自我关怀宠物）bootstrapped 到 $30-40M ARR，用「养电子宠物」包装心理健康习惯</li>
-      <li>Health & Fitness 品类 2025 年 IAP 收入 $4.5B（+13% YoY），AI 营养追踪是增长最快子类</li>
+      <li>Cal AI（AI 拍照记卡路里）18 个月从 0 到 <span class="hl-metric">$50M ARR</span>、15M 下载，2026/03 被 MyFitnessPal 收购——验证了「拍照→即时结果」在健康场景的变现力</li>
+      <li>Finch（AI 自我关怀宠物）bootstrapped 到 <span class="hl-metric">$30-40M ARR</span>，用<span class="hl">「养电子宠物」包装心理健康习惯</span></li>
+      <li>Health & Fitness 品类 2025 年 IAP 收入 <span class="hl-metric">$4.5B</span>（+13% YoY），AI 营养追踪是增长最快子类</li>
     </ul></div>
     <button class="expand-btn" onclick="toggle('d-health')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-health">
@@ -506,9 +508,9 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <h5>AI 原生社交 <span class="tag-driver tag-driver-traffic">流量驱动</span></h5>
     <div class="metrics"><span><span class="tag tag-ai">shapes.inc 400K MAU, $8M</span></span><span><span class="tag tag-growth">Focustown 1.39M, <span class="growth-up">20,564%</span></span></span><span><span class="tag tag-growth">playus D7: 60%</span></span><span>setlog 5.26M</span></div>
     <div class="summary"><ul class="bl">
-      <li>shapes.inc：AI 角色作为群聊破冰催化剂，3 个月 300 万角色被创建（TechCrunch）</li>
-      <li>playus「每天 1 分钟挑战」实现 D7 60%——社交品类极罕见</li>
-      <li>共同点：给用户每天一个打开 App 并与朋友互动的理由，AI 持续制造互动话题</li>
+      <li>shapes.inc：AI 角色作为<span class="hl">群聊破冰催化剂</span>，3 个月 <span class="hl-metric">300 万角色</span>被创建</li>
+      <li>playus「每天 1 分钟挑战」实现 <span class="hl-metric">D7 60%</span>——社交品类极罕见</li>
+      <li>共同点：给用户<span class="hl">每天一个打开 App 的理由</span>，AI 持续制造互动话题</li>
     </ul></div>
     <button class="expand-btn" onclick="toggle('d-social')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-social">
@@ -542,8 +544,8 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <div class="summary">
       <div class="counter"><strong>洞察 ③：壁垒在选题，不在技术。</strong> BabyGenie 7 周 1470 万下载，核心在「预测宝宝长相」这个主题天然让情侣想分享。关键能力是快速测试主题的分享系数。</div>
       <ul class="bl">
-        <li>每个用户完成「关于我的有趣表达」，结果天然被分享。增长靠 K-factor > 1，无需买量</li>
-        <li>可批量测试主题（年老化、宝宝、动漫化、星座化……），跑通一个即爆发</li>
+        <li>每个用户完成「关于我的有趣表达」，结果天然被分享。增长靠 <span class="hl">K-factor > 1</span>，无需买量</li>
+        <li>可<span class="hl">批量测试主题</span>（年老化、宝宝、动漫化、星座化……），跑通一个即爆发</li>
       </ul>
     </div>
     <button class="expand-btn" onclick="toggle('d-expression')">详细分析 <span class="arrow">›</span></button>
@@ -576,9 +578,9 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
     <h5>AI 陪伴进化：从对话到共同体验 <span class="tag-driver tag-driver-monetize">高变现密度</span></h5>
     <div class="metrics"><span><span class="tag tag-revenue">Tipsy Chat $8.60/MAU</span></span><span><span class="tag tag-revenue">RPD $9.67</span></span><span>zeta <span class="growth-up">38%</span> MAU, RPD $5.28</span><span>MookRun <span class="growth-up">24,870%</span></span></div>
     <div class="summary"><ul class="bl">
-      <li>Tipsy Chat 变现效率达 ChatGPT 的 8.7 倍，核心差异在沉浸式叙事——用户在经历故事</li>
-      <li>zeta 验证 IP 锚点（动漫角色）付费率高 5 倍</li>
-      <li>MookRun（+24,870%）验证「创建虚拟角色 + 社区互动」新形态</li>
+      <li>Tipsy Chat 变现效率达 ChatGPT 的 <span class="hl-metric">8.7 倍</span>，核心差异在<span class="hl">沉浸式叙事</span>——用户在经历故事</li>
+      <li>zeta 验证 <span class="hl">IP 锚点</span>（动漫角色）付费率高 <span class="hl-metric">5 倍</span></li>
+      <li>MookRun（<span class="growth-up">+24,870%</span>）验证「创建虚拟角色 + 社区互动」新形态</li>
     </ul></div>
     <button class="expand-btn" onclick="toggle('d-companion')">详细分析 <span class="arrow">›</span></button>
     <div class="product-detail" id="d-companion">
