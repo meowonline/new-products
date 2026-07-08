@@ -1,0 +1,22 @@
+# Secrets & credentials
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+auth_token*
+secrets/
+
+# Sensor Tower auth
+st_token.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Node (if scripts added later)
+node_modules/
