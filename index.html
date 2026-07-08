@@ -123,6 +123,10 @@ tr.row-highlight:hover { background: #fef08a; }
 .exec-summary .es-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
 .exec-summary .es-card h4 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); margin-bottom: 8px; }
 .exec-summary .es-card p { font-size: 0.95rem; line-height: 1.6; color: var(--text); }
+.exec-summary .es-list { list-style: none; padding: 0; margin: 0; }
+.exec-summary .es-list li { font-size: 0.93rem; line-height: 1.55; color: var(--text); padding: 6px 0; border-bottom: 1px solid #f1f5f9; }
+.exec-summary .es-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.exec-summary .es-list li:first-child { padding-top: 0; }
 .exec-summary .es-card .es-num { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
 .exec-summary .es-capabilities { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
 .exec-summary .es-capabilities h4 { font-size: 0.88rem; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
@@ -261,15 +265,27 @@ ul.bl li { margin: 4px 0; line-height: 1.7; }
   <div class="es-grid">
     <div class="es-card">
       <h4>核心发现</h4>
-      <p>① 社交、自我表达、陪伴类 AI 产品用户付费是通用工具的 <span style="color:var(--accent);font-weight:700;">3–9 倍</span>（$2.5–8.6 vs $0.99/MAU）<br>② AI 生成内容（歌曲/视频/人格卡）直接承载用户身份 — <span style="color:var(--accent);font-weight:700;">分享即表达自我，付费即强化人设</span><br>③ 最高效增长模式：AI 零门槛创作 → 用户主动分享 → <span style="color:var(--accent);font-weight:700;">获客与留存同步发生</span></p>
+      <ul class="es-list">
+        <li>社交、自我表达、陪伴类 AI 产品用户付费是通用工具的 <span style="color:var(--accent);font-weight:700;">3–9 倍</span>（$2.5–8.6 vs $0.99/MAU）</li>
+        <li>AI 生成内容（歌曲/视频/人格卡）直接承载用户身份 — <span style="color:var(--accent);font-weight:700;">分享即表达自我，付费即强化人设</span></li>
+        <li>最高效增长模式：AI 零门槛创作 → 用户主动分享 → <span style="color:var(--accent);font-weight:700;">获客与留存同步发生</span></li>
+      </ul>
     </div>
     <div class="es-card">
       <h4>高潜力赛道</h4>
-      <p><span style="color:var(--accent);font-weight:700;">AI 短视频工作流</span> — 产出=获客，$7.31/MAU<br><span style="color:var(--accent);font-weight:700;">AI 陪伴+叙事</span> — 最高变现，$8.60/MAU<br><span style="color:var(--accent);font-weight:700;">AI 自我表达</span> — 爆发最快，7 周 14.7M DL</p>
+      <ul class="es-list">
+        <li><span style="color:var(--accent);font-weight:700;">AI 短视频工作流</span> — 产出=获客，$7.31/MAU</li>
+        <li><span style="color:var(--accent);font-weight:700;">AI 陪伴+叙事</span> — 最高变现，$8.60/MAU</li>
+        <li><span style="color:var(--accent);font-weight:700;">AI 自我表达</span> — 爆发最快，7 周 14.7M DL</li>
+      </ul>
     </div>
     <div class="es-card">
       <h4>建议行动</h4>
-      <p>① 现有产品接入<span style="color:var(--accent);font-weight:700;">「共同体验/叙事」</span>模块验证付费<br>② 极轻量 Web App 测试<span style="color:var(--accent);font-weight:700;">高分享系数主题</span><br>③ <span style="color:var(--accent);font-weight:700;">AI 兴趣画像图谱+ 人设成长体系</span>构建差异化护城河</p>
+      <ul class="es-list">
+        <li>现有产品接入<span style="color:var(--accent);font-weight:700;">「共同体验/叙事」</span>模块验证付费</li>
+        <li>极轻量 Web App 测试<span style="color:var(--accent);font-weight:700;">高分享系数主题</span></li>
+        <li><span style="color:var(--accent);font-weight:700;">AI 兴趣画像图谱+ 人设成长体系</span>构建差异化护城河</li>
+      </ul>
     </div>
   </div>
   <div class="es-capabilities">
